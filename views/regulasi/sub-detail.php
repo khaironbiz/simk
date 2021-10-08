@@ -55,7 +55,22 @@
                                             <input type="text" class="form-control" name="file_regulasi">
                                         </div><label class="col-sm-3 col-form-label">Tanggal Dokumen</label>
                                         <div class="col-sm-9">
-                                            <input type="date" class="form-control" name="file_regulasi">
+                                            <input type="text" class="form-control" name="file_regulasi">
+                                        </div>
+                                        <label class="col-sm-3 col-form-label">Revisi Ke</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" required name="revisi_ke">
+                                                <option value="" selected>Pilih</option>
+                                                <?php
+                                                    $n      = 1;
+                                                    while($n <10){
+                                                ?>
+                                                <option value="<?= $n; ?>">Ke <?= $n; ?></option>
+                                                <?php
+                                                    $n++;
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                         <label class="col-sm-3 col-form-label">File Regulasi</label>
                                         <div class="col-sm-9">
