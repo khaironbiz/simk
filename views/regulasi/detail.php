@@ -1,3 +1,4 @@
+
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -16,7 +17,6 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
-
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -30,7 +30,6 @@
                 <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">
                 Tambah Data
                 </button>
-
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -44,9 +43,11 @@
                             <form action="" method="POST">
                                 <div class="modal-body">
                                     <div class="form-group row">
-                                        <label for="inputPassword3" class="col-sm-3 col-form-label">Jenis Regulasi</label>
+                                        <label for="inputPassword3" class="col-sm-3 col-form-label">Nama Regulasi</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="inputPassword3" name="regulasi_jenis">
+                                            <input type="text" class="form-control"  name="nama_regulasi">
+                                            <input type="hidden" class="form-control" value="<?= $data['id_regulasi_jenis']?>" name="id_regulasi_jenis">
+                                            <input type="hidden" class="form-control" value="<?= $data['has_regulasi_jenis']?>" name="has_regulasi_jenis">
                                         </div>
                                     </div>
                                 </div>
@@ -58,13 +59,13 @@
                     </div>
                 </div>
                 <?php
-                include('aksi/jenis-regulasi.php');
+                include('aksi/regulasi.php');
                 ?>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>#</th>
-                    <th>Jenis Regulasi</th>
+                    <th>Nama Regulasi</th>
                     <th>Jumlah Regulasi</th>
                     <th>Email</th>
                     <th>HP</th>
@@ -73,33 +74,40 @@
                   </thead>
                   <tbody>
                     <?php
-                    $no           = 1;
-                    $sql_perawat  = mysqli_query($host, "SELECT * FROM regulasi_jenis ORDER BY jenis_regulasi");
-                    while($data   = mysqli_fetch_array($sql_perawat)){
+                    $id_regulasi_jenis  = $data['id_regulasi_jenis'];
+                    $no                 = 1;
+                    $sql_perawat        = mysqli_query($host, "SELECT * FROM regulasi WHERE id_regulasi_jenis='$id_regulasi_jenis' ORDER BY nama_regulasi");
+                    while($data_ini     = mysqli_fetch_array($sql_perawat)){
                     ?>
                     <tr>
                       <td width="10px"><?= $no++; ?></td>
-                      <td><?= $data['jenis_regulasi'];?></td>
-                      <td><?= $data['id_regulasi_jenis'];?></td>
+                      <td><?= $data_ini['nama_regulasi'];?></td>
+                      <td><?= $data_ini['id_regulasi_jenis'];?></td>
                       <td></td>
                       <td></td>
-                      <td><a href="<?= $site_url ?>/regulasi/detail.php?id=<?= $data['has_regulasi_jenis']?>" class="btn btn-primary btn-sm">Detail</a></td>
+                      <td><a href="<?= $site_url ?>/regulasi/sub-detail.php?id=<?= $data_ini['has_regulasi']?>" class="btn btn-primary btn-sm">Detail</a></td>
                     </tr>
                     <?php
-                      }
+                    }
                     ?>
                   </tbody>
                   <tfoot>
-                  <tr>
-                    <th>#</th>
-                    <th>Nama</th>
-                    <th>NIRA</th>
-                    <th>Email</th>
-                    <th>HP</th>
-                    <th>Pendidikan</th>
-                  </tr>
+                    <tr>
+                      <th>#</th>
+                      <th>Nama</th>
+                      <th>NIRA</th>
+                      <th>Email</th>
+                      <th>HP</th>
+                      <th>Pendidikan</th>
+                    </tr>
                   </tfoot>
                 </table>
+                <button onclick="goBack()" class="btn btn-danger btn-sm">Go Back</button>
+                <script>
+                function goBack() {
+                window.history.back();
+                }
+                </script>
               </div>
               <!-- /.card-body -->
             </div>

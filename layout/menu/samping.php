@@ -95,9 +95,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?= $site_url ?>/regulasi" class="nav-link">
               <i class="nav-icon far fa-circle text-warning"></i>
-              <p>Warning</p>
+              <p>Regulasi</p>
             </a>
           </li>
           <li class="nav-item">

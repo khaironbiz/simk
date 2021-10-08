@@ -1,9 +1,3 @@
-<?php
-include("../auth/site.php");
-include("../auth/koneksi.php");
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
