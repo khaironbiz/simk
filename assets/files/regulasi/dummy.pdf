@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Display the pdf file using php</title>
+</head>
+
+<body>
+<br />
+<b>Warning</b>:  filesize(): stat failed for ./pdf/dummy.pdf in <b>C:\xampp\htdocs\pdf-viewer\index.php</b> on line <b>16</b><br />
+<a href="http://www.sanwebtutorials.blogspot.in/">San web corner</a>
+</body>
+</html>

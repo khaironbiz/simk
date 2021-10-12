@@ -1,6 +1,5 @@
 <?php
-include("../auth/site.php");
-include("../auth/koneksi.php");
+include("../auth/session.php");
 $key        = $_GET['id'];
 $sql_key    = mysqli_query($host,"SELECT * FROM regulasi_jenis WHERE has_regulasi_jenis='$key'");
 $data       = mysqli_fetch_array($sql_key);

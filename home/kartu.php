@@ -1,6 +1,5 @@
 <?php
-include("../auth/site.php");
-include("../auth/koneksi.php");
+include("../auth/session.php");
 $judul      = "Kartu Anggota";
 $template   = "../theme/table.php";
 $wrapp      = "../core/wrapp.php";

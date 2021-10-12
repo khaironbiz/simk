@@ -40,7 +40,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="" method="POST">
+                            <form action="" method="POST" enctype="multipart/form-data">
                                 <div class="modal-body">
                                     <div class="form-group row">
                                         <label class="col-sm-3 col-form-label">Nama Regulasi</label>
@@ -52,17 +52,17 @@
                                         </div>
                                         <label class="col-sm-3 col-form-label">Nomor Dokumen</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" name="file_regulasi">
+                                            <input type="text" class="form-control" name="no_dokumen">
                                         </div><label class="col-sm-3 col-form-label">Tanggal Dokumen</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" name="file_regulasi">
+                                            <input type="date" class="form-control" name="tgl_dokumen">
                                         </div>
                                         <label class="col-sm-3 col-form-label">Revisi Ke</label>
                                         <div class="col-sm-9">
                                             <select class="form-control" required name="revisi_ke">
                                                 <option value="" selected>Pilih</option>
                                                 <?php
-                                                    $n      = 1;
+                                                    $n      = 0;
                                                     while($n <10){
                                                 ?>
                                                 <option value="<?= $n; ?>">Ke <?= $n; ?></option>
@@ -112,7 +112,7 @@
                             <td><?= $data_ini['tgl_dokumen'];?></td>
                             <td><?= $data_ini['created_at'];?></td>
                             <td><?= $data_ini['count_hit'];?></td>
-                            <td><a href="<?= $site_url ?>/regulasi/download.php?id=<?= $data_ini['has_regulasi_detail']?>" class="btn btn-warning btn-sm">Download</a></td>
+                            <td><a href="<?= $site_url ?>/regulasi/download.php?id=<?= $data_ini['has_regulasi_detail']?>" class="btn btn-warning btn-sm" target=_bank>Download</a></td>
                         </tr>
                         <?php
                         }
