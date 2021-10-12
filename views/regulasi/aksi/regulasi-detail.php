@@ -21,10 +21,14 @@ if(isset($_POST['id_regulasi'])){
                                 no_dokumen          = '$no_dokumen' and 
                                 tgl_dokumen         = '$tgl_dokumen' and 
                                 id_regulasi         = '$id_regulasi'");
+    if(in_array($file_ext, $allowed_ext) === true){
     $count              = mysqli_num_rows($sql_regulasi);
-    echo "<script> alert(\"File $file_ext\");</script>"; 
+    }else{
+        echo "<script> alert(\"File tidak diizinkan\");</script>"; 
+    }
     if($count < 1){
-        if($file_size < $file_size_allowed){
+        if(in_array($file_ext, $allowed_ext) === true){
+            if($file_size < $file_size_allowed){
                 $lokasi = "../assets/files/regulasi/".$regulasi_file;
 				move_uploaded_file($file_tmp, $lokasi);
                 $input_data     = mysqli_query($host, "INSERT INTO regulasi_detail SET 
@@ -45,6 +49,10 @@ if(isset($_POST['id_regulasi'])){
         }else{
             echo "<script> alert(\"File data terlalu besar\");</script>"; 
         }
+        }else{
+            echo "<script> alert(\"File data tidak diizinkan\");</script>";
+        }
+        
     }else{
         echo "<script> alert(\"Data Sudah terdaftar\");</script>"; 
     }
