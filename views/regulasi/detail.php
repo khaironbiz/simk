@@ -38,10 +38,18 @@
             <div class="card">
               <div class="card-header">
               <div class="card-body">
-                  <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">
-                Tambah Data
-                </button>
+                <?php
+                    include("../core/security/admin-akses.php");
+                    if($count_admin >0){
+                  ?>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">
+                    Tambah Data
+                    </button>
+                  <?php
+                    }
+                  ?>
+                  
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">

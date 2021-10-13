@@ -47,23 +47,33 @@
                   </button>
                   <?php
                     }
-                  ?>
+                    ?>
                   <!-- Modal -->
                   <form action="" method="POST">
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Tambah Administrator</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
                           <div class="modal-body">
                             <div class="form-group row">
-                              <label for="inputPassword3" class="col-sm-3 col-form-label">Jenis Regulasi</label>
+                              <label for="inputPassword3" class="col-sm-3 col-form-label">Administrator</label>
                               <div class="col-sm-9">
-                                <input type="text" class="form-control" id="inputPassword3" name="regulasi_jenis">
+                                <select class="form-control" name="nira">
+                                  <option value="">--Pilih Perawat--</option>
+                                  <?php
+                                    $sql_data = mysqli_query($host, "SELECT * FROM nira WHERE blokir ='N' ORDER BY nama");
+                                    while($data_perawat= mysqli_fetch_array($sql_data)){
+                                  ?>
+                                  <option value="<?= $data_perawat['nira']?>"><?= $data_perawat['nama']?></option>
+                                  <?php
+                                  }
+                                  ?>
+                                </select>
                               </div>
                             </div>
                           </div>
@@ -75,31 +85,30 @@
                     </div>
                   </form>
                   <?php
-                  include('aksi/jenis-regulasi.php');
+                  include('aksi/add-admin.php');
                   ?>
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>Jenis Regulasi</th>
-                        <th>Jumlah Regulasi</th>
+                        <th>Administrator</th>
+                        <th>NIRA</th>
                         <th>Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php
-                      $no                   = 1;
-                      $sql_perawat          = mysqli_query($host, "SELECT * FROM regulasi_jenis ORDER BY jenis_regulasi");
-                      while($data           = mysqli_fetch_array($sql_perawat)){
-                        $id_regulasi_jenis  = $data['id_regulasi_jenis'];
-                        $sql_count          = mysqli_query($host, "SELECT * FROM regulasi_detail WHERE id_regulasi_jenis='$id_regulasi_jenis'");
-                        $count_data         = mysqli_num_rows($sql_count);
+                      $no              = 1;
+                      $sql_perawat     = mysqli_query($host, "SELECT * FROM admin_data 
+                                          JOIN nira on nira.nira=admin_data.id_perawat
+                                          ORDER BY nira.nama");
+                      while($data      = mysqli_fetch_array($sql_perawat)){
                       ?>
                       <tr>
                         <td width="10px"><?= $no++; ?></td>
-                        <td><?= $data['jenis_regulasi'];?></td>
-                        <td><?= $count_data;?></td>
-                        <td><a href="<?= $site_url ?>/regulasi/detail.php?id=<?= $data['has_regulasi_jenis']?>" class="btn btn-primary btn-sm">Detail</a></td>
+                        <td><?= $data['nama'];?></td>
+                        <td><?= $data['nira'];?></td>
+                        <td><a href="<?= $site_url ?>/admin-data/delete-admin.php?id=<?= $data['has_admin_data']?>" class="btn btn-danger btn-sm">Delete</a></td>
                       </tr>
                       <?php
                         }
@@ -108,8 +117,8 @@
                     <tfoot>
                       <tr>
                         <th>#</th>
-                        <th>Jenis Regulasi</th>
-                        <th>Jumlah Regulasi</th>
+                        <th>Administrator</th>
+                        <th>NIRA</th>
                         <th>Aksi</th>
                       </tr>
                     </tfoot>

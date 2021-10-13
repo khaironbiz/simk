@@ -86,7 +86,11 @@
               </li>
             </ul>
           </li>
-          
+          <?php
+          $sql_list_admin = mysqli_query($host, "SELECT * FROM admin_data WHERE id_perawat ='$user_check'");
+          $list_admin     = mysqli_num_rows($sql_list_admin);
+          if($list_admin >0){
+          ?>
           <li class="nav-header">LABELS</li>
           <li class="nav-item">
             <a href="<?= $site_url ?>/home/perawat.php" class="nav-link">
@@ -100,12 +104,16 @@
               <p>Regulasi</p>
             </a>
           </li>
+          
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?= $site_url ?>/admin-data" class="nav-link">
               <i class="nav-icon far fa-circle text-info"></i>
-              <p>Informational</p>
+              <p>Admin Data</p>
             </a>
           </li>
+          <?php
+          }
+          ?>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

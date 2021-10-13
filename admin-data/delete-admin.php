@@ -1,9 +1,9 @@
 <?php
 include("../auth/session.php");
-$judul      = "Jenis Regulasi";
+$judul      = "Administrator Data";
 $template   = "../theme/table.php";
 $wrapp      = "../core/wrapp.php";
-$content    = "../views/regulasi/index.php";
+$content    = "../views/admin-data/aksi/delete-admin.php";
 include($template);
 
 
