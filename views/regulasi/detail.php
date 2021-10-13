@@ -22,9 +22,21 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
+            <?php
+            if(isset($_SESSION['status'])&& $_SESSION['status'] !=""){
+            ?>
+            <div class="alert alert-<?= $_SESSION['status_info']?> alert-dismissible fade show" role="alert">
+              <strong>Hay</strong> <?= $_SESSION['status']?>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <?php
+            unset($_SESSION['status']);
+            }
+            ?>
             <div class="card">
               <div class="card-header">
-                
               <div class="card-body">
                   <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">

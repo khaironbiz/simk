@@ -22,6 +22,19 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
+            <?php
+            if(isset($_SESSION['status'])&& $_SESSION['status'] !=""){
+            ?>
+            <div class="alert alert-<?= $_SESSION['status_info']?> alert-dismissible fade show" role="alert">
+              <strong>Hay</strong> <?= $_SESSION['status']?>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <?php
+            unset($_SESSION['status']);
+            }
+            ?>
             <div class="card">
               <div class="card-header">
                 
@@ -35,7 +48,7 @@
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Input File Regulasi</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -84,6 +97,7 @@
                                         <label class="col-sm-3 col-form-label">File Regulasi</label>
                                         <div class="col-sm-9">
                                             <input type="file" class="form-control" name="file_regulasi">
+                                            <small class="form-text text-muted">File yang diizinkan hanya dalam bentuk <strong>PDF.</strong></small>
                                         </div>
                                     </div>
                                 </div>
@@ -103,6 +117,8 @@
                         <th>#</th>
                         <th>Nomor Dokumen</th>
                         <th>Tanggal Dokumen</th>
+                        <th>Penanda Tangan</th>
+                        <th>Jabatan</th>
                         <th>Tanggal Upload</th>
                         <th>HIT</th>
                         <th>Aksi</th>
@@ -119,6 +135,8 @@
                             <td width="10px"><?= $no++; ?></td>
                             <td><?= $data_ini['no_dokumen'];?></td>
                             <td><?= $data_ini['tgl_dokumen'];?></td>
+                            <td><?= $data_ini['pejabat'];?></td>
+                            <td><?= $data_ini['jabatan'];?></td>
                             <td><?= $data_ini['created_at'];?></td>
                             <td><?= $data_ini['count_hit'];?></td>
                             <td><a href="<?= $site_url ?>/regulasi/download.php?id=<?= $data_ini['has_regulasi_detail']?>" class="btn btn-warning btn-sm" target=_bank>Download</a></td>
@@ -132,6 +150,8 @@
                             <th>#</th>
                             <th>Nomor Dokumen</th>
                             <th>Tanggal Dokumen</th>
+                            <th>Penanda Tangan</th>
+                            <th>Jabatan</th>
                             <th>Tanggal Upload</th>
                             <th>HIT</th>
                             <th>Aksi</th>

@@ -25,7 +25,6 @@ if(isset($_POST['id_regulasi'])){
                                 id_regulasi         = '$id_regulasi'");
     $count              = mysqli_num_rows($sql_regulasi);
     
-    echo "<script> alert(\"nama File : $file_name dan $file_ext\");</script>";
     if($count < 1){
         if(in_array($file_ext, $allowed_ext) === true){
             if($file_size < $file_size_allowed){
@@ -44,22 +43,28 @@ if(isset($_POST['id_regulasi'])){
                                     created_by          = '$user_check',
                                     has_regulasi_detail = '$has_regulasi_detail'");
                 if($input_data){
-                    echo "<script>document.location=\"$site_url/regulasi\"</script>";
+                    $_SESSION['status']="Data berhasil disimpan";
+                    $_SESSION['status_info']="success";
+                    echo "<script>document.location=\"$site_url/regulasi/sub-detail.php?id=$has_regulasi\"</script>";
                 }else{
-                    echo "<script> alert(\"data gagal ditambahkan\");</script>"; 
-                    echo "<script>document.location=\"$site_url/regulasi/\"</script>";
+                    $_SESSION['status']="Data berhasil disimpan";
+                    $_SESSION['status_info']="success";
+                    echo "<script>document.location=\"$site_url/regulasi/sub-detail.php?id=$has_regulasi\"</script>";
                 }
         }else{
-            echo "<script> alert(\"File data terlalu besar\");</script>"; 
-            echo "<script>document.location=\"$site_url/regulasi/\"</script>";
+            $_SESSION['status']="Data gagal disimpan karena file data terlalu besar";
+            $_SESSION['status_info']="danger";
+            echo "<script>document.location=\"$site_url/regulasi/sub-detail.php?id=$has_regulasi\"</script>";
         }
         }else{
-            echo "<script> alert(\"File data tidak diizinkan\");</script>";
-            echo "<script>document.location=\"$site_url/regulasi/\"</script>";
+            $_SESSION['status']="Data gagal disimpan karena ekstensi file tidak diizinkan";
+            $_SESSION['status_info']="danger";
+            echo "<script>document.location=\"$site_url/regulasi/sub-detail.php?id=$has_regulasi\"</script>";
         }
         
     }else{
-        echo "<script> alert(\"Data Sudah terdaftar\");</script>"; 
+        $_SESSION['status']="Data gagal disimpan karena data sudah terdaftar di sistem kami";
+        $_SESSION['status_info']="danger"; 
         echo "<script>document.location=\"$site_url/regulasi/\"</script>";
     }
 }
