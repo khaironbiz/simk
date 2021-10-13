@@ -61,15 +61,15 @@
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-envelope"></i>
               <p>
-                Mailbox
+                Dokumen
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../mailbox/mailbox.html" class="nav-link">
+                <a href="<?= $site_url ?>/regulasi" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Inbox</p>
+                  <p>Regulasi</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -114,6 +114,12 @@
           <?php
           }
           ?>
+          <li class="nav-item">
+            <a href="<?= $site_url ?>/auth/logout.php" class="nav-link">
+              <i class="nav-icon far fa-circle text-warning"></i>
+              <p>Logout</p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
