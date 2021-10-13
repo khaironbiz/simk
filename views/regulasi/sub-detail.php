@@ -53,7 +53,8 @@
                                         <label class="col-sm-3 col-form-label">Nomor Dokumen</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" name="no_dokumen">
-                                        </div><label class="col-sm-3 col-form-label">Tanggal Dokumen</label>
+                                        </div>
+                                        <label class="col-sm-3 col-form-label">Tanggal Dokumen</label>
                                         <div class="col-sm-9">
                                             <input type="date" class="form-control" name="tgl_dokumen">
                                         </div>
@@ -71,6 +72,14 @@
                                                 }
                                                 ?>
                                             </select>
+                                        </div>
+                                        <label class="col-sm-3 col-form-label">Penanda Tangan</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" name="pejabat">
+                                        </div>
+                                        <label class="col-sm-3 col-form-label">Jabatan</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" name="jabatan">
                                         </div>
                                         <label class="col-sm-3 col-form-label">File Regulasi</label>
                                         <div class="col-sm-9">

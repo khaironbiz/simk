@@ -62,27 +62,26 @@
                 ?>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Jenis Regulasi</th>
-                    <th>Jumlah Regulasi</th>
-                    <th>Email</th>
-                    <th>HP</th>
-                    <th>Pendidikan</th>
-                  </tr>
+                    <tr>
+                      <th>#</th>
+                      <th>Jenis Regulasi</th>
+                      <th>Jumlah Regulasi</th>
+                      <th>Aksi</th>
+                    </tr>
                   </thead>
                   <tbody>
                     <?php
-                    $no           = 1;
-                    $sql_perawat  = mysqli_query($host, "SELECT * FROM regulasi_jenis ORDER BY jenis_regulasi");
-                    while($data   = mysqli_fetch_array($sql_perawat)){
+                    $no                   = 1;
+                    $sql_perawat          = mysqli_query($host, "SELECT * FROM regulasi_jenis ORDER BY jenis_regulasi");
+                    while($data           = mysqli_fetch_array($sql_perawat)){
+                      $id_regulasi_jenis  = $data['id_regulasi_jenis'];
+                      $sql_count          = mysqli_query($host, "SELECT * FROM regulasi_detail WHERE id_regulasi_jenis='$id_regulasi_jenis'");
+                      $count_data         = mysqli_num_rows($sql_count);
                     ?>
                     <tr>
                       <td width="10px"><?= $no++; ?></td>
                       <td><?= $data['jenis_regulasi'];?></td>
-                      <td><?= $data['id_regulasi_jenis'];?></td>
-                      <td></td>
-                      <td></td>
+                      <td><?= $count_data;?></td>
                       <td><a href="<?= $site_url ?>/regulasi/detail.php?id=<?= $data['has_regulasi_jenis']?>" class="btn btn-primary btn-sm">Detail</a></td>
                     </tr>
                     <?php
@@ -90,14 +89,12 @@
                     ?>
                   </tbody>
                   <tfoot>
-                  <tr>
-                    <th>#</th>
-                    <th>Nama</th>
-                    <th>NIRA</th>
-                    <th>Email</th>
-                    <th>HP</th>
-                    <th>Pendidikan</th>
-                  </tr>
+                    <tr>
+                      <th>#</th>
+                      <th>Jenis Regulasi</th>
+                      <th>Jumlah Regulasi</th>
+                      <th>Aksi</th>
+                    </tr>
                   </tfoot>
                 </table>
               </div>

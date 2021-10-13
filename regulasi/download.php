@@ -19,7 +19,6 @@ $downloader         = mysqli_query($host,"INSERT INTO regulasi_downloader SET
                                 id_regulasi_detail  = '$id_regulasi_detail',
                                 id_perawat          = '$user_check',
                                 waktu_download      = '$time'");
-
 if($update_data){
 header("location:$url");
 }

@@ -7,6 +7,8 @@ if(isset($_POST['id_regulasi'])){
     $no_dokumen         = $_POST['no_dokumen'];
     $tgl_dokumen        = $_POST['tgl_dokumen'];
     $revisi_ke          = $_POST['revisi_ke'];
+    $pejabat            = $_POST['pejabat'];
+    $jabatan            = $_POST['jabatan'];
     //file konfigurasi
     $allowed_ext	    = array('pdf', 'jpg', 'jpeg');
     $file_size_allowed  = 1000000;
@@ -21,40 +23,44 @@ if(isset($_POST['id_regulasi'])){
                                 no_dokumen          = '$no_dokumen' and 
                                 tgl_dokumen         = '$tgl_dokumen' and 
                                 id_regulasi         = '$id_regulasi'");
-    if(in_array($file_ext, $allowed_ext) === true){
     $count              = mysqli_num_rows($sql_regulasi);
-    }else{
-        echo "<script> alert(\"File tidak diizinkan\");</script>"; 
-    }
+    
+    echo "<script> alert(\"nama File : $file_name dan $file_ext\");</script>";
     if($count < 1){
         if(in_array($file_ext, $allowed_ext) === true){
             if($file_size < $file_size_allowed){
                 $lokasi = "../assets/files/regulasi/".$regulasi_file;
-				move_uploaded_file($file_tmp, $lokasi);
+				$simpan_file    = move_uploaded_file($file_tmp, $lokasi);
                 $input_data     = mysqli_query($host, "INSERT INTO regulasi_detail SET 
-                                id_regulasi_jenis   = '$id_regulasi_jenis',
-                                id_regulasi         = '$id_regulasi',
-                                regulasi_file       = '$regulasi_file',
-                                no_dokumen          = '$no_dokumen',
-                                tgl_dokumen         = '$tgl_dokumen',
-                                revisi_ke           = '$revisi_ke',
-                                created_at          = '$hari_ini',
-                                created_by          = '$user_check',
-                                has_regulasi_detail = '$has_regulasi_detail'");
+                                    id_regulasi_jenis   = '$id_regulasi_jenis',
+                                    id_regulasi         = '$id_regulasi',
+                                    regulasi_file       = '$regulasi_file',
+                                    no_dokumen          = '$no_dokumen',
+                                    tgl_dokumen         = '$tgl_dokumen',
+                                    revisi_ke           = '$revisi_ke',
+                                    jabatan             = '$jabatan',
+                                    pejabat             = '$pejabat',
+                                    created_at          = '$hari_ini',
+                                    created_by          = '$user_check',
+                                    has_regulasi_detail = '$has_regulasi_detail'");
                 if($input_data){
                     echo "<script>document.location=\"$site_url/regulasi\"</script>";
                 }else{
                     echo "<script> alert(\"data gagal ditambahkan\");</script>"; 
+                    echo "<script>document.location=\"$site_url/regulasi/\"</script>";
                 }
         }else{
             echo "<script> alert(\"File data terlalu besar\");</script>"; 
+            echo "<script>document.location=\"$site_url/regulasi/\"</script>";
         }
         }else{
             echo "<script> alert(\"File data tidak diizinkan\");</script>";
+            echo "<script>document.location=\"$site_url/regulasi/\"</script>";
         }
         
     }else{
         echo "<script> alert(\"Data Sudah terdaftar\");</script>"; 
+        echo "<script>document.location=\"$site_url/regulasi/\"</script>";
     }
 }
 ?>
