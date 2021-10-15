@@ -55,7 +55,7 @@
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Input File Regulasi</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Input File Formulir</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -94,7 +94,7 @@
                                         </div>
                                         <label class="col-sm-3 col-form-label">File Form</label>
                                         <div class="col-sm-9">
-                                            <input type="file" class="form-control" name="file_regulasi">
+                                            <input type="file" class="form-control" name="form_file">
                                             <small class="form-text text-muted">File yang diizinkan hanya dalam bentuk <strong>PDF.</strong></small>
                                         </div>
                                     </div>
