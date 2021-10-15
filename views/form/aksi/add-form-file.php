@@ -62,4 +62,24 @@ if(isset($_POST['id_form'])){
         echo "<script>document.location=\"$site_url/form/detail.php?id=$has_form\"</script>";
     }
 }
+if(isset($_GET['key'])){
+    $has_form_detail    = $_GET['key'];
+    $has_form           = $_GET['id'];
+    $status             = $_GET['status'];
+    if($status=="blokir"){
+        $status_baru    = 1;
+    }if($status=="aktif"){
+        $status_baru    = 0;
+    }
+    $update_form_detail = mysqli_query($host, "UPDATE form_detail SET status='$status_baru' WHERE has_form_detail='$has_form_detail'");
+    if($update_form_detail){
+        $_SESSION['status']="Data berhasil diupdate";
+        $_SESSION['status_info']="success"; 
+        echo "<script>document.location=\"$site_url/form/detail.php?id=$has_form\"</script>";
+    }else{
+        $_SESSION['status']="Data gagal diupdate, mohon periksa lagi";
+        $_SESSION['status_info']="danger"; 
+        echo "<script>document.location=\"$site_url/form/detail.php?id=$has_form\"</script>";
+    }
+}
 ?>

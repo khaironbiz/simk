@@ -117,6 +117,7 @@
                         <th>Tanggal Dokumen</th>
                         <th>Tanggal Upload</th>
                         <th>HIT</th>
+                        <th>Status</th>
                         <th>Aksi</th>
                     </tr>
                     </thead>
@@ -133,7 +134,35 @@
                             <td><?= $data_ini['tgl_dokumen'];?></td>
                             <td><?= $data_ini['created_at'];?></td>
                             <td><?= $data_ini['count_hit'];?></td>
-                            <td><a href="<?= $site_url ?>/form/download.php?id=<?= $data_ini['has_form_detail']?>" class="btn btn-warning btn-sm" target=_bank>Download</a></td>
+                            <td>
+                              
+                              <?php
+                              
+                              if($count_admin >0){
+                                if($data_ini['status']==0){
+                                  
+                              ?>
+                              <a href="?status=aktif&key=<?= $data_ini['has_form_detail'] ?>&id=<?= $data['has_form']?>" class="btn btn-success btn-sm">Aktif</a>
+                              <?php
+                                }if($data_ini['status']==1){
+                              ?>
+                              <a href="?status=aktif&key=<?= $data_ini['has_form_detail'] ?>&id=<?= $data['has_form']?>" class="btn btn-danger btn-sm">Blokir</a>
+                              <?php
+                                }
+                              }else{
+                                if($data_ini['status']==0){
+                                  echo "Aktif";
+                                }
+                                if($data_ini['status']==1){
+                                  echo "Blokir";
+                                }
+                                  
+                              }
+                                ?>
+                            </td>
+                            <td>
+                              <a href="<?= $site_url ?>/form/download.php?id=<?= $data_ini['has_form_detail']?>" class="btn btn-warning btn-sm" target=_bank>Download</a>
+                            </td>
                         </tr>
                         <?php
                         }
@@ -146,6 +175,7 @@
                             <th>Tanggal Dokumen</th>
                             <th>Tanggal Upload</th>
                             <th>HIT</th>
+                            <th>Status</th>
                             <th>Aksi</th>
                         </tr>
                     </tfoot>
