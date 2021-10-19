@@ -11,7 +11,7 @@ if(isset($_POST['id_regulasi'])){
     $jabatan            = $_POST['jabatan'];
     //file konfigurasi
     $allowed_ext	    = array('pdf', 'jpg', 'jpeg');
-    $file_size_allowed  = 1000000;
+    $file_size_allowed  = 10000000;
 	$file_name		    = $_FILES['file_regulasi']['name'];
 	$file_ext		    = strtolower(end(explode('.', $file_name)));
 	$file_size		    = $_FILES['file_regulasi']['size'];

@@ -73,9 +73,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../mailbox/compose.html" class="nav-link">
+                <a href="<?= $site_url ?>/form" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Compose</p>
+                  <p>Formulir Keperawatan</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -91,7 +91,7 @@
           $list_admin     = mysqli_num_rows($sql_list_admin);
           if($list_admin >0){
           ?>
-          <li class="nav-header">LABELS</li>
+          <li class="nav-header">Admin Area</li>
           <li class="nav-item">
             <a href="<?= $site_url ?>/home/perawat.php" class="nav-link">
               <i class="nav-icon far fa-circle text-danger"></i>

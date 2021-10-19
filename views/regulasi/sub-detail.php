@@ -125,8 +125,7 @@
                         <th>#</th>
                         <th>Nomor Dokumen</th>
                         <th>Tanggal Dokumen</th>
-                        <th>Penanda Tangan</th>
-                        <th>Jabatan</th>
+                        <th>Revisi</th>
                         <th>Tanggal Upload</th>
                         <th>HIT</th>
                         <th>Aksi</th>
@@ -143,8 +142,7 @@
                             <td width="10px"><?= $no++; ?></td>
                             <td><?= $data_ini['no_dokumen'];?></td>
                             <td><?= $data_ini['tgl_dokumen'];?></td>
-                            <td><?= $data_ini['pejabat'];?></td>
-                            <td><?= $data_ini['jabatan'];?></td>
+                            <td><?= $data_ini['revisi_ke'];?></td>
                             <td><?= $data_ini['created_at'];?></td>
                             <td><?= $data_ini['count_hit'];?></td>
                             <td><a href="<?= $site_url ?>/regulasi/download.php?id=<?= $data_ini['has_regulasi_detail']?>" class="btn btn-warning btn-sm" target=_bank>Download</a></td>
@@ -158,8 +156,7 @@
                             <th>#</th>
                             <th>Nomor Dokumen</th>
                             <th>Tanggal Dokumen</th>
-                            <th>Penanda Tangan</th>
-                            <th>Jabatan</th>
+                            <th>Revisi</th>
                             <th>Tanggal Upload</th>
                             <th>HIT</th>
                             <th>Aksi</th>
