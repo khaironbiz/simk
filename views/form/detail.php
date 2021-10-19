@@ -142,7 +142,7 @@
                                 if($data_ini['status']==0){
                                   
                               ?>
-                              <a href="?status=aktif&key=<?= $data_ini['has_form_detail'] ?>&id=<?= $data['has_form']?>" class="btn btn-success btn-sm">Aktif</a>
+                              <a href="?status=blokir&key=<?= $data_ini['has_form_detail'] ?>&id=<?= $data['has_form']?>" class="btn btn-success btn-sm">Aktif</a>
                               <?php
                                 }if($data_ini['status']==1){
                               ?>
