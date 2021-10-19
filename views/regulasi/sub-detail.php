@@ -144,8 +144,10 @@
                               <td>
                                 <a href="<?= $site_url ?>/regulasi/download.php?id=<?= $data_ini['has_regulasi_detail']?>" class="btn btn-warning btn-sm" target=_bank>Download</a>
                                 <?php
+                                if($count_admin >0){
                                   include('ekstensi/delete-sub-detail.php');
                                   include('aksi/delete-sub-detail.php');
+                                }
                                 ?>
                               </td>
                           </tr>
