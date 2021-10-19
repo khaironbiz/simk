@@ -5,15 +5,10 @@
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
+          <div class="col-sm-12">
             <h1><?= $judul; ?></h1>
           </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active"><?= $judul; ?></li>
-            </ol>
-          </div>
+          
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -119,50 +114,58 @@
                 <?php
                 include('aksi/regulasi-detail.php');
                 ?>
-                <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Nomor Dokumen</th>
-                        <th>Tanggal Dokumen</th>
-                        <th>Revisi</th>
-                        <th>Tanggal Upload</th>
-                        <th>HIT</th>
-                        <th>Aksi</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $id_regulasi        = $data['id_regulasi'];
-                        $no                 = 1;
-                        $sql_data           = mysqli_query($host, "SELECT * FROM regulasi_detail WHERE id_regulasi='$id_regulasi' ORDER BY tgl_dokumen ASC");
-                        while($data_ini     = mysqli_fetch_array($sql_data)){
-                        ?>
-                        <tr>
-                            <td width="10px"><?= $no++; ?></td>
-                            <td><?= $data_ini['no_dokumen'];?></td>
-                            <td><?= $data_ini['tgl_dokumen'];?></td>
-                            <td><?= $data_ini['revisi_ke'];?></td>
-                            <td><?= $data_ini['created_at'];?></td>
-                            <td><?= $data_ini['count_hit'];?></td>
-                            <td><a href="<?= $site_url ?>/regulasi/download.php?id=<?= $data_ini['has_regulasi_detail']?>" class="btn btn-warning btn-sm" target=_bank>Download</a></td>
-                        </tr>
-                        <?php
-                        }
-                        ?>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>#</th>
-                            <th>Nomor Dokumen</th>
-                            <th>Tanggal Dokumen</th>
-                            <th>Revisi</th>
-                            <th>Tanggal Upload</th>
-                            <th>HIT</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </tfoot>
-                </table>
+                <div class="table-responsive-lg">
+                  <table id="example1" class="table table-bordered table-striped">
+                      <thead>
+                      <tr>
+                          <th>#</th>
+                          <th>Nomor Dokumen</th>
+                          <th>Tanggal Dokumen</th>
+                          <th>Revisi</th>
+                          <th>Tanggal Upload</th>
+                          <th>HIT</th>
+                          <th>Aksi</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                          <?php
+                          $id_regulasi        = $data['id_regulasi'];
+                          $no                 = 1;
+                          $sql_data           = mysqli_query($host, "SELECT * FROM regulasi_detail WHERE id_regulasi='$id_regulasi' ORDER BY tgl_dokumen ASC");
+                          while($data_ini     = mysqli_fetch_array($sql_data)){
+                          ?>
+                          <tr>
+                              <td width="10px"><?= $no++; ?></td>
+                              <td><?= $data_ini['no_dokumen'];?></td>
+                              <td><?= $data_ini['tgl_dokumen'];?></td>
+                              <td><?= $data_ini['revisi_ke'];?></td>
+                              <td><?= $data_ini['created_at'];?></td>
+                              <td><?= $data_ini['count_hit'];?></td>
+                              <td>
+                                <a href="<?= $site_url ?>/regulasi/download.php?id=<?= $data_ini['has_regulasi_detail']?>" class="btn btn-warning btn-sm" target=_bank>Download</a>
+                                <?php
+                                  include('ekstensi/delete-sub-detail.php');
+                                  include('aksi/delete-sub-detail.php');
+                                ?>
+                              </td>
+                          </tr>
+                          <?php
+                          }
+                          ?>
+                      </tbody>
+                      <tfoot>
+                          <tr>
+                              <th>#</th>
+                              <th>Nomor Dokumen</th>
+                              <th>Tanggal Dokumen</th>
+                              <th>Revisi</th>
+                              <th>Tanggal Upload</th>
+                              <th>HIT</th>
+                              <th>Aksi</th>
+                          </tr>
+                      </tfoot>
+                  </table>
+                </div>
                 <button onclick="goBack()" class="btn btn-danger btn-sm">Go Back</button>
                 <script>
                 function goBack() {
