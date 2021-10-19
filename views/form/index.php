@@ -97,7 +97,7 @@
                       ?>
                       <tr>
                         <td width="10px"><?= $no++; ?></td>
-                        <td><?= $data['nama_form'];?></td>
+                        <td><?= htmlspecialchars($data['nama_form']);?></td>
                         <td><?= $count_data;?></td>
                         <td><a href="<?= $site_url ?>/form/detail.php?id=<?= $data['has_form']?>" class="btn btn-primary btn-sm">Detail</a></td>
                       </tr>
