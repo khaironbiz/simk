@@ -117,6 +117,12 @@
               <p>Formulir Keperawatan</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="<?= $site_url ?>/unit/detail.php?id=349537bf357a6c8316213cfe2fc2319d" class="nav-link">
+              <i class="nav-icon far fa-circle text-info"></i>
+              <p>Unit Kerja</p>
+            </a>
+          </li>
           <?php
           }
           ?>
