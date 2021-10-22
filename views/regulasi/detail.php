@@ -86,7 +86,7 @@
                     <tr>
                       <th>#</th>
                       <th>Nama Regulasi</th>
-                      <th>Jumlah Regulasi</th>
+                      <th>Count</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -114,7 +114,7 @@
                       <tr>
                         <th>#</th>
                         <th>Nama Regulasi</th>
-                        <th>Jumlah Regulasi</th>
+                        <th>Count</th>
                         <th>Aksi</th>
                       </tr>
                   </tfoot>

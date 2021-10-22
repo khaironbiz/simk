@@ -14,8 +14,8 @@
                         <label class="col-sm-3 col-form-label">Nama Regulasi</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" value="<?= $data['nama_regulasi']?>" name="nama_regulasi" readonly>
-                            <input type="text" class="form-control" value="<?= $data_ini['has_regulasi_detail']?>" name="has_regulasi_detail">
-                            <input type="text" class="form-control" value="<?= $data['has_regulasi']?>" name="has_regulasi_hapus">
+                            <input type="hidden" class="form-control" value="<?= $data_ini['has_regulasi_detail']?>" name="has_regulasi_detail">
+                            <input type="hidden" class="form-control" value="<?= $data['has_regulasi']?>" name="has_regulasi_hapus">
                         </div>
                         <label class="col-sm-3 col-form-label">Nomor Dokumen</label>
                         <div class="col-sm-9">
@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
                 </div>
             </form>
         </div>

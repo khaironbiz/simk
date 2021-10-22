@@ -1,4 +1,7 @@
-
+<?php
+include("session.php");
+include("reset-account.php");
+?>
 <!doctype html>
 <html lang="en">
 
@@ -25,11 +28,10 @@
 			<div class="wrap-login100">
 				<div class="login100-form-title" style="background-image: url(https://ppni.or.id/admin/login1/images/bg-01.jpg);">
 					<span class="login100-form-title-1">
-						ACARA KESEHATAN <br>
 						RESET PASSWORD
 					</span>
 				</div>
-				<form class="login100-form validate-form" action="../auth/reset-account.php" method="POST">
+				<form class="login100-form validate-form" action="" method="POST">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input100">Email</span>
 						<input class="input100" type="text" name="username" placeholder="Email">
