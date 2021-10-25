@@ -45,65 +45,65 @@
                     }
                   ?>
                   
-                  <div>
-                    <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Direktorat / Komite</th>
-                            <th>Bidang</th>
-                            <th>Sub Bidang</th>
-                            <th>Area Pelayanan</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $no         = 1;
-                        $id_rs      = $data_rs['id_rs'];
-                        $sql_data   = mysqli_query($host, "SELECT * FROM rs_direktorat WHERE id_rs = '$id_rs' ORDER BY nama_direktorat");
-                        while($data = mysqli_fetch_array($sql_data)){
-                        ?>
-                        <tr>
-                            <td width="10px"><?= $no++; ?></td>
-                            <td><?= $data['nama_direktorat'];?></td>
-                            <?php
-                              $id_direktorat            = $data['id_rs_direktorat'];
-                              $sql_count_bidang         = mysqli_query($host, "SELECT * FROM rs_bidang WHERE id_direktorat='$id_direktorat'");
-                              $count_bidang             = mysqli_num_rows($sql_count_bidang);
-                              $sql_count_sub_bidang     = mysqli_query($host, "SELECT * FROM rs_sub_bidang WHERE id_direktorat='$id_direktorat'");
-                              $count_sub_bidang         = mysqli_num_rows($sql_count_sub_bidang);
-                              $sql_count_area_pelayanan = mysqli_query($host,"SELECT * FROM rs_area_pelaksana WHERE id_direktorat='$id_direktorat'");
-                              $count_area_pelayanan     = mysqli_num_rows($sql_count_area_pelayanan);
-                            ?>
-                            <td><?= $count_bidang ?></td>
-                            <td><?= $count_sub_bidang ?></td>
-                            <td><?= $count_area_pelayanan ?></td>
-                            <td>
-                                <a href="<?= $site_url ?>/unit/sub-detail.php?id=<?= $data['has_rs_direktorat']?>" class="btn btn-primary btn-sm">Detail</a>
-                                <?php
-                                    if($count_admin >0){
-                                        include('modal/edit-direktorat.php');
-                                        include('aksi/edit-direktorat.php');
-                                        }
-                                ?>
-                            </td>
-                        </tr>
-                        <?php
-                            }
-                        ?>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>#</th>
-                            <th>Direktorat / Komite</th>
-                            <th>Bidang</th>
-                            <th>Sub Bidang</th>
-                            <th>Area Pelayanan</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </tfoot>
-                  </table>
+                  <div class="table-responsive">
+                    <table id="example1" class="table table-bordered table-sm">
+                      <thead>
+                          <tr>
+                              <th>#</th>
+                              <th>Level 2</th>
+                              <th>Level 3</th>
+                              <th>Level 4</th>
+                              <th>Level 5</th>
+                              <th>Aksi</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <?php
+                          $no         = 1;
+                          $id_rs      = $data_rs['id_rs'];
+                          $sql_data   = mysqli_query($host, "SELECT * FROM rs_direktorat WHERE id_rs = '$id_rs' ORDER BY nama_direktorat");
+                          while($data = mysqli_fetch_array($sql_data)){
+                          ?>
+                          <tr>
+                              <td width="10px"><?= $no++; ?></td>
+                              <td><?= $data['nama_direktorat'];?></td>
+                              <?php
+                                $id_direktorat            = $data['id_rs_direktorat'];
+                                $sql_count_bidang         = mysqli_query($host, "SELECT * FROM rs_bidang WHERE id_direktorat='$id_direktorat'");
+                                $count_bidang             = mysqli_num_rows($sql_count_bidang);
+                                $sql_count_sub_bidang     = mysqli_query($host, "SELECT * FROM rs_sub_bidang WHERE id_direktorat='$id_direktorat'");
+                                $count_sub_bidang         = mysqli_num_rows($sql_count_sub_bidang);
+                                $sql_count_area_pelayanan = mysqli_query($host,"SELECT * FROM rs_area_pelaksana WHERE id_direktorat='$id_direktorat'");
+                                $count_area_pelayanan     = mysqli_num_rows($sql_count_area_pelayanan);
+                              ?>
+                              <td><?= $count_bidang ?></td>
+                              <td><?= $count_sub_bidang ?></td>
+                              <td><?= $count_area_pelayanan ?></td>
+                              <td>
+                                  <a href="<?= $site_url ?>/unit/sub-detail.php?id=<?= $data['has_rs_direktorat']?>" class="btn btn-primary btn-sm">Detail</a>
+                                  <?php
+                                      if($count_admin >0){
+                                          include('modal/edit-direktorat.php');
+                                          include('aksi/edit-direktorat.php');
+                                          }
+                                  ?>
+                              </td>
+                          </tr>
+                          <?php
+                              }
+                          ?>
+                      </tbody>
+                      <tfoot>
+                          <tr>
+                              <th>#</th>
+                              <th>Level 2</th>
+                              <th>Level 3</th>
+                              <th>Level 4</th>
+                              <th>Level 5</th>
+                              <th>Aksi</th>
+                          </tr>
+                      </tfoot>
+                    </table>
                   </div>
                 </div>
                 <!-- /.card-body -->
