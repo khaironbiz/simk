@@ -64,7 +64,7 @@
                         <tr>
                             <td width="10px"><?= $no++; ?></td>
                             <td><?= $data['nama_direktorat'];?></td>
-                            <td><?= $data['id_rs'];?></td>
+                            <td><?= $data['id_rs_direktorat'];?></td>
                             <td>
                                 <a href="<?= $site_url ?>/unit/sub-detail.php?id=<?= $data['has_rs_direktorat']?>" class="btn btn-primary btn-sm">Detail</a>
                                 <?php
