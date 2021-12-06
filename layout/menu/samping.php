@@ -86,6 +86,64 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-envelope"></i>
+              <p>
+                Data Pasien
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= $site_url ?>/pasien" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data Base Pasien</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= $site_url ?>/pasien/pasien-ruangan.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Bed Manajemen</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= $site_url ?>/pasien/pembagian-pasien.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pembagian Kelolaan</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-envelope"></i>
+              <p>
+                Logbook
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= $site_url ?>/regulasi" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pasien Ruangan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= $site_url ?>/form" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pasien Kelolaan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../mailbox/read-mail.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Laporan</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           <?php
           $sql_list_admin = mysqli_query($host, "SELECT * FROM admin_data WHERE id_perawat ='$user_check'");
           $list_admin     = mysqli_num_rows($sql_list_admin);

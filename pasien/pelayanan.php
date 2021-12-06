@@ -1,11 +1,9 @@
 <?php
 include("../auth/session.php");
-$judul      = "Data Base Pasien";
+$judul      = "Relayanan Ruangan";
 $template   = "../theme/table.php";
 $wrapp      = "../core/wrapp.php";
-$content    = "../views/pasien/data-base.php";
+$content    = "../views/pasien/pelayanan.php";
 include($template);
-
-
 
 ?>
