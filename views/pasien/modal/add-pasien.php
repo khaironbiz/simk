@@ -17,7 +17,7 @@
                                             <td>NRM</td>
                                             <td>:</td>
                                             <td>
-                                                <input type="text" class="form-control form-control-sm" placeholder="Nomor Rekam Medik" name="nrm" required>
+                                                <input type="number" class="form-control form-control-sm" placeholder="Nomor Rekam Medik" name="nrm" required>
                                                 <input type="hidden" class="form-control form-control-sm" name="add-pasien" value="<?= uniqid() ?>">
                                             </td>
                                         </tr>
@@ -100,7 +100,7 @@
                                         <tr>
                                             <td>No KTP</td>
                                             <td>:</td>
-                                            <td><input type="text" class="form-control form-control-sm" placeholder="NIK" name="nik"></td>
+                                            <td><input type="number" class="form-control form-control-sm" placeholder="NIK" name="nik"></td>
                                         </tr>
                                         <tr>
                                             <td>Status Menikah</td>
