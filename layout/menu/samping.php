@@ -113,6 +113,12 @@
                   <p>Pembagian Kelolaan</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="<?= $site_url ?>/pasien/register.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pasien Dirawat</p>
+                </a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">

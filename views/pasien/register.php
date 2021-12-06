@@ -53,6 +53,7 @@
                                 <th>Nama Pasien</th>
                                 <th>Jenis Kelamin</th>
                                 <th>Tanggal Lahir</th>
+                                <th>Ruangan</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -78,6 +79,14 @@
                                   ?>
                                 </td>
                                 <td><?= $data['tgl_lahir'];?></td>
+                                <td>
+                                  <?php
+                                    $id_ruangan   = $data['id_ruangan'];
+                                    $sql_ruangan  = mysqli_query($host, "SELECT * FROM ruangan WHERE id='$id_ruangan'");
+                                    $data_ruangan = mysqli_fetch_array($sql_ruangan);
+                                    echo $data_ruangan['ruangan'];
+                                  ?>
+                                </td>
                                 <td>
                                   <a href="detail.php?key=<?= $data['has_pasien_db'];?>" class="btn btn-info btn-sm">Detail</a>
                                   <?php
@@ -107,6 +116,7 @@
                                 <th>Nama Pasien</th>
                                 <th>Jenis Kelamin</th>
                                 <th>Tanggal Lahir</th>
+                                <th>Ruangan</th>
                                 <th>Aksi</th>
                             </tr>
                         </tfoot>
