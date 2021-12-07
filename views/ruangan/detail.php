@@ -50,9 +50,9 @@
                             <?php
                             $no=1;
                             $id_ruangan = $ruangan['id'];
-                            $sql_room   = mysqli_query($host,"SELECT * FROM room WHERE id_ruangan='$id_ruangan'");
+                            $sql_room   = mysqli_query($host,"SELECT * FROM ruangan_kamar WHERE id_ruangan='$id_ruangan'");
                             while($data = mysqli_fetch_array($sql_room)){
-                                $id_kelas   = $data['id_kelas'];
+                                $id_kelas   = $data['id_kelas_perawatan'];
                                 if($id_kelas >0){
                                     $sql_kelas  = mysqli_query($host, "SELECT * FROM db_sub_master WHERE id='$id_kelas'");
                                     $data_kelas = mysqli_fetch_array($sql_kelas);
@@ -74,7 +74,7 @@
                             </tr>
                             <?php
                                 $id_kamar   = $data['id_kamar'];
-                                $sql_bed    = mysqli_query($host,"SELECT * FROM room_bed WHERE id_kamar='$id_kamar'");
+                                $sql_bed    = mysqli_query($host,"SELECT * FROM ruangan_kamar_bed WHERE id_kamar='$id_kamar'");
                                 while($data_bed     = mysqli_fetch_array($sql_bed)){
                             ?>
                             <tr>
@@ -94,7 +94,7 @@
                         
                     </table>
                 </div>
-                <a href=""><?= $data_pengguna['id_ruangan']?></a>
+                <a href=""><?= $data_pengguna['ruangan']?></a>
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
