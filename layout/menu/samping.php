@@ -125,6 +125,41 @@
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-envelope"></i>
               <p>
+                Ruangan
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= $site_url ?>/ruangan" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data Base Ruangan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= $site_url ?>/pasien/pasien-ruangan.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Bed Manajemen</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= $site_url ?>/pasien/pembagian-pasien.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pembagian Kelolaan</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= $site_url ?>/pasien/register.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pasien Dirawat</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-envelope"></i>
+              <p>
                 Logbook
                 <i class="fas fa-angle-left right"></i>
               </p>
