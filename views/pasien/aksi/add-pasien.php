@@ -24,8 +24,18 @@ if(isset($_POST['add-pasien'])){
                                     created_by          = '$user_check',
                                     has_pasien_db       = '$has_pasien'");
         if($input_data){
+            $_SESSION['status']="Data berhasil disimpan";
+            $_SESSION['status_info']="success";
+            echo "<script>document.location=\"$site_url/pasien/\"</script>";
+        }else{
+            $_SESSION['status']="Data gagal disimpan";
+            $_SESSION['status_info']="danger";
             echo "<script>document.location=\"$site_url/pasien/\"</script>";
         }
+    }else{
+        $_SESSION['status']="Data gagal disimpan : NRM $nrm sudah terdaftar";
+        $_SESSION['status_info']="danger";
+        echo "<script>document.location=\"$site_url/pasien/\"</script>";
     }
 }
 ?>

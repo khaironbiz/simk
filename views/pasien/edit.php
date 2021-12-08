@@ -34,7 +34,8 @@
             unset($_SESSION['status']);
             }
             ?>
-            <div class="card">
+            <form>
+                <div class="card">
                 <div class="card-header">
                     <nav class="navbar navbar-expand-lg navbar-light bg-light ">
                         <a class="navbar-brand" href="#">Data Pasien</a>
@@ -65,7 +66,7 @@
                         </div>
                     </nav>
                 <div class="card-body">
-                    <h4>Data Dasar</h4>
+                    <h4>Pemutakhiran Data</h4>
                     <div class="row">
                         <div class="col-md-6">
                             <table class="table table-sm">
@@ -98,24 +99,45 @@
                                 </tr>
                                 <tr>
                                     <td>Status Menikah</td>
-                                    <td>: 
+                                    <td>
                                         <?php
                                             $id_status_nikah     = $data_pasien['status_nikah'];
                                             $sql_status_nikah    = mysqli_query($host, "SELECT * FROM db_sub_master WHERE id='$id_status_nikah'");
                                             $status_nikah        = mysqli_fetch_array($sql_status_nikah);
-                                            echo $status_nikah['nama_submaster']
                                         ?>
+                                        <select class="form-control form-control-sm">
+                                            <option value="<?= $id_status_nikah?>"><?= $status_nikah['nama_submaster']?></option>
+                                            <?php
+                                            $sql_nikah  = mysqli_query($host,"SELECT * FROM db_sub_master WHERE id_master='7'");
+                                            while($data_nikah= mysqli_fetch_array($sql_nikah)){
+                                            ?>
+                                            <option value="<?= $data_nikah['id']?>"><?= $data_nikah['nama_submaster']?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                        </select> 
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Agama</td>
-                                    <td>: 
+                                    <td>
                                         <?php
                                             $id_agama     = $data_pasien['agama'];
                                             $sql_agama    = mysqli_query($host, "SELECT * FROM db_sub_master WHERE id='$id_agama'");
                                             $agama        = mysqli_fetch_array($sql_agama);
-                                            echo $agama['nama_submaster']
+                                            $agama['nama_submaster'];
                                         ?>
+                                        <select class="form-control form-control-sm">
+                                            <option value="<?= $id_agama?>"><?= $agama['nama_submaster'];?></option>
+                                            <?php
+                                            $sql_aqama  = mysqli_query($host,"SELECT * FROM db_sub_master WHERE id_master='3'");
+                                            while($data_agama   = mysqli_fetch_array($sql_aqama)){
+                                            ?>
+                                            <option value="<?= $data_agama['id'];?>"><?= $data_agama['nama_submaster'];?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                        </select>
                                     </td>
                                 </tr>
                             </table>
@@ -124,11 +146,59 @@
                             <table class="table table-sm">
                                 <tr>
                                     <td width="150px">Pendidikan</td>
-                                    <td>: </td>
+                                    <td>
+                                        
+                                        <select class="form-control form-control-sm">
+                                            <?php
+                                            $id_pendidikan     = $data_pasien['pendidikan'];
+                                            $sql_pendidikan    = mysqli_query($host, "SELECT * FROM db_sub_master WHERE id='$id_pendidikan'");
+                                            $pendidikan        = mysqli_fetch_array($sql_pendidikan);
+                                            $count_pendidikan  = mysqli_num_rows($sql_pendidikan);
+                                            if($count_pendidikan>0){
+                                            ?>
+                                            <option value="<?= $id_pendidikan;?>"><?= $pendidikan['nama_submaster'];?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                            <option value="">pilih pendidikan</option>
+                                            <?php
+                                            $sql_pendidikan  = mysqli_query($host,"SELECT * FROM db_sub_master WHERE id_master='26'");
+                                            while($data_pendidikan   = mysqli_fetch_array($sql_pendidikan)){
+                                            ?>
+                                            <option value="<?= $data_pendidikan['id']?>"><?= $data_pendidikan['nama_submaster']?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Pekerjaan</td>
-                                    <td>: </td>
+                                    <td>
+                                        <select class="form-control form-control-sm">
+                                            <?php
+                                            $id_pendidikan     = $data_pasien['pendidikan'];
+                                            $sql_pendidikan    = mysqli_query($host, "SELECT * FROM db_sub_master WHERE id='$id_pendidikan'");
+                                            $pendidikan        = mysqli_fetch_array($sql_pendidikan);
+                                            $count_pendidikan  = mysqli_num_rows($sql_pendidikan);
+                                            if($count_pendidikan>0){
+                                            ?>
+                                            <option value="<?= $id_pendidikan;?>"><?= $pendidikan['nama_submaster'];?></option>
+                                            <?php
+                                            }else{
+                                            ?>
+                                            <option value="">pilih pekerjaan</option>
+                                            <?php
+                                            }
+                                            $sql_pekerjaan  = mysqli_query($host,"SELECT * FROM db_sub_master WHERE id_master='31'");
+                                            while($data_pekerjaan   = mysqli_fetch_array($sql_pekerjaan)){
+                                            ?>
+                                            <option value="<?= $data_pekerjaan['id']?>"><?= $data_pekerjaan['nama_submaster']?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Alamat</td>
@@ -153,14 +223,15 @@
                                 
                             </table>
                         </div>
-                        <a href="edit.php?key=<?=$_GET['key']; ?>" class="btn btn-success btn-sm">Edit</a>
-                        <a href="" class="btn btn-danger btn-sm">Blokir</a>
+                        <a href="" class="btn btn-success btn-sm">Edit</a><a href="" class="btn btn-danger btn-sm">Blokir</a>
                     </div>
                     
                 </div>
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
+            </form>
+            
           </div>
           <!-- /.col -->
         </div>
