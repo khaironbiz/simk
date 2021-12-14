@@ -41,7 +41,7 @@
                     include("../core/security/admin-akses.php");
                     if($count_admin >0){
                         include('modal/add-kamar.php');
-                        // include('aksi/add-pasien.php');
+                        include('aksi/add-kamar.php');
                     }
                     ?>
                     <table id="example1" class="table table-sm table-hover">

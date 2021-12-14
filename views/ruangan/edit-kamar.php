@@ -49,7 +49,7 @@
                         <div class="col-md-6">
                             <div class="card">
                                 <form method="POST" action="">
-                                    <h5 class="card-header">Kamar <?= $judul; ?></h5>
+                                    <h5 class="card-header">Edit Kamar <?= $judul; ?></h5>
                                     <div class="card-body">
                                         <table class="table">
                                             <tr>
@@ -93,7 +93,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="card">
-                                <h5 class="card-header">Featured</h5>
+                                <h5 class="card-header">Tambah Tempat Tidur</h5>
                                 <div class="card-body">
                                     <table class="table table-sm">
                                         <tr>

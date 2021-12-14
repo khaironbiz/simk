@@ -7,6 +7,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Tambah Kamar</h5>
+                                    <input type="text" name="add_kamar" value="<?= $_GET['key']?>">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -17,8 +18,8 @@
                                             <td>Nama Ruangan</td>
                                             <td>:</td>
                                             <td>
-                                                <select class="form-control form-control-sm" name="status_nikah" required>
-                                                    <option value=""><?= $ruangan['ruangan']?></option>
+                                                <select class="form-control form-control-sm" name="id_ruangan" required>
+                                                    <option value="<?= $ruangan['id']?>"><?= $ruangan['ruangan']?></option>
                                                 </select>
                                             </td>
                                         </tr>
