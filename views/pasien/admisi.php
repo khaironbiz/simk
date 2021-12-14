@@ -81,7 +81,7 @@
                         </tfoot>
                     </table>
                 </div>
-                <a href=""><?= $data_pengguna['id_ruangan']?></a>
+                
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->

@@ -69,7 +69,7 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                  <a href="detail.php?key=<?= $data['has_ruangan'];?>" class="btn btn-info btn-sm">Detail</a>
+                                  <a href="edit-kamar.php?key=<?= $data['has_ruangan_kamar'];?>" class="btn btn-info btn-sm">Edit Kamar</a>
                                 </td>
                             </tr>
                             <?php
