@@ -206,6 +206,12 @@
               <p>Unit Kerja</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="<?= $site_url ?>/ruangan" class="nav-link">
+              <i class="nav-icon far fa-circle text-info"></i>
+              <p>Ruang Pelayanan</p>
+            </a>
+          </li>
           <?php
           }
           ?>

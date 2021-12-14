@@ -18,7 +18,7 @@
                         <label class="col-sm-3 col-form-label">Nama Rumah Sakit</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control" readonly value="<?= $data_rs['nama_rs']?>">
-                            <input type="text" class="form-control" readonly name="key" value="<?= $data_rs['has_rs_direktorat']?>">
+                            <input type="hidden" class="form-control" readonly name="key" value="<?= $data_rs['has_rs_direktorat']?>">
                         </div>
                         <label class="col-sm-3 col-form-label">Nama Direktorat</label>
                         <div class="col-sm-9">
