@@ -40,7 +40,7 @@
                     <?php
                     include("../core/security/admin-akses.php");
                     if($count_admin >0){
-                        // include('modal/add-pasien.php');
+                        include('modal/add-kamar.php');
                         // include('aksi/add-pasien.php');
                     }
                     ?>

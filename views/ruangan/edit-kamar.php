@@ -113,7 +113,6 @@
                                                 </td>
                                                 <td><button type="submit" class="btn btn-success btn-sm">Tambah</button></td>
                                             </form>
-                                            
                                         </tr>
                                         <tr>
                                             <td>Bed</td><td>:</td><td></td>
