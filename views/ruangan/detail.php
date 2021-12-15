@@ -74,7 +74,7 @@
                             </tr>
                             <?php
                                 $id_kamar   = $data['id_kamar'];
-                                $sql_bed    = mysqli_query($host,"SELECT * FROM ruangan_kamar_bed WHERE id_kamar='$id_kamar'");
+                                $sql_bed    = mysqli_query($host,"SELECT * FROM ruangan_kamar_bed WHERE id_kamar='$id_kamar' AND blokir='0'");
                                 while($data_bed     = mysqli_fetch_array($sql_bed)){
                             ?>
                             <tr>

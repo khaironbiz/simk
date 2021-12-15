@@ -115,7 +115,7 @@
                                             </form>
                                         </tr>
                                         <tr>
-                                            <td>Bed</td><td>:</td><td></td>
+                                            <td>Bed</td><td>:</td><td></td><td>Aksi</td>
                                         </tr>
                                         <?php
                                         $urut       = 1;
@@ -124,7 +124,21 @@
                                         while($data_bed=mysqli_fetch_array($sql_bed)){
                                         ?>
                                         <tr>
-                                            <td></td><td><?= $urut++?></td><td><?= "Bed ".ucwords($data_bed['nama_bed'])?></td>
+                                            <td></td>
+                                            <td><?= $urut++?></td>
+                                            <td><?= "Bed ".ucwords($data_bed['nama_bed'])?></td>
+                                            <td>
+                                                <?php
+                                                    if($data_bed['blokir']==1){
+                                                ?>
+                                                <a href="#" class="btn btn-success btn-sm">Buka</a>
+                                                <?php
+                                                }elseif($data_bed['blokir']==0){
+                                                include('modal/tutup-bed.php');
+                                                include('aksi/tutup-bed.php');
+                                                }
+                                                ?>
+                                            </td>
                                         </tr>
                                         <?php
                                         }
@@ -135,7 +149,7 @@
                         </div>
                     </div>
                 </div>
-                <a href=""><?= $data_pengguna['ruangan']?></a>
+                <a href=""><?= $user_check;?></a>
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
