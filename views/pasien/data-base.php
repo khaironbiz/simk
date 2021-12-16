@@ -36,6 +36,11 @@
             ?>
             <div class="card">
               <div class="card-header">
+                <?php
+                  include('menu/index.php');
+                ?>
+              </div>
+
                 <div class="card-body">
                     <?php
                     include("../core/security/admin-akses.php");

@@ -54,6 +54,15 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="<?= $site_url ?>/pasien" class="nav-link">
+              <i class="nav-icon fas fa-medkit"></i>
+              <p>
+                Pasien
+                
+              </p>
+            </a>
+          </li>
           
           <li class="nav-header">EXAMPLES</li>
           
