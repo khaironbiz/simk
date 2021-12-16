@@ -22,6 +22,7 @@
         <div class="row">
           <div class="col-12">
             <?php
+            
             if(isset($_SESSION['status'])&& $_SESSION['status'] !=""){
             ?>
             <div class="alert alert-<?= $_SESSION['status_info']?> alert-dismissible fade show" role="alert">

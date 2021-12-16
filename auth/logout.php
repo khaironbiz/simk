@@ -9,7 +9,7 @@ echo (' <script> alert("Sampai Jumpa Lagi"); document.location = "index.php"; </
 session_start();
 session_destroy();
 
-header("location: $site_url"); // Mengarahkan ke halaman profil
+header("location: $site_url?session=logout"); // Mengarahkan ke halaman profil
 
 ?>
 </body>

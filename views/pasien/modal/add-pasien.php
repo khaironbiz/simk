@@ -1,17 +1,17 @@
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    Tambah Data
+                    Pasien Baru
                 </button>
                 <form action="" method="POST">
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
-                                <div class="modal-header">
+                                <div class="modal-header bg-dark">
                                     <h5 class="modal-title" id="exampleModalLabel">Tambah Pasien</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <div class="modal-body">
+                                <div class="modal-body ">
                                     <table class="table table-sm">
                                         <tr>
                                             <td>NRM</td>
@@ -138,7 +138,7 @@
                                         </tr>
                                     </table>
                                 </div>
-                                <div class="modal-footer">
+                                <div class="modal-footer bg-secondary">
                                     <button type="submit" class="btn btn-primary">Save</button>
                                 </div>
                             </div>

@@ -11,14 +11,14 @@ if(isset($_POST['registrasi'])){
     $count          = mysqli_num_rows($sql_pasien);
     if($count < 1 ){
         $input_data     = mysqli_query($host, "INSERT INTO pasien_daftar SET 
-                                    key_trx             = '$key_trx',
-                                    nrm                 = '$nrm',
-                                    jaminan             = '$jaminan',
-                                    dx_medis            = '$dx_medis',
-                                    id_ruangan          = '$id_ruangan',
-                                    created_at          = '$hari_ini',
-                                    created_by          = '$user_check',
-                                    has_px_daftar       = '$has_px_daftar'");
+                            key_trx             = '$key_trx',
+                            nrm                 = '$nrm',
+                            jaminan             = '$jaminan',
+                            dx_medis            = '$dx_medis',
+                            id_ruangan          = '$id_ruangan',
+                            created_at          = '$hari_ini',
+                            created_by          = '$user_check',
+                            has_px_daftar       = '$has_px_daftar'");
         if($input_data){
             $_SESSION['status']="Data berhasil disimpan";
             $_SESSION['status_info']="success";

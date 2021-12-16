@@ -25,6 +25,8 @@ if (isset($_POST['username'])) {
         }elseif($rows == 1){
             $_SESSION['login_user'] = $nira['nira']; // Membuat Sesi/session
             $_SESSION['email'] = $nira['email']; // Membuat Sesi/session
+            $_SESSION['status']="Login Suksess";
+            $_SESSION['status_info']="success";
             header("location: $site_url/regulasi/"); // Mengarahkan ke halaman profil
         }elseif ($rows < 1) {
             $_SESSION['status']="Password tidak sesuai";
