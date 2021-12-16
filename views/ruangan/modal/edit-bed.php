@@ -1,5 +1,5 @@
-                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal<?= $data_bed['has_kamar_bed']?>">
-                    Tutup
+                <button type="button" class="btn <?= $label_bed?> btn-sm" data-toggle="modal" data-target="#exampleModal<?= $data_bed['has_kamar_bed']?>">
+                    <?= $status_bed?>
                 </button>
                 <form action="" method="POST">
                     <div class="modal fade" id="exampleModal<?= $data_bed['has_kamar_bed']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -52,6 +52,16 @@
                                                 </select>
                                             </td>
                                         </tr>
+                                        <tr>
+                                                <td>Status</td>
+                                                <td>:</td>
+                                                <td>
+                                                    <input type="radio" name="blokir" value="1" <?php if($data_bed['blokir']==1){echo "checked";}?>>
+                                                    <label for="css">Tutup</label><br>
+                                                    <input type="radio" name="blokir" value="0" <?php if($data_bed['blokir']==0){echo "checked";}?>>
+                                                    <label for="css">Buka</label><br>
+                                                </td>
+                                            </tr>
                                         <tr>
                                             <td>Password</td>
                                             <td>:</td>

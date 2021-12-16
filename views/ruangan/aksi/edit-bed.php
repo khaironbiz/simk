@@ -2,7 +2,7 @@
 if(isset($_POST['tutup_bed'])){
     $hari_ini           = date('Y-m-d H:i:s');
     $has_kamar_bed      = $_POST['id_bed'];
-    $blokir             = 1;
+    $blokir             = $_POST['blokir'];;
     $password           = $_POST['password'];
     $has_ruangan_kamar  = $_POST['tutup_bed'];
     $sql_nira           = mysqli_query($host,"SELECT * FROM nira WHERE nira='$user_check' AND pass='$password'");

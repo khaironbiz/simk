@@ -135,12 +135,15 @@
                                             <td>
                                                 <?php
                                                     if($data_bed['blokir']==1){
-                                                ?>
-                                                <a href="#" class="btn btn-success btn-sm">Buka</a>
-                                                <?php
-                                                }elseif($data_bed['blokir']==0){
-                                                include('modal/tutup-bed.php');
-                                                include('aksi/tutup-bed.php');
+                                                        $label_bed  = "btn-danger";
+                                                        $status_bed = "Tutup";
+                                                        include('modal/edit-bed.php');
+                                                        include('aksi/edit-bed.php');
+                                                    }elseif($data_bed['blokir']==0){
+                                                        $label_bed  = "btn-success";
+                                                        $status_bed = "Buka";
+                                                        include('modal/edit-bed.php');
+                                                        include('aksi/edit-bed.php');
                                                 }
                                                 ?>
                                             </td>

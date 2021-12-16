@@ -16,7 +16,8 @@ if(isset($_POST['add_kamar'])){
                                     id_ruangan          = '$id_ruangan',
                                     blokir              = '0',
                                     id_kelas_perawatan  = '$kelas_perawatan',
-                                    updated_at          = '$hari_ini',
+                                    created_at          = '$hari_ini',
+                                    created_by          = '$user_check',
                                     has_ruangan_kamar   = '$has_ruangan_kamar'");
         if($input_data){
             $_SESSION['status']="Data berhasil disimpan";
