@@ -61,8 +61,13 @@
                             <tr>
                                 <td width="10px"><?= $no++; ?></td>
                                 <td>
-                                    <?= $data['nama_kamar']." - ";?>
-                                    <?php if($id_kelas>0){echo $data_kelas['nama_submaster'];}else{}?>
+                                    <?= $data['no_kamar']." - ";?>
+                                    <?php 
+                                    if($id_kelas>0){echo $data_kelas['nama_submaster'];}else{}
+                                    if($data['nama_kamar'] !=''){
+                                      echo " / ".$data['nama_kamar'];
+                                    }
+                                    ?>
                                 </td>
                                 <td></td>
                                 <td></td>

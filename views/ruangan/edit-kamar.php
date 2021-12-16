@@ -74,6 +74,11 @@
                                                 </td>
                                             </tr>
                                             <tr>
+                                                <td>Nama Kamar</td>
+                                                <td>:</td>
+                                                <td><input type="text" class="form-control" name="nama_kamar" value="<?= $ruangan['nama_kamar']?>"></td>
+                                            </tr>
+                                            <tr>
                                                 <td>Status</td>
                                                 <td>:</td>
                                                 <td>
