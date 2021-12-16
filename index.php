@@ -28,16 +28,24 @@ include("auth/login.php");
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
-
+      
+        <?php
+          if(isset($_SESSION['status']) && $_SESSION['status'] !=""){
+          ?>
+        <div class="alert alert-<?= $_SESSION['status_info']?>" role="alert">
+          <?= $_SESSION['status']?>
+        </div>
+        <?php
+          unset($_SESSION['status']);
+          }else{
+          ?>
+          <p class="login-box-msg">Sign in to start your session</p>
+          <?php
+          }
+          ?>
       <form action="" method="post">
         <div class="input-group mb-3">
           <input type="email" class="form-control" placeholder="Email" name="username">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
-            </div>
-          </div>
         </div>
         <div class="input-group mb-3">
           <input type="password" class="form-control" placeholder="Password" name="password">
