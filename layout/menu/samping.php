@@ -70,7 +70,14 @@
               </p>
             </a>
           </li>
-          
+          <li class="nav-item">
+            <a href="<?= $site_url ?>/perawat" class="nav-link">
+              <i class="nav-icon fas fa-calculator"></i>
+              <p>
+                Perawat
+              </p>
+            </a>
+          </li>
           <li class="nav-header">EXAMPLES</li>
           
           <li class="nav-item">

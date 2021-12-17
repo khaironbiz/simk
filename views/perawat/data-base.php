@@ -63,31 +63,63 @@
                         <tbody>
                             <?php
                             $no                   = 1;
-                            $sql_perawat          = mysqli_query($host, "SELECT * FROM nira ORDER BY nama LIMIT 10");
+                            $sql_perawat          = mysqli_query($host, "SELECT * FROM nira ORDER BY nama");
                             while($data           = mysqli_fetch_array($sql_perawat)){
                             ?>
                             <tr>
                                 <td width="10px"><?= $no++; ?></td>
                                 <td>
-                                  <table>
-                                    <tr>
-                                      <td>Nama</td>
-                                      <td>:</td>
-                                      <td><?= ucwords(strtolower($data['nama']));?></td>
-                                    </tr>
-                                    <tr>
-                                      <td>NIRA</td>
-                                      <td>:</td>
-                                      <td><?= $data['nira'];?></td>
-                                    </tr>
-                                    <tr>
-                                      <td>Jenis Kelamin</td>
-                                      <td>:</td>
-                                      <td><?= $data['sex'];?></td>
-                                    </tr>
-                                  </table>
+                                  <div class="row">
+                                    <label class="col-sm-4">Nama</label>
+                                    <div class="col-sm-8">
+                                      <?= ucwords(strtolower($data['nama']));?>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <label class="col-sm-4">NIRA</label>
+                                    <div class="col-sm-8">
+                                      <?= $data['nira'];?>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <label class="col-sm-4">Jenis Kelamin</label>
+                                    <div class="col-sm-8">
+                                      <?= $data['sex'];?>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <label class="col-sm-4">Tanggal Lahir</label>
+                                    <div class="col-sm-8">
+                                      <?= $data['ttl'];?>
+                                    </div>
+                                  </div>
                                 </td>
-                                <td></td>
+                                <td>
+                                  <div class="row">
+                                    <label class="col-sm-4">Pendidikan</label>
+                                    <div class="col-sm-8">
+                                      <?= ucwords(strtolower($data['pendidikan']));?>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <label class="col-sm-4">Institusi</label>
+                                    <div class="col-sm-8">
+                                      <?= $data['universitas'];?>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <label class="col-sm-4">Ijazah</label>
+                                    <div class="col-sm-8">
+                                      <?= $data['no_ijazah'];?>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <label class="col-sm-4">Tahun Lulus</label>
+                                    <div class="col-sm-8">
+                                      <?= $data['th_lulus'];?>
+                                    </div>
+                                  </div>
+                                </td>
                                 <td>
                                   <?php
                                     $id_ruangan   = $data['id_ruangan'];
