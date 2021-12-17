@@ -116,6 +116,7 @@
                             </tr>
                         </tfoot>
                     </table>
+                    <?= $https;?>
                 </div>
                 <!-- /.card-body -->
             </div>

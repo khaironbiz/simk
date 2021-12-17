@@ -1,5 +1,13 @@
 <?php
-//site local atau hosting
+//konfigurasi server
+if(isset($_SERVER['HTTPS'])){
+$https          = $_SERVER['HTTPS'];
+}else{
+    $https      = FALSE;
+}
+
+$url_1          = "http://localhost/simk";
+$url_2          = "https://ppni.rspon.net/simk";
 $server_host = $_SERVER['SERVER_NAME'];
 if($server_host == "localhost"){
     $server=1;
@@ -7,9 +15,9 @@ if($server_host == "localhost"){
 $server=2;
 }
 if($server==1){
-$site_url           = "http://localhost/simk";
+$site_url   = $url_1;
 }elseif($server==2){
-    $site_url           = "https://ppni.rspon.net/simk";
+    $site_url   = $url_1;
 }
 
 $nama_web           = "DPK PPNI RSPON";

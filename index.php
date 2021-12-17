@@ -24,7 +24,6 @@ include("auth/login.php");
 <div class="login-box">
   <div class="login-logo">
     <a href="<?= $site_url ?>"><b>PPNI</b>RSPON</a><br>
-    <?= $server_host; ?>
   </div>
   <!-- /.login-logo -->
   <div class="card">
