@@ -9,23 +9,23 @@
                                     <a class="nav-link text-white" href="<?= $site_url?>/pasien/admisi.php"><?= $_SERVER['REQUEST_METHOD']?> <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" href="<?= $site_url?>/pasien/admisi.php">Kunjungan</a>
+                                    <a class="nav-link text-white" href="<?= $site_url?>/pasien/admisi.php">Perawat</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" href="<?= $site_url?>/pasien/register.php">Perawatan</a>
+                                    <a class="nav-link text-white" href="<?= $site_url?>/pasien/register.php">Penempatan</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-white" href="<?= $site_url?>/pasien/register.php">Pasien Kelolaan</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                    Askep
+                                    Dokumen Legal
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#">Pasien</a>
-                                        <a class="dropdown-item" href="#">Diagnosa Keperawatan</a>
+                                        <a class="dropdown-item" href="#">STR Rekap</a>
+                                        <a class="dropdown-item" href="#">SIPP Rekap</a>
                                     <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Diagnosa Medis</a>
+                                        <a class="dropdown-item" href="#">STR Ke SDM</a>
                                     </div>
                                 </li>
                             </ul>

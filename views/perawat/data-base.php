@@ -49,7 +49,8 @@
                         // include('aksi/add-perawat.php');
                     }
                     ?>
-                    <table id="example1" class="table table-sm table-hover">
+                    <div class="table-responsive">
+                      <table id="example1" class="table table-sm table-striped">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -62,9 +63,9 @@
                         </thead>
                         <tbody>
                             <?php
-                            $no                   = 1;
-                            $sql_perawat          = mysqli_query($host, "SELECT * FROM nira ORDER BY nama");
-                            while($data           = mysqli_fetch_array($sql_perawat)){
+                            $no           = 1;
+                            $sql_perawat  = mysqli_query($host, "SELECT * FROM nira ORDER BY nama LIMIT 10");
+                            while($data   = mysqli_fetch_array($sql_perawat)){
                             ?>
                             <tr>
                                 <td width="10px"><?= $no++; ?></td>
@@ -82,13 +83,13 @@
                                     </div>
                                   </div>
                                   <div class="row">
-                                    <label class="col-sm-4">Jenis Kelamin</label>
+                                    <label class="col-sm-4">JK</label>
                                     <div class="col-sm-8">
                                       <?= $data['sex'];?>
                                     </div>
                                   </div>
                                   <div class="row">
-                                    <label class="col-sm-4">Tanggal Lahir</label>
+                                    <label class="col-sm-4">Tgl Lahir</label>
                                     <div class="col-sm-8">
                                       <?= $data['ttl'];?>
                                     </div>
@@ -96,45 +97,82 @@
                                 </td>
                                 <td>
                                   <div class="row">
-                                    <label class="col-sm-4">Pendidikan</label>
-                                    <div class="col-sm-8">
+                                    <label class="col-sm-3">Pendidikan</label>
+                                    <div class="col-sm-9">
                                       <?= ucwords(strtolower($data['pendidikan']));?>
                                     </div>
                                   </div>
                                   <div class="row">
-                                    <label class="col-sm-4">Institusi</label>
-                                    <div class="col-sm-8">
+                                    <label class="col-sm-3">Institusi</label>
+                                    <div class="col-sm-9 text-sm">
                                       <?= $data['universitas'];?>
                                     </div>
                                   </div>
                                   <div class="row">
-                                    <label class="col-sm-4">Ijazah</label>
-                                    <div class="col-sm-8">
+                                    <label class="col-sm-3">Ijazah</label>
+                                    <div class="col-sm-9">
                                       <?= $data['no_ijazah'];?>
                                     </div>
                                   </div>
                                   <div class="row">
-                                    <label class="col-sm-4">Tahun Lulus</label>
-                                    <div class="col-sm-8">
+                                    <label class="col-sm-3">Tahun Lulus</label>
+                                    <div class="col-sm-9">
                                       <?= $data['th_lulus'];?>
                                     </div>
                                   </div>
                                 </td>
                                 <td>
-                                  <?php
-                                    $id_ruangan   = $data['id_ruangan'];
-                                    $sql_ruangan  = mysqli_query($host, "SELECT * FROM ruangan WHERE id='$id_ruangan'");
-                                    $ruangan      = mysqli_fetch_array($sql_ruangan);
-                                    //echo $ruangan['ruangan']
-                                  ?>
+                                  <div class="row">
+                                    <label class="col-sm-3">Jabfung</label>
+                                    <div class="col-sm-9">
+                                      <?= $data['jabfung'];?>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <label class="col-sm-3">PK</label>
+                                    <div class="col-sm-9">
+                                      <?= $data['pk'];?>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <label class="col-sm-3">Posisi</label>
+                                    <div class="col-sm-9">
+                                      <?= $data['posisi'];?>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <label class="col-sm-3">Ruangan</label>
+                                    <div class="col-sm-9">
+                                      <?= $data['ruangan'];?>
+                                    </div>
+                                  </div>
                                 </td>
-                                <td><?= $data['ttl'];?></td>
                                 <td>
-                                  
+                                  <div class="row">
+                                    <label class="col-sm-5">PPNI</label>
+                                    <div class="col-sm-7">
+                                      3 SKP
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <label class="col-sm-5">ASN</label>
+                                    <div class="col-sm-7">
+                                      4 SKP
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <label class="col-sm-5">Kinerja</label>
+                                    <div class="col-sm-7">
+                                      5 Point
+                                    </div>
+                                  </div>
+                                </td>
+                                <td>
+                                  <a class="btn btn-success btn-sm" href="#">Update</a>
                                 </td>
                             </tr>
                             <?php
-                                }
+                            }
                             ?>
                         </tbody>
                         <tfoot>
@@ -148,7 +186,7 @@
                             </tr>
                         </tfoot>
                     </table>
-                    <?= $https;?>
+                    </div>
                 </div>
                 <!-- /.card-body -->
             </div>
