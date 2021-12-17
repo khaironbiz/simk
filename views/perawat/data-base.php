@@ -55,16 +55,15 @@
                             <tr>
                                 <th>#</th>
                                 <th>Identitas</th>
-                                <th>Pendidikan</th>
                                 <th>Jenjang Karir</th>
-                                <th>Nilai</th>
+                                <th>Pendidikan</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             $no           = 1;
-                            $sql_perawat  = mysqli_query($host, "SELECT * FROM nira ORDER BY nama LIMIT 10");
+                            $sql_perawat  = mysqli_query($host, "SELECT * FROM nira ORDER BY nama ");
                             while($data   = mysqli_fetch_array($sql_perawat)){
                             ?>
                             <tr>
@@ -97,32 +96,6 @@
                                 </td>
                                 <td>
                                   <div class="row">
-                                    <label class="col-sm-3">Pendidikan</label>
-                                    <div class="col-sm-9">
-                                      <?= ucwords(strtolower($data['pendidikan']));?>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <label class="col-sm-3">Institusi</label>
-                                    <div class="col-sm-9 text-sm">
-                                      <?= $data['universitas'];?>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <label class="col-sm-3">Ijazah</label>
-                                    <div class="col-sm-9">
-                                      <?= $data['no_ijazah'];?>
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                    <label class="col-sm-3">Tahun Lulus</label>
-                                    <div class="col-sm-9">
-                                      <?= $data['th_lulus'];?>
-                                    </div>
-                                  </div>
-                                </td>
-                                <td>
-                                  <div class="row">
                                     <label class="col-sm-3">Jabfung</label>
                                     <div class="col-sm-9">
                                       <?= $data['jabfung'];?>
@@ -149,24 +122,31 @@
                                 </td>
                                 <td>
                                   <div class="row">
-                                    <label class="col-sm-5">PPNI</label>
-                                    <div class="col-sm-7">
-                                      3 SKP
+                                    <label class="col-sm-3">Pendidikan</label>
+                                    <div class="col-sm-9">
+                                      <?= ucwords(strtolower($data['pendidikan']));?>
                                     </div>
                                   </div>
                                   <div class="row">
-                                    <label class="col-sm-5">ASN</label>
-                                    <div class="col-sm-7">
-                                      4 SKP
+                                    <label class="col-sm-3">Institusi</label>
+                                    <div class="col-sm-9 text-sm">
+                                      <?= $data['universitas'];?>
                                     </div>
                                   </div>
                                   <div class="row">
-                                    <label class="col-sm-5">Kinerja</label>
-                                    <div class="col-sm-7">
-                                      5 Point
+                                    <label class="col-sm-3">Ijazah</label>
+                                    <div class="col-sm-9">
+                                      <?= $data['no_ijazah'];?>
+                                    </div>
+                                  </div>
+                                  <div class="row">
+                                    <label class="col-sm-3">Tahun Lulus</label>
+                                    <div class="col-sm-9">
+                                      <?= $data['th_lulus'];?>
                                     </div>
                                   </div>
                                 </td>
+                                
                                 <td>
                                   <a class="btn btn-success btn-sm" href="#">Update</a>
                                 </td>
@@ -178,10 +158,9 @@
                         <tfoot>
                             <tr>
                                 <th>#</th>
-                                <th>NRM</th>
-                                <th>Nama perawat</th>
-                                <th>Jenis Kelamin</th>
-                                <th>Tanggal Lahir</th>
+                                <th>Identitas</th>
+                                <th>Jenjang Karir</th>
+                                <th>Pendidikan</th>
                                 <th>Aksi</th>
                             </tr>
                         </tfoot>
