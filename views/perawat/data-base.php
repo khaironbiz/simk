@@ -130,7 +130,7 @@
                                   <div class="row">
                                     <label class="col-sm-3">Institusi</label>
                                     <div class="col-sm-9 text-sm">
-                                      <?= $data['universitas'];?>
+                                      <?= ucwords(strtolower($data['universitas']));?>
                                     </div>
                                   </div>
                                   <div class="row">
