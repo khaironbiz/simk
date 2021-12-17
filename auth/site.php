@@ -8,11 +8,14 @@ $https          = $_SERVER['HTTPS'];
 
 $url_1          = "http://localhost/simk";
 $url_2          = "https://ppni.rspon.net/simk";
+$url_3          = "http://ppni.rspon.net/simk";
 $server_host = $_SERVER['SERVER_NAME'];
 if($server_host == "localhost"){
     $site_url   = $url_1;
-}else{
+}elseif($https=="on"){
 $site_url   = $url_2;
+}else{
+    $site_url   = $url_3;
 }
 
 
