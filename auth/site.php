@@ -1,6 +1,11 @@
 <?php
 //site local atau hosting
-$server=1;
+$server_host = $_SERVER['SERVER_NAME'];
+if($server_host == "localhost"){
+    $server=1;
+}else{
+$server=2;
+}
 if($server==1){
 $site_url           = "http://localhost/simk";
 }elseif($server==2){

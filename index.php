@@ -23,7 +23,8 @@ include("auth/login.php");
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="<?= $site_url ?>"><b>PPNI</b>RSPON</a>
+    <a href="<?= $site_url ?>"><b>PPNI</b>RSPON</a><br>
+    <?= $server_host; ?>
   </div>
   <!-- /.login-logo -->
   <div class="card">
