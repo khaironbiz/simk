@@ -10,15 +10,11 @@ $url_1          = "http://localhost/simk";
 $url_2          = "https://ppni.rspon.net/simk";
 $server_host = $_SERVER['SERVER_NAME'];
 if($server_host == "localhost"){
-    $server=1;
-}else{
-$server=2;
-}
-if($server==1){
-$site_url   = $url_1;
-}elseif($server==2){
     $site_url   = $url_1;
+}else{
+$site_url   = $url_2;
 }
+
 
 $nama_web           = "DPK PPNI RSPON";
 $nama_perusahaan    = "DPK PPNI RSPON";
