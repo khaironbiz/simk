@@ -63,7 +63,7 @@
                         <tbody>
                             <?php
                             $no           = 1;
-                            $sql_perawat  = mysqli_query($host, "SELECT * FROM nira ORDER BY nama ");
+                            $sql_perawat  = mysqli_query($host, "SELECT * FROM nira WHERE blokir = 'N' ORDER BY nama ");
                             while($data   = mysqli_fetch_array($sql_perawat)){
                             ?>
                             <tr>
