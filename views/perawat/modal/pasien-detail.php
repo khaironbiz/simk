@@ -1,32 +1,27 @@
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    Pasien Baru
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#pasien-detail">
+                    Detail
                 </button>
                 <form action="" method="POST">
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="pasien-detail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
-                                <div class="modal-header bg-dark">
+                                <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Tambah Pasien</h5>
-                                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <div class="modal-body ">
+                                <div class="modal-body">
                                     <table class="table table-sm">
                                         <tr>
                                             <td>NRM</td>
                                             <td>:</td>
-                                            <td>
-                                                <input type="number" class="form-control form-control-sm" placeholder="Nomor Rekam Medik" name="nrm" required>
-                                                <input type="hidden" class="form-control form-control-sm" name="add-pasien" value="<?= uniqid() ?>">
-                                            </td>
+                                            <td><?= $data['nrm'];?></td>
                                         </tr>
                                         <tr>
                                             <td>Nama</td>
                                             <td>:</td>
-                                            <td>
-                                                <input type="text" class="form-control form-control-sm" placeholder="nama pasien" name="nama_pasien" required>
-                                            </td>
+                                            <td><?= ucwords(strtolower($data['nama_pasien']));?></td>
                                         </tr>
                                         <tr>
                                             <td>JK</td>
@@ -100,7 +95,7 @@
                                         <tr>
                                             <td>No KTP</td>
                                             <td>:</td>
-                                            <td><input type="number" class="form-control form-control-sm" placeholder="NIK" name="nik"></td>
+                                            <td><input type="text" class="form-control form-control-sm" placeholder="NIK" name="nik"></td>
                                         </tr>
                                         <tr>
                                             <td>Status Menikah</td>
@@ -138,7 +133,7 @@
                                         </tr>
                                     </table>
                                 </div>
-                                <div class="modal-footer bg-secondary">
+                                <div class="modal-footer">
                                     <button type="submit" class="btn btn-primary">Save</button>
                                 </div>
                             </div>
