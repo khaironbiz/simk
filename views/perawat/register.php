@@ -64,8 +64,10 @@
                         <tbody>
                             <?php
                             $no             = 1;
+                            $keluar         = 1;
                             $sql_pasien     = mysqli_query($host, "SELECT * FROM pasien_daftar 
-                                                    JOIN pasien_db  on pasien_db.nrm=pasien_daftar.nrm ORDER BY pasien_db.nama_pasien");
+                                                JOIN pasien_db  on pasien_db.nrm = pasien_daftar.nrm WHERE pasien_daftar.keluar ='$keluar' 
+                                                ORDER BY pasien_db.nama_pasien");
                             $count_pasien   = mysqli_num_rows($sql_pasien);
                             if($count_pasien >0){
                             while($data     = mysqli_fetch_array($sql_pasien)){
@@ -88,7 +90,7 @@
                                     $id_ruangan   = $data['id_ruangan'];
                                     $sql_ruangan  = mysqli_query($host, "SELECT * FROM ruangan WHERE id='$id_ruangan'");
                                     $data_ruangan = mysqli_fetch_array($sql_ruangan);
-                                    echo $data_ruangan['ruangan'];
+                                    echo $data_ruangan['ruangan'].$data['dx_medis'];
                                   ?>
                                 </td>
                                 <td>

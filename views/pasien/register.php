@@ -65,7 +65,8 @@
                             <?php
                             $no             = 1;
                             $sql_pasien     = mysqli_query($host, "SELECT * FROM pasien_daftar 
-                                                    JOIN pasien_db  on pasien_db.nrm=pasien_daftar.nrm ORDER BY pasien_db.nama_pasien");
+                                                    JOIN pasien_db  on pasien_db.nrm=pasien_daftar.nrm WHERE pasien_daftar.keluar='0'
+                                                    ORDER BY pasien_db.nama_pasien");
                             $count_pasien   = mysqli_num_rows($sql_pasien);
                             if($count_pasien >0){
                             while($data     = mysqli_fetch_array($sql_pasien)){

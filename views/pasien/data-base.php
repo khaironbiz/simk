@@ -62,9 +62,13 @@
                         </thead>
                         <tbody>
                             <?php
-                            $no                   = 1;
-                            $sql_pasien          = mysqli_query($host, "SELECT * FROM pasien_db ORDER BY nama_pasien");
-                            while($data           = mysqli_fetch_array($sql_pasien)){
+                            $no                 = 1;
+                            $sql_pasien         = mysqli_query($host, "SELECT * FROM pasien_db ORDER BY nama_pasien");
+                            while($data         = mysqli_fetch_array($sql_pasien)){
+                              $nrm_ini          = $data['nrm'];
+                              $sql_dilayani     = mysqli_query($host,"SELECT * FROM pasien_daftar WHERE nrm='$nrm_ini' ");
+                              $count_pasien_ini = mysqli_num_rows($sql_dilayani);
+                              $pasien_dilayani  = mysqli_fetch_array($sql_dilayani);
                             ?>
                             <tr>
                                 <td width="10px"><?= $no++; ?></td>
@@ -82,7 +86,9 @@
                                 <td>
                                   <a href="detail.php?key=<?= $data['has_pasien_db'];?>" class="btn btn-info btn-sm">Detail</a>
                                   <?php
-                                  if(isset($_GET['admisi'])){
+                                  if($count_pasien_ini>0){
+                                    echo "pasien sedang dirawat";
+                                  }elseif(isset($_GET['admisi'])){
                                   ?>
                                   <a href="registrasi.php?admisi=<?= $_GET['admisi']?>&key=<?= $data['has_pasien_db']?>" class="btn btn-success btn-sm">Daftar</a>
                                   <?php
