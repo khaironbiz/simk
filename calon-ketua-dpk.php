@@ -34,7 +34,7 @@ include('auth/koneksi.php');
                             <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Cari perawat..." name="perawat1">
                             <datalist id="datalistOptions">
                                 <?php
-                                $sql_perawat1= mysqli_query($host,"SELECT nama FROM nira WHERE blokir ='N'");
+                                $sql_perawat1= mysqli_query($host,"SELECT nama FROM nira WHERE blokir ='N' ORDER BY nama ASC ");
                                 while($data_satu= mysqli_fetch_array($sql_perawat1)){
                                 ?>
                                 <option value="<?= $data_satu['nama']?>">
@@ -47,7 +47,7 @@ include('auth/koneksi.php');
                             <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Cari perawat..." name="perawat2">
                             <datalist>
                                 <?php
-                                $sql_perawat2= mysqli_query($host,"SELECT nama FROM nira WHERE blokir ='N'");
+                                $sql_perawat2= mysqli_query($host,"SELECT nama FROM nira WHERE blokir ='N' ORDER BY nama ASC");
                                 while($data_dua= mysqli_fetch_array($sql_perawat2)){
                                 ?>
                                 <option value="<?= $data_dua['nama']?>">
@@ -60,7 +60,7 @@ include('auth/koneksi.php');
                             <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Cari perawat..." name="perawat3">
                             <datalist>
                                 <?php
-                                $sql_perawat3= mysqli_query($host,"SELECT nama FROM nira WHERE blokir ='N'");
+                                $sql_perawat3= mysqli_query($host,"SELECT nama FROM nira WHERE blokir ='N' ORDER BY nama ASC");
                                 while($data_tiga= mysqli_fetch_array($sql_perawat3)){
                                 ?>
                                 <option value="<?= $data_tiga['nama']?>">
