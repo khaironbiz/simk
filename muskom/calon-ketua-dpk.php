@@ -1,5 +1,6 @@
 <?php
-    
+
+
     include('../auth/koneksi.php');
     include('aksi/add_survey.php');
     // $url1=$_SERVER['REQUEST_URI'];
@@ -76,7 +77,10 @@
                                     }
                                     ?>
                                 </datalist>
+                                <h6 class="text-success mt-2">Harapan saudara kepada pengurus DPK</h6>
+                                <input type="text" class="form-control" name="harapan">
                             </div>
+
                             <div class="card-footer text-right">
                                 <button class="btn btn-primary text-right" type="submit">Save</button>
                             </div>
@@ -101,7 +105,9 @@
                             <h6>Kartu Suara : <?= $count_suara;?> Suara</h6>
                             <?php
                                 if(isset($error)){
-                                    echo "<h6 class='text-danger'>Pilihannpu tidak ditereima karena : $error</h6>";
+                                    $pesan= $error;
+                                    echo "<h6 class='text-danger'>Pilihannpu tidak ditereima karena : $pesan; </h6>";
+                                   
                                 }
                                 if(isset($_POST['perawat1'])){
                                     echo "<h6>Pilihan Saudara adalah :</h6>";
@@ -111,6 +117,7 @@
                                     echo $calon_pertama."<br>";
                                     echo $calon_kedua."<br>";
                                     echo $calon_ketiga."<br>";
+                                    
                                 }
                             ?>
                         </div>

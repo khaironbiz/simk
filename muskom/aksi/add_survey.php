@@ -8,9 +8,11 @@ if(isset($_POST['add_survey'])){
     $nilai1             = $_POST['nilai1'];
     $nilai2             = $_POST['nilai2'];
     $nilai3             = $_POST['nilai3'];
+    $self               = $_SERVER['PHP_SELF'];
+    $harapan            = $_POST['harapan'];
     if($calon_pertama == $calon_kedua || $calon_pertama ==  $calon_ketiga || $calon_kedua==$calon_ketiga){
         $error  = "Pilihan Tidak Boleh Sama";
-        echo "<script>document.location=\"http://localhost/simk/muskom/calon-ketua-dpk.php\"</script>";
+        
     }else{
         $tambah_pertama     = mysqli_query($host,"INSERT INTO muskom_survey SET
                             nilai_calon         = '$nilai1',
@@ -34,7 +36,13 @@ if(isset($_POST['add_survey'])){
                             nama_calon          = '$calon_ketiga',
                             created_at          = '$today',
                             has_muskom_survey   = '$has_muskom_survey'");
-        echo "<script>document.location=\"http://localhost/simk/muskom/calon-ketua-dpk.php\"</script>";    
+        $has_muskom_harapan= md5(uniqid());
+        $tambah_harapan     = mysqli_query($host,"INSERT INTO muskom_harapan SET 
+                            harapan             ='$harapan',
+                            created_at          ='$today',
+                            has_muskom_harapan  ='$has_muskom_harapan'
+                            ");
+         echo "<script>document.location=\"$self\"</script>";   
     }
 }
 
