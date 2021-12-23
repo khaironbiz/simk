@@ -10,6 +10,7 @@ if(isset($_POST['add_survey'])){
     $nilai3             = $_POST['nilai3'];
     if($calon_pertama == $calon_kedua || $calon_pertama ==  $calon_ketiga || $calon_kedua==$calon_ketiga){
         $error  = "Pilihan Tidak Boleh Sama";
+        echo "<script>document.location=\"http://localhost/simk/muskom/calon-ketua-dpk.php\"</script>";
     }else{
         $tambah_pertama     = mysqli_query($host,"INSERT INTO muskom_survey SET
                             nilai_calon         = '$nilai1',
@@ -33,7 +34,7 @@ if(isset($_POST['add_survey'])){
                             nama_calon          = '$calon_ketiga',
                             created_at          = '$today',
                             has_muskom_survey   = '$has_muskom_survey'");
-            
+        echo "<script>document.location=\"http://localhost/simk/muskom/calon-ketua-dpk.php\"</script>";    
     }
 }
 
