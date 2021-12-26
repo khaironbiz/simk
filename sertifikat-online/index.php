@@ -1,3 +1,7 @@
+<?php
+include('auth/koneksi.php');
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,66 +22,64 @@
 	 				<div class="panel-body">
 						<div class="konten">
 						    <div class="table-responsive">
-
 							<form action="index.php" method="post">
 								<strong>Masukkan Email</strong><br>
 								<input type="text" class="form-control" name="id" placeholder="Email" ></input>
 								<input type="submit" class="btn btn-primary" value="Check" name="certificate"></input><br><br><br>
 							</form>
-	
-<table class="table table-striped">
-<tr>
-	        <td>Email</td>
-	        <td>Nama</td>
-	        <td>Masuk</td>
-	        <td>Keluar</td>
-	        <td>Sertifikat</td>
-	        <td>Hadir</td>
-	        <td>Edit Nama</td>
-</tr>	    
-
-<?php
-    $getid = $_POST["id"];
-	$host = "localhost";
-	$user = "u539662686_user";
-	$pass = "@Sql250909#";
-	$db   = "u539662686_db";
-if($_POST["id"]){
-	//buat koneksi dan ambil database		
-	$koneksi = mysql_connect($host, $user, $pass) or die("Koneksi error");
-	$db = mysql_select_db($db) or die("database tidak ditemukan");
-	$webinar    ="Webinar 1";
-
-	//ambil POST dan sesuaikan dengan database
-	$ambildb = mysql_query("SELECT * FROM pelatihan_absen WHERE nama_webinar='$webinar' and email ='$getid'");
-}
-	while ($row = mysql_fetch_array($ambildb)){
-		$hasil  = $row['nama'];
-		$email  = $row['email'];
-		$id_ini = $row['id'];
-		$count_hasil    = mysql_num_rows($ambildb);
-		$hadir  = mysql_fetch_array(mysql_query(
-            "SELECT sum(hadir) as hadir FROM pelatihan_absen WHERE email ='$email'"
-            ));
-?>
-
-    <tr>
-        <td><? echo  $row['email'];?></td>
-        <td><? echo  $row['nama'];?></td>
-        <td><? echo  $row['time_joint'];?></td>
-        <td><? echo  $row['time_leave'];?></td>
-        <td><? if($row['status'] !=''){ ?><a href="certificate.php?has=<? echo  $row['has'];?>">Print</a><? }?></td>
-        <td><? if($row['status'] !=''){echo $row['hadir'];}?></td>
-        <td><? if($row['status'] !=''){ ?><a href="nama-edit.php?key=<? echo  $row['has'];?>">Edit Nama</a><? }?></td>
-    </tr>
-
-<?
-	}
-
-?>
-</table>	
-	
-							
+							<table class="table table-striped">
+								<tr>
+									<td>Email</td>
+									<td>Nama</td>
+									<td>Masuk</td>
+									<td>Keluar</td>
+									<td>Sertifikat</td>
+									<td>Hadir</td>
+									<td>Edit Nama</td>
+								</tr>	
+								<?php
+									
+								if(isset($_POST["id"])){
+									$getid 		= $_POST["id"];
+									$webinar    = "Webinar 1";
+									//ambil POST dan sesuaikan dengan database
+									$ambildb 	= mysqli_query($host,"SELECT * FROM pelatihan_absen 
+													WHERE nama_webinar='$webinar' and email ='$getid'");
+									while ($row = mysqli_fetch_array($ambildb)){
+											$hasil 			= $row['nama'];
+											$email  		= $row['email'];
+											$id_ini 		= $row['id'];
+											$count_hasil    = mysqli_num_rows($ambildb);
+											$sql_ini		= mysqli_query($host, "SELECT sum(hadir) as hadir FROM pelatihan_absen 
+																WHERE email ='$email'");
+											$hadir  		= mysqli_fetch_array($sql_ini);
+									?>
+									<tr>
+										<td><?= $row['email'];?></td>
+										<td><?=  $row['nama'];?></td>
+										<td><?=  $row['time_joint'];?></td>
+										<td><?=  $row['time_leave'];?></td>
+										<td>
+											<?php if($row['status'] !=''){ ?><a href="certificate.php?has=<?=  $row['has'];?>">Print</a><?php }?>
+										</td>
+										<td>
+											<?php if($row['status'] !=''){echo $row['hadir'];}?>
+										</td>
+										<td>
+											<?php 
+											if($row['status'] !=''){ 
+											?>
+											<a href="nama-edit.php?key=<?=  $row['has'];?>">Edit Nama</a>
+											<?php 
+											}
+											?>
+										</td>
+									</tr>
+								<?php
+									}
+								}
+								?>
+							</table>
 						</div>
 					</div>
 				</div>

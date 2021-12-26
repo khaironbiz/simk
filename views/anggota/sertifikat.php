@@ -18,8 +18,30 @@
     </section>
     <!-- Main content -->
     <section class="content">
-    <img src="http://localhost/simk/assets/img/sertifikat/1.png" width="1200px">
-        
+        <div class="card">
+            <div class="row">
+                <div class="col-md-12">
+                    <style type="text/css">
+                        img{
+                            position: relative;
+                            z-index: 1;
+                            top: 0px;
+                        }
+                        p{
+                            position: absolute;
+                            top: 200px;
+                            
+                            z-index: 2;
+                            color: #fff;
+                        }
+                    </style>
+                    <p>Khairon</p>
+                    <img src="http://localhost/simk/assets/img/sertifikat/1.png" class="img-fluid">
+                </div>
+            
+            </div>
+            
+        </div>
     </section>
     <!-- /.content -->
   </div>
