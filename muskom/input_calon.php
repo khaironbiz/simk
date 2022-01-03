@@ -76,6 +76,7 @@
                                                                     dua         = '$count_dua',
                                                                     tiga        = '$count_tiga',
                                                                     count       = '$count',
+                                                                    nilai       = '$nilai',
                                                                     has_calon   = '$has_calon'");
                                                 if($tambah_data){
                                                     $update_survey  = mysqli_query($host,"UPDATE muskom_survey SET created_by ='1' WHERE nira='$nira'");

@@ -44,38 +44,19 @@
                                     </tr>
                                         <?php
                                         $no=1;
-                                        $sql_hasil      = mysqli_query($host,"SELECT DISTINCT(nama_calon) FROM muskom_survey WHERE sesi='1' ORDER BY nama_calon ASC");
+                                        $sql_hasil      = mysqli_query($host,"SELECT * FROM muskom_calon WHERE sesi='1' ORDER BY count DESC");
                                         while($data_survey= mysqli_fetch_array($sql_hasil)){
-                                            $nama       = $data_survey['nama_calon'];
-                                            $sql_nira   = mysqli_query($host,"SELECT * FROM nira WHERE nama ='$nama'");
-                                            $nira       = mysqli_fetch_array($sql_nira);
+                                            $nama       = $data_survey['nama'];
+                                            
                                         ?>
                                     <tr>
                                         <td><?= $no++;?></td>
-                                        <td><?= $data_survey['nama_calon'];?></td>
-                                        <td><?= $nira['nira'];?></td>
-                                        <?php
-                                            $nama=$data_survey['nama_calon'];
-                                            $sql_satu   = mysqli_query($host,"SELECT nama_calon FROM muskom_survey WHERE 
-                                                                        nama_calon='$nama' and nilai_calon = '50'");
-                                            $count_satu = mysqli_num_rows($sql_satu);
-                                            $nilai_satu = $count_satu*50;
-                                            $sql_dua    = mysqli_query($host,"SELECT nama_calon FROM muskom_survey WHERE 
-                                                                        nama_calon='$nama' and nilai_calon = '30'");
-                                            $count_dua  = mysqli_num_rows($sql_dua);
-                                            $nilai_dua  = $count_dua*30;
-                                            $sql_tiga   = mysqli_query($host,"SELECT nama_calon FROM muskom_survey WHERE 
-                                                                        nama_calon='$nama' and nilai_calon = '10'");
-                                            $count_tiga = mysqli_num_rows($sql_tiga);
-                                            $nilai_tiga = $count_tiga*10;
-                                            $count      = $count_satu+$count_dua+$count_tiga;
-                                            $nilai      = $nilai_satu+$nilai_dua+$nilai_tiga;
-                                        ?>
-                                        
-                                        <td><?= "$count_satu ($nilai_satu)"; ?></td>
-                                        <td><?= "$count_dua ($nilai_dua)"; ?></td>
-                                        <td><?= "$count_tiga ($nilai_tiga)"; ?></td>
-                                        <td><?= "$count ($nilai)" ?></td>
+                                        <td><?= $data_survey['nama'];?></td>
+                                        <td><?= $data_survey['nira'];?></td>
+                                        <td><?= $data_survey['satu']; ?></td>
+                                        <td><?= $data_survey['dua']; ?></td>
+                                        <td><?= $data_survey['tiga']; ?></td>
+                                        <td><?= $data_survey['count']; ?></td>
                                     </tr>
                                 
                                     <?php
