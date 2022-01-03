@@ -36,26 +36,44 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama</th>
-                                        <th>Suara</th>
-                                        <th>Skor</th>
+                                        <th>NIRA</th>
+                                        <th>Satu</th>
+                                        <th>Dua</th>
+                                        <th>Tiga</th>
+                                        <th>Total</th>
                                     </tr>
                                         <?php
                                         $no=1;
-                                        $sql_hasil  = mysqli_query($host,"SELECT DISTINCT(nama_calon) FROM muskom_survey WHERE sesi='1' ORDER BY nama_calon ASC");
+                                        $sql_hasil      = mysqli_query($host,"SELECT DISTINCT(nama_calon) FROM muskom_survey WHERE sesi='1' ORDER BY nama_calon ASC");
                                         while($data_survey= mysqli_fetch_array($sql_hasil)){
+                                            $nama       = $data_survey['nama_calon'];
+                                            $sql_nira   = mysqli_query($host,"SELECT * FROM nira WHERE nama ='$nama'");
+                                            $nira       = mysqli_fetch_array($sql_nira);
                                         ?>
                                     <tr>
                                         <td><?= $no++;?></td>
                                         <td><?= $data_survey['nama_calon'];?></td>
+                                        <td><?= $nira['nira'];?></td>
                                         <?php
                                             $nama=$data_survey['nama_calon'];
-                                            $sql_nama   = mysqli_query($host,"SELECT nama_calon FROM muskom_survey WHERE nama_calon='$nama'");
-                                            $count_nama = mysqli_num_rows($sql_nama);
-                                            $sql_nilai  = mysqli_query($host,"SELECT sum(nilai_calon) as nilai FROM muskom_survey WHERE nama_calon='$nama'");
-                                            $nilai      = mysqli_fetch_array($sql_nilai);
+                                            $sql_satu   = mysqli_query($host,"SELECT nama_calon FROM muskom_survey WHERE 
+                                                                        nama_calon='$nama' and nilai_calon = '50'");
+                                            $count_satu = mysqli_num_rows($sql_satu);
+
+                                            $sql_dua   = mysqli_query($host,"SELECT nama_calon FROM muskom_survey WHERE 
+                                                                        nama_calon='$nama' and nilai_calon = '30'");
+                                            $count_dua = mysqli_num_rows($sql_dua);
+
+                                            $sql_tiga   = mysqli_query($host,"SELECT nama_calon FROM muskom_survey WHERE 
+                                                                        nama_calon='$nama' and nilai_calon = '10'");
+                                            $count_tiga = mysqli_num_rows($sql_tiga);
+                                            
                                         ?>
-                                        <td><?= $count_nama; ?></td>
-                                        <td><?= $nilai['nilai']?></td>
+                                        
+                                        <td><?= $count_satu; ?></td>
+                                        <td><?= $count_dua; ?></td>
+                                        <td><?= $count_tiga; ?></td>
+                                        <td><?= $count_satu+$count_dua+$count_tiga; ?></td>
                                     </tr>
                                 
                                     <?php
