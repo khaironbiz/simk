@@ -25,7 +25,7 @@
                 <h4>Survey Calon Ketua DPK PPNI RSPON</h4>
             </div>
             <div class="row">
-                <div class="col-md-6 mt-3 mb-3">
+                <div class="col-md-12 mt-3 mb-3">
                     <form action="" method="POST">
                         <div class="card">
                             <div class="card-header bg-dark">
@@ -59,21 +59,23 @@
                                             $sql_satu   = mysqli_query($host,"SELECT nama_calon FROM muskom_survey WHERE 
                                                                         nama_calon='$nama' and nilai_calon = '50'");
                                             $count_satu = mysqli_num_rows($sql_satu);
-
-                                            $sql_dua   = mysqli_query($host,"SELECT nama_calon FROM muskom_survey WHERE 
+                                            $nilai_satu = $count_satu*50;
+                                            $sql_dua    = mysqli_query($host,"SELECT nama_calon FROM muskom_survey WHERE 
                                                                         nama_calon='$nama' and nilai_calon = '30'");
-                                            $count_dua = mysqli_num_rows($sql_dua);
-
+                                            $count_dua  = mysqli_num_rows($sql_dua);
+                                            $nilai_dua  = $count_dua*30;
                                             $sql_tiga   = mysqli_query($host,"SELECT nama_calon FROM muskom_survey WHERE 
                                                                         nama_calon='$nama' and nilai_calon = '10'");
                                             $count_tiga = mysqli_num_rows($sql_tiga);
-                                            
+                                            $nilai_tiga = $count_tiga*10;
+                                            $count      = $count_satu+$count_dua+$count_tiga;
+                                            $nilai      = $nilai_satu+$nilai_dua+$nilai_tiga;
                                         ?>
                                         
-                                        <td><?= $count_satu; ?></td>
-                                        <td><?= $count_dua; ?></td>
-                                        <td><?= $count_tiga; ?></td>
-                                        <td><?= $count_satu+$count_dua+$count_tiga; ?></td>
+                                        <td><?= "$count_satu ($nilai_satu)"; ?></td>
+                                        <td><?= "$count_dua ($nilai_dua)"; ?></td>
+                                        <td><?= "$count_tiga ($nilai_tiga)"; ?></td>
+                                        <td><?= "$count ($nilai)" ?></td>
                                     </tr>
                                 
                                     <?php
