@@ -104,13 +104,34 @@
                         <div class="card-body">
                             <h4 id="demo" class="text-center text-danger"></h4>
                             <script src="../assets/js/waktu_survey.js"></script>
-                            <?php
-                                $sql_suara  = mysqli_query($host,"SELECT * FROM muskom_survey WHERE sesi ='1'");
-                                $count_suara    = mysqli_num_rows($sql_suara);
-                            ?>
+                            <p>10 Besar Hasil Survey</p>
+                            <table class="table">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nama</th>
+                                    <th>NIRA</th>
+                                    <th>Nilai</th>
+                                </tr>
+                                <?php
+                                $no=1;
+                                $sql_hasil      = mysqli_query($host,"SELECT * FROM muskom_calon WHERE sesi='1' ORDER BY nilai DESC LIMIT 10");
+                                while($data_survey= mysqli_fetch_array($sql_hasil)){
+                                ?>
+                                <tr>
+                                    <td><?= $no++?></td>
+                                    <td><?= $data_survey['nama']?></td>
+                                    <td><?= $data_survey['nira']?></td>
+                                    <td class="text-end"><?= $data_survey['nilai']?></td>
+                                </tr>
+                                <?php
+                                }
+                                ?>
+                                
+                            </table>
+                            <a href="hasil-survey.php" class="btn btn-success btn-sm">More</a>
                         </div>
                         <div class="card-footer">
-                            <h6>Kartu Suara : <?= $count_suara;?> Suara</h6>
+                            
                             <?php
                                 if(isset($error)){
                                     $pesan= $error;

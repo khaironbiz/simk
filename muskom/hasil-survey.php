@@ -41,12 +41,12 @@
                                         <th>Dua</th>
                                         <th>Tiga</th>
                                         <th>Total</th>
+                                        <th>Nilai</th>
                                     </tr>
                                         <?php
                                         $no=1;
-                                        $sql_hasil      = mysqli_query($host,"SELECT * FROM muskom_calon WHERE sesi='1' ORDER BY count DESC");
+                                        $sql_hasil      = mysqli_query($host,"SELECT * FROM muskom_calon WHERE sesi='1' ORDER BY nilai DESC");
                                         while($data_survey= mysqli_fetch_array($sql_hasil)){
-                                            $nama       = $data_survey['nama'];
                                             
                                         ?>
                                     <tr>
@@ -57,6 +57,7 @@
                                         <td><?= $data_survey['dua']; ?></td>
                                         <td><?= $data_survey['tiga']; ?></td>
                                         <td><?= $data_survey['count']; ?></td>
+                                        <td><?= $data_survey['nilai']; ?></td>
                                     </tr>
                                 
                                     <?php
