@@ -82,7 +82,15 @@
                             </div>
 
                             <div class="card-footer text-right">
+                                <?php
+                                    $batas      = "2021-12-31";
+                                    $hari_ini   = date('Y-m-d');
+                                    if($batas > $hari_ini){
+                                ?>  
                                 <button class="btn btn-primary text-right" type="submit">Save</button>
+                                <?php
+                                    }
+                                    ?>
                             </div>
                         </div>
                     </form>
