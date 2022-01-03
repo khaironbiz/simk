@@ -66,7 +66,7 @@
                                 </table>
                             </div>
                             <div class="card-footer text-right">
-                                <button class="btn btn-primary text-right" type="submit">Save</button>
+                                <a href="index.php" class="btn btn-danger btn-sm">Back</a>
                             </div>
                         </div>
                     </form>
