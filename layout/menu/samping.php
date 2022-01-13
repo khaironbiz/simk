@@ -55,7 +55,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= $site_url ?>/pasien" class="nav-link">
+            <a href="<?= $site_url ?>/pasien/pasien-ruangan.php" class="nav-link">
               <i class="nav-icon fas fa-medkit"></i>
               <p>
                 Pasien

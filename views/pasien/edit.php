@@ -37,7 +37,7 @@
             ?>
             <form>
                 <div class="card">
-                <div class="card-header bg-dark">
+                <div class="card-header">
                     <?php
                     include('menu/pasien-detail.php')
                     ?>
@@ -45,35 +45,42 @@
                 <div class="card-body">
                     <h4>Pemutakhiran Data</h4>
                     <div class="row">
-                        
                         <div class="col-md-6">
                             <table class="table table-sm">
                                 <tr>
                                     <td width="150px">NRM</td>
-                                    <td>: <?= $data_pasien['nrm'];?></td>
+                                    <td><input type="number" class="form-control form-control-sm" readonly value="<?= $data_pasien['nrm'];?>"></td>
                                 </tr>
                                 <tr>
                                     <td>Nama</td>
-                                    <td>: <?= ucwords(strtolower($data_pasien['nama_pasien']));?></td>
+                                    <td><input type="text" class="form-control form-control-sm" value="<?= ucwords(strtolower($data_pasien['nama_pasien']));?>"></td>
                                 </tr>
                                 <tr>
                                     <td>Jenis Kelamin</td>
-                                    <td>: 
-                                        <?php
-                                            $id_sex     = $data_pasien['sex'];
-                                            $sql_sex    = mysqli_query($host, "SELECT * FROM db_sub_master WHERE id='$id_sex'");
-                                            $sex        = mysqli_fetch_array($sql_sex);
-                                            echo $sex['nama_submaster']
-                                        ?>                 
+                                    <td>
+                                        <select class="form-control form-control-sm" name="sex">
+                                            <option value="<?= $data_pasien['sex'] ?>"><?= sub_master($data_pasien['sex'])?></option>
+                                            <?php
+                                            if($data_pasien['sex']==53){
+                                            ?>
+                                            <option value="54"><?= sub_master(54)?></option>
+                                            <?php
+                                            }else{
+                                            ?>
+                                            <option value="53"><?= sub_master(53)?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                        </select>    
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Tgl Lahir</td>
-                                    <td>: <?= $data_pasien['tgl_lahir'];?></td>           
+                                    <td><input type="date" class="form-control form-control-sm" name="tgl_lahir" value="<?= $data_pasien['tgl_lahir'];?>"> </td>           
                                 </tr>
                                 <tr>
                                     <td>No KTP</td>
-                                    <td>: <?= $data_pasien['nik'];?></td>
+                                    <td><input type="number" class="form-control form-control-sm" name="nik" value="<?= $data_pasien['nik'];?>"></td>
                                 </tr>
                                 <tr>
                                     <td>Status Menikah</td>

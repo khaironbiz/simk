@@ -16,7 +16,7 @@ if(isset($_POST['add-pasien'])){
     $count          = mysqli_num_rows($sql_pasien);
     $sql_daftar     = mysqli_query($host, "SELECT * FROM pasien_daftar WHERE nrm = '$nrm' and keluar ='0'");
     $count_daftar   = mysqli_num_rows($sql_daftar);
-    $sql_ini        = mysqli_query($host, "SELECT * FROM pasien_daftar WHERE nrm = '$nrm' and id_ruangan = '$id_ruangan' and keluar ='0'");
+    $sql_ini        = mysqli_query($host, "SELECT * FROM pasien_daftar_ruangan WHERE nrm = '$nrm' and id_ruangan = '$id_ruangan' and keluar ='0'");
     $count_ini      = mysqli_num_rows($sql_ini);
     if($count < 1 ){
         $input_data     = mysqli_query($host, "INSERT INTO pasien_db SET 
@@ -31,9 +31,9 @@ if(isset($_POST['add-pasien'])){
                                     has_pasien_db       = '$has_pasien'");
         if($input_data){
             $daftarkan  = mysqli_query($host,"INSERT INTO pasien_daftar SET 
-                            key_trx             = '$key_trx',
-                            nrm                 = '$nrm',
-                            dx_medis            = '$dx_medis',
+                            key_trx         = '$key_trx',
+                            nrm             = '$nrm',
+                            dx_medis        = '$dx_medis',
                             has_px_daftar   = '$has_pasien'
                         ");
             $masuk_ruangan = mysqli_query($host,"INSERT INTO pasien_daftar_ruangan SET 
@@ -45,11 +45,11 @@ if(isset($_POST['add-pasien'])){
                         ");            
             $_SESSION['status']="Data berhasil disimpan";
             $_SESSION['status_info']="success";
-            echo "<script>document.location=\"$site_url/pasien/\"</script>";
+            echo "<script>document.location=\"$site_url/pasien/pasien-ruangan.php\"</script>";
         }else{
             $_SESSION['status']="Data gagal disimpan";
             $_SESSION['status_info']="danger";
-            echo "<script>document.location=\"$site_url/pasien/\"</script>";
+            echo "<script>document.location=\"$site_url/pasien/pasien-ruangan.php\"</script>";
         }
         
     }elseif($count_daftar < 1){
@@ -67,12 +67,14 @@ if(isset($_POST['add-pasien'])){
                         ");      
         $_SESSION['status']="Data success disimpan";
         $_SESSION['status_info']="success";
-        echo "<script>document.location=\"$site_url/pasien/\"</script>";
+        echo "<script>document.location=\"$site_url/pasien/pasien-ruangan.php\"</script>";
     }elseif($count_ini >0){
         $_SESSION['status']="Data gagal disimpan : NRM $nrm sudah terdaftar";
         $_SESSION['status_info']="danger";
-        echo "<script>document.location=\"$site_url/pasien/\"</script>";
+        echo "<script>document.location=\"$site_url/pasien/pasien-ruangan.php\"</script>";
     }else{
+        $trx_ini    = mysqli_fetch_array($sql_daftar);
+        $key_trx    = $trx_ini['key_trx'];
         $masuk_ruangan = mysqli_query($host,"INSERT INTO pasien_daftar_ruangan SET 
                             key_trx                     = '$key_trx',
                             nrm                         = '$nrm',
@@ -81,7 +83,7 @@ if(isset($_POST['add-pasien'])){
                         ");  
         $_SESSION['status']="Data success disimpan";
         $_SESSION['status_info']="success";
-        echo "<script>document.location=\"$site_url/pasien/\"</script>";    
+        echo "<script>document.location=\"$site_url/pasien/pasien-ruangan.php\"</script>";    
     }
 }
 ?>

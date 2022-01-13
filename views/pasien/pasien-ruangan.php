@@ -85,15 +85,7 @@
                                 <td><?= $data['tgl_lahir'];?></td>
                                 <td>
                                   <a href="detail.php?key=<?= $data['has_pasien_db'];?>" class="btn btn-info btn-sm">Detail</a>
-                                  <?php
-                                  if($count_pasien_ini>0){
-                                    echo "pasien sedang dirawat";
-                                  }elseif(isset($_GET['admisi'])){
-                                  ?>
-                                  <a href="registrasi.php?admisi=<?= $_GET['admisi']?>&key=<?= $data['has_pasien_db']?>" class="btn btn-success btn-sm">Daftar</a>
-                                  <?php
-                                  }
-                                  ?>
+                                  
                                 </td>
                             </tr>
                             <?php
