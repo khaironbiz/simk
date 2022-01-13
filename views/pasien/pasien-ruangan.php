@@ -35,7 +35,11 @@
             }
             ?>
             <div class="card">
-              <div class="card-header">
+              <div class="card-header bg-dark">
+                <?php
+                  include('menu/index.php');
+                ?>
+              </div>
                 <div class="card-body">
                     <?php
                     include("../core/security/admin-akses.php");
@@ -48,35 +52,48 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Instalasi</th>
-                                <th>Ruangan</th>
-                                <th>Kapasitas</th>
-                                <th>Terisi</th>
-                                <th>Sisa</th>
+                                <th>NRM</th>
+                                <th>Nama Pasien</th>
+                                <th>Jenis Kelamin</th>
+                                <th>Tanggal Lahir</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $no=1;
-                            while($data = mysqli_fetch_array($sql_ruangan)){
+                            $no                 = 1;
+                            $sql_pasien         = mysqli_query($host, "SELECT * FROM pasien_daftar_ruangan 
+                                                    JOIN pasien_daftar on pasien_daftar.key_trx= pasien_daftar_ruangan.key_trx
+                                                    JOIN pasien_db on pasien_db.nrm = pasien_daftar_ruangan.nrm
+                                                    JOIN ruangan on ruangan.id = pasien_daftar_ruangan.id_ruangan
+                                                    ORDER BY pasien_daftar_ruangan.id_kamar ASC, pasien_daftar_ruangan.id_bed ASC");
+                            while($data         = mysqli_fetch_array($sql_pasien)){
+                              
                             ?>
                             <tr>
                                 <td width="10px"><?= $no++; ?></td>
+                                <td><?= $data['nrm'];?></td>
+                                <td><?= ucwords(strtolower($data['nama_pasien']));?></td>
                                 <td>
                                   <?php
-                                    $id_instalasi   = $data['id_instalasi'];
-                                    $sql_instalasi= mysqli_query($host, "SELECT * FROM db_sub_master WHERE id='$id_instalasi'");
-                                    $instalasi      = mysqli_fetch_array($sql_instalasi);
-                                    echo $instalasi['nama_submaster']." --".$instalasi['id']
+                                    $id_sex   = $data['sex'];
+                                    $sql_sex  = mysqli_query($host, "SELECT * FROM db_sub_master WHERE id='$id_sex'");
+                                    $sex      = mysqli_fetch_array($sql_sex);
+                                    echo $sex['nama_submaster']
                                   ?>
                                 </td>
-                                <td><?= $data['ruangan'];?></td>
-                                <td><?= $data['kapasitas'];?></td>
-                                <td></td>
-                                <td></td>
+                                <td><?= $data['tgl_lahir'];?></td>
                                 <td>
                                   <a href="detail.php?key=<?= $data['has_pasien_db'];?>" class="btn btn-info btn-sm">Detail</a>
+                                  <?php
+                                  if($count_pasien_ini>0){
+                                    echo "pasien sedang dirawat";
+                                  }elseif(isset($_GET['admisi'])){
+                                  ?>
+                                  <a href="registrasi.php?admisi=<?= $_GET['admisi']?>&key=<?= $data['has_pasien_db']?>" class="btn btn-success btn-sm">Daftar</a>
+                                  <?php
+                                  }
+                                  ?>
                                 </td>
                             </tr>
                             <?php
@@ -86,17 +103,15 @@
                         <tfoot>
                             <tr>
                                 <th>#</th>
-                                <th>Instalasi</th>
-                                <th>Ruangan</th>
-                                <th>Kapasitas</th>
-                                <th>Terisi</th>
-                                <th>Sisa</th>
+                                <th>NRM</th>
+                                <th>Nama Pasien</th>
+                                <th>Jenis Kelamin</th>
+                                <th>Tanggal Lahir</th>
                                 <th>Aksi</th>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
-                <a href=""><?= $data_pengguna['id_ruangan']?></a>
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->

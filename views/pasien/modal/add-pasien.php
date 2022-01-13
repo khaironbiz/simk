@@ -136,6 +136,40 @@
                                                 </select>
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td>Ruangan</td>
+                                            <td>:</td>
+                                            <td>
+                                                <select class="form-control form-control-sm" name="ruangan" required>
+                                                    <option value="">--ruangan--</option>
+                                                    <?php
+                                                    $sql  = mysqli_query($host, "SELECT * FROM ruangan WHERE pelayanan='Y'");
+                                                    while($data    = mysqli_fetch_array( $sql)){
+                                                    ?>
+                                                    <option value="<?= $data['id']?>"><?= $data['ruangan']?></option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Diagnosa Medis</td>
+                                            <td>:</td>
+                                            <td>
+                                                <select class="form-control form-control-sm" name="dx_medis" required>
+                                                    <option value="">--dx medis--</option>
+                                                    <?php
+                                                    $sql  = mysqli_query($host, "SELECT * FROM dx_medis ORDER BY dx_medis ASC");
+                                                    while($data    = mysqli_fetch_array( $sql)){
+                                                    ?>
+                                                    <option value="<?= $data['id']?>"><?= $data['dx_medis']?></option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </td>
+                                        </tr>
                                     </table>
                                 </div>
                                 <div class="modal-footer bg-secondary">
