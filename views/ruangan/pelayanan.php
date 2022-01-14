@@ -48,9 +48,9 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Instalasi</th>
-                                <th>Ruangan</th>
-                                <th>Kapasitas</th>
+                                <th>Area Pelayanan</th>
+                                <th>Count Ruangan</th>
+                                <th>Count Bed</th>
                                 <th>Terisi</th>
                                 <th>Sisa</th>
                                 <th>Aksi</th>
@@ -59,25 +59,18 @@
                         <tbody>
                             <?php
                             $no=1;
-                            $sql_ruangan    = mysqli_query($host,"SELECT * FROM ruangan WHERE pelayanan ='Y' ORDER BY id_instalasi ASC, id ASC");
+                            $sql_ruangan    = mysqli_query($host,"SELECT * FROM db_sub_master WHERE id_master ='29' ORDER BY nama_submaster ASC");
                             while($data = mysqli_fetch_array($sql_ruangan)){
                             ?>
                             <tr>
                                 <td width="10px"><?= $no++; ?></td>
-                                <td>
-                                  <?php
-                                    $id_instalasi   = $data['id_instalasi'];
-                                    $sql_instalasi= mysqli_query($host, "SELECT * FROM db_sub_master WHERE id='$id_instalasi'");
-                                    $instalasi      = mysqli_fetch_array($sql_instalasi);
-                                    echo $instalasi['nama_submaster']." --".$instalasi['id']
-                                  ?>
-                                </td>
-                                <td><?= $data['ruangan'];?></td>
-                                <td><?= $data['kapasitas'];?></td>
+                                <td><?= $data['nama_submaster'];?></td>
+                                <td></td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td>
-                                  <a href="detail.php?key=<?= $data['has_ruangan'];?>" class="btn btn-info btn-sm">Detail</a>
+                                  <a href="index.php?key=<?= $data['has'];?>" class="btn btn-info btn-sm">Detail</a>
                                 </td>
                             </tr>
                             <?php
@@ -87,9 +80,9 @@
                         <tfoot>
                             <tr>
                                 <th>#</th>
-                                <th>Instalasi</th>
-                                <th>Ruangan</th>
-                                <th>Kapasitas</th>
+                                <th>Area Pelayanan</th>
+                                <th>Count Ruangan</th>
+                                <th>Count Bed</th>
                                 <th>Terisi</th>
                                 <th>Sisa</th>
                                 <th>Aksi</th>

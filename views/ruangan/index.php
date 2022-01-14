@@ -59,7 +59,8 @@
                         <tbody>
                             <?php
                             $no=1;
-                            $sql_ruangan    = mysqli_query($host,"SELECT * FROM ruangan WHERE id_layanan ='176' ORDER BY id_instalasi ASC, id ASC");
+                            $id_ini         = $data_master['id'];
+                            $sql_ruangan    = mysqli_query($host,"SELECT * FROM ruangan WHERE id_layanan ='$id_ini' ORDER BY id_instalasi ASC, id ASC");
                             while($data = mysqli_fetch_array($sql_ruangan)){
                             ?>
                             <tr>
