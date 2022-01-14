@@ -172,6 +172,22 @@
                                                 </select>
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td>Masuk RS</td>
+                                            <td>:</td>
+                                            <td><input class="form-control form-control-sm" type="date"></td>
+                                            <td>Jam</td>
+                                            <td>:</td>
+                                            <td><input class="form-control form-control-sm" type="time"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Masuk Bed</td>
+                                            <td>:</td>
+                                            <td><input class="form-control form-control-sm" type="date"></td>
+                                            <td>Jam</td>
+                                            <td>:</td>
+                                            <td><input class="form-control form-control-sm" type="time"></td>
+                                        </tr>
                                         
                                     </table>
                                 </div>

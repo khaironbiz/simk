@@ -72,7 +72,10 @@
                                     echo $instalasi['nama_submaster']." --".$instalasi['id']
                                   ?>
                                 </td>
-                                <td><?= $data['ruangan'];?></td>
+                                <td>
+                                  <?= $data['ruangan'];?>
+                                  
+                                </td>
                                 <td><?= $data['kapasitas'];?></td>
                                 <td></td>
                                 <td></td>

@@ -2,6 +2,7 @@
 if(isset($_POST['edit-kamar'])){
     $hari_ini           = date('Y-m-d H:i:s');
     $kelas_perawatan    = $_POST['kelas_perawatan'];
+    $no_kamar           = $_POST['no_kamar'];
     $nama_kamar         = $_POST['nama_kamar'];
     $blokir             = $_POST['blokir'];
     $has_ruangan_kamar  = $_POST['edit-kamar'];
@@ -11,6 +12,7 @@ if(isset($_POST['edit-kamar'])){
         $input_data     = mysqli_query($host, "UPDATE ruangan_kamar SET 
                                     blokir              = '$blokir',
                                     id_kelas_perawatan  = '$kelas_perawatan',
+                                    no_kamar            = '$no_kamar',
                                     nama_kamar          = '$nama_kamar',
                                     updated_at          = '$hari_ini' WHERE
                                     has_ruangan_kamar   = '$has_ruangan_kamar'");

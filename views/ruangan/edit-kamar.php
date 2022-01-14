@@ -74,6 +74,11 @@
                                                 </td>
                                             </tr>
                                             <tr>
+                                                <td>Nomor Kamar</td>
+                                                <td>:</td>
+                                                <td><input type="text" class="form-control" name="no_kamar" value="<?= $ruangan['no_kamar']?>"></td>
+                                            </tr>
+                                            <tr>
                                                 <td>Nama Kamar</td>
                                                 <td>:</td>
                                                 <td><input type="text" class="form-control" name="nama_kamar" value="<?= $ruangan['nama_kamar']?>"></td>
@@ -82,9 +87,9 @@
                                                 <td>Status</td>
                                                 <td>:</td>
                                                 <td>
-                                                    <input type="radio" name="blokir" value="1" <?php if($ruangan['blokir']==1){echo "checked";}?>>
+                                                    <input type="radio" name="blokir" value="1" required>
                                                     <label for="css">Tutup</label><br>
-                                                    <input type="radio" name="blokir" value="0" <?php if($ruangan['blokir']==0){echo "checked";}?>>
+                                                    <input type="radio" name="blokir" value="0" required>
                                                     <label for="css">Buka</label><br>
                                                 </td>
                                             </tr>

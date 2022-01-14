@@ -68,6 +68,13 @@
                                       echo " / ".$data['nama_kamar'];
                                     }
                                     ?>
+                                    <?php 
+                                    if($data['blokir']>0){
+                                  ?>
+                                    <button class="btn btn-danger btn-sm">Closed</button>
+                                  <?php
+                                    }
+                                  ?>
                                 </td>
                                 <td></td>
                                 <td></td>
