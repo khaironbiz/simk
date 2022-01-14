@@ -56,9 +56,9 @@
                                                 <td>Status</td>
                                                 <td>:</td>
                                                 <td>
-                                                    <input type="radio" name="blokir" value="1" <?php if($data_bed['blokir']==1){echo "checked";}?>>
+                                                    <input type="radio" name="blokir" value="1" required>
                                                     <label for="css">Tutup</label><br>
-                                                    <input type="radio" name="blokir" value="0" <?php if($data_bed['blokir']==0){echo "checked";}?>>
+                                                    <input type="radio" name="blokir" value="0" required>
                                                     <label for="css">Buka</label><br>
                                                 </td>
                                             </tr>

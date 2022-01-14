@@ -96,7 +96,19 @@
                                         </table>
                                     </div>
                                     <div class="card-footer">
-                                        <button type="submit" class="btn btn-success btn-sm">Save</button>
+                                        <div class="row justify-content-sm-end">
+                                            <?php
+                                                $id_ruangan     = $ruangan['id_ruangan'];
+                                                $sql_ruangan    = mysqli_query($host,"SELECT * FROM ruangan WHERE id='$id_ruangan'");
+                                                $data_ruangan   = mysqli_fetch_array($sql_ruangan);
+                                            ?>
+                                            <div class="col-6">
+                                                <a href="<?= $site_url."/ruangan/detail.php?key=".$data_ruangan['has_ruangan'] ?>" class="btn btn-danger btn-sm">Back</a>
+                                            </div>
+                                            <div class="col-6 text-right">
+                                                <button type="submit" class="btn btn-success btn-sm">Save</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -162,7 +174,7 @@
                         </div>
                     </div>
                 </div>
-                <a href=""><?= $user_check;?></a>
+                
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
