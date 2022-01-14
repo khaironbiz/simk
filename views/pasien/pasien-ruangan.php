@@ -193,7 +193,7 @@
                                     <tr>
                                       <td>Dx Medis</td>
                                       <td>:</td>
-                                      <td><?= $data['pp']?></td>
+                                      <td><?= dx_medis($data['dx_medis'])?></td>
                                     </tr>
                                     <tr>
                                       <td>Label Risiko</td>

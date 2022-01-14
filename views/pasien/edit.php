@@ -43,7 +43,9 @@
                     ?>
                 </div>
                 <div class="card-body">
-                    <h4>Pemutakhiran Data</h4>
+                    <div class="card-header bg-success text-center">
+                        <h4>Pemutakhiran Data Dasar</h4>
+                    </div>
                     <div class="row">
                         <div class="col-md-6">
                             <table class="table table-sm">
@@ -187,32 +189,69 @@
                                 </tr>
                                 <tr>
                                     <td>Alamat</td>
-                                    <td>:</td>
+                                    <td><input type="text" class="form-control form-control-sm" name="alamat" value=""></td>
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td>:</td>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <select class="form-control form-control-sm">
+                                                    <option>Pilih</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-6">
+                                                <select class="form-control form-control-sm">
+                                                    <option>Pilih</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <select class="form-control form-control-sm">
+                                                    <option>Pilih</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-6">
+                                                <select class="form-control form-control-sm">
+                                                    <option>Pilih</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>No Telfon</td>
-                                    <td></td>           
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <input type="number" name="telp" value="" placeholder="PSTN" class="form-control form-control-sm">
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="number" name="telp" value="" placeholder="hp" class="form-control form-control-sm">
+                                            </div>
+                                        </div>
+                                    </td>           
                                 </tr>
-                                <tr>
-                                    <td>HP</td>
-                                    <td>: <?= $data_pasien['nik'];?></td>
-                                </tr>
+                                
                                 <tr>
                                     <td>Email</td>
-                                    <td>:</td>
+                                    <td><input type="email" name="email" class="form-control form-control-sm" placeholder="email"></td>
                                 </tr>
                                 
                             </table>
                         </div>
-                        <a href="" class="btn btn-success btn-sm">Edit</a><a href="" class="btn btn-danger btn-sm">Blokir</a>
                     </div>
-                    
                 </div>
-                <!-- /.card-body -->
+                <div class="card-footer text-center">
+                    <button type="submit" class="btn btn-success">SIMPAN</button>
+                    <a href="detail.php?key=<?= $_GET['key']?>" class="btn btn-danger">Kembali</a>
+                </div>
             </div>
             <!-- /.card -->
             </form>

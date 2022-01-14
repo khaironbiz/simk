@@ -42,7 +42,13 @@
                     ?>
                 </div>
                 <div class="card-body">
-                    <h4>Data Dasar</h4>
+                    <div class="card-header row mb-1 bg-black">
+                        <div class="col-6"><h4>Data Dasar</h4></div>
+                        <div class="col-6 text-right">
+                            <a href="edit.php?key=<?=$_GET['key']; ?>" class="btn btn-success btn-sm">Edit</a>
+                        </div>
+                    </div>
+                    
                     <div class="row">
                         <div class="col-md-6">
                             <table class="table table-sm">
@@ -130,8 +136,44 @@
                                 
                             </table>
                         </div>
-                        <a href="edit.php?key=<?=$_GET['key']; ?>" class="btn btn-success btn-sm">Edit</a>
-                        <a href="" class="btn btn-danger btn-sm">Blokir</a>
+                        <div class="col-md-6">
+                            <table>
+                                <tr>
+                                    <th colspan="4">Kredit SKP PNS</th>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <table class="table">
+                                <tr>
+                                    <th colspan="3">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                Kredit PK Jenjang Karir
+                                        </div>
+                                        <div class="col-6 text-right">
+                                            <button class="btn btn-info btn-sm">Update</button>
+                                        </div>
+                                        </div>
+                                        
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>Tanggal</th><td>Kegiatan</td><td>SKP</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                     
                 </div>
