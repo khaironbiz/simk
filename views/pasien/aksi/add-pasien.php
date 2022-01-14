@@ -10,6 +10,12 @@ if(isset($_POST['add-pasien'])){
     $tgl_lahir      = $_POST['th']."-".$_POST['bln']."-".$_POST['tgl'];
     $status_nikah   = $_POST['status_nikah'];
     $nik            = $_POST['nik'];
+    $date_rs        = $_POST['date_rs'];
+    $time_rs        = $_POST['time_rs'];
+    $waktu_masuk    = $date_rs." ".$time_rs.":00";
+    $date_bed       = $_POST['date_bed'];
+    $time_bed       = $_POST['time_bed'];
+    $waktu_masuk_bed= $date_bed." ".$time_bed.":00";
     $agama          = $_POST['agama'];
     $dx_medis       = $_POST['dx_medis'];
     $id_ruangan     = $_POST['ruangan'];
@@ -25,6 +31,7 @@ if(isset($_POST['add-pasien'])){
         $input_data     = mysqli_query($host, "INSERT INTO pasien_db SET 
                                     nama_pasien         = '$nama_pasien',
                                     nrm                 = '$nrm',
+                                    nik                 = '$nik',
                                     tgl_lahir           = '$tgl_lahir',
                                     sex                 = '$sex',
                                     status_nikah        = '$status_nikah',
@@ -37,11 +44,13 @@ if(isset($_POST['add-pasien'])){
                             key_trx         = '$key_trx',
                             nrm             = '$nrm',
                             dx_medis        = '$dx_medis',
+                            waktu_masuk     = '$waktu_masuk',
                             has_px_daftar   = '$has_pasien'
                         ");
             $masuk_ruangan = mysqli_query($host,"INSERT INTO pasien_daftar_ruangan SET 
                             key_trx                     = '$key_trx',
                             nrm                         = '$nrm',
+                            waktu_masuk_bed             = '$waktu_masuk_bed',
                             id_ruangan                  = '$id_ruangan',
                             has_pasien_daftar_ruangan   = '$has_pasien'
                         ");            
@@ -56,14 +65,16 @@ if(isset($_POST['add-pasien'])){
         
     }elseif($count_daftar < 1){
         $daftarkan  = mysqli_query($host,"INSERT INTO pasien_daftar SET 
-                            key_trx             = '$key_trx',
-                            nrm                 = '$nrm',
-                            dx_medis            = '$dx_medis',
+                            key_trx         = '$key_trx',
+                            nrm             = '$nrm',
+                            dx_medis        = '$dx_medis',
+                            waktu_masuk     = '$waktu_masuk',
                             has_px_daftar   = '$has_pasien'
                         ");
         $masuk_ruangan = mysqli_query($host,"INSERT INTO pasien_daftar_ruangan SET 
                             key_trx                     = '$key_trx',
                             nrm                         = '$nrm',
+                            waktu_masuk_bed             = '$waktu_masuk_bed',
                             id_ruangan                  = '$id_ruangan',
                             has_pasien_daftar_ruangan   = '$has_pasien'
                         ");      
@@ -78,11 +89,12 @@ if(isset($_POST['add-pasien'])){
         $trx_ini    = mysqli_fetch_array($sql_daftar);
         $key_trx    = $trx_ini['key_trx'];
         $masuk_ruangan = mysqli_query($host,"INSERT INTO pasien_daftar_ruangan SET 
-                            key_trx                     = '$key_trx',
-                            nrm                         = '$nrm',
-                            id_ruangan                  = '$id_ruangan',
-                            has_pasien_daftar_ruangan   = '$has_pasien'
-                        ");  
+                    key_trx                     = '$key_trx',
+                    nrm                         = '$nrm',
+                    waktu_masuk_bed             = '$waktu_masuk_bed',
+                    id_ruangan                  = '$id_ruangan',
+                    has_pasien_daftar_ruangan   = '$has_pasien'
+                ");  
         $_SESSION['status']="Data success disimpan";
         $_SESSION['status_info']="success";
         echo "<script>document.location=\"$site_url/pasien/pasien-ruangan.php\"</script>";    

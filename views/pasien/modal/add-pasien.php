@@ -175,18 +175,18 @@
                                         <tr>
                                             <td>Masuk RS</td>
                                             <td>:</td>
-                                            <td><input class="form-control form-control-sm" type="date"></td>
+                                            <td><input class="form-control form-control-sm" type="date" name="date_rs"></td>
                                             <td>Jam</td>
                                             <td>:</td>
-                                            <td><input class="form-control form-control-sm" type="time"></td>
+                                            <td><input class="form-control form-control-sm" type="time" name="time_rs"></td>
                                         </tr>
                                         <tr>
                                             <td>Masuk Bed</td>
                                             <td>:</td>
-                                            <td><input class="form-control form-control-sm" type="date"></td>
+                                            <td><input class="form-control form-control-sm" type="date" name="date_bed"></td>
                                             <td>Jam</td>
                                             <td>:</td>
-                                            <td><input class="form-control form-control-sm" type="time"></td>
+                                            <td><input class="form-control form-control-sm" type="time" name="time_bed"></td>
                                         </tr>
                                         
                                     </table>
