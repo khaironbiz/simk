@@ -2,7 +2,10 @@
 if(isset($_POST['add-pasien'])){
     $hari_ini       = date('Y-m-d H:i:s');
     $nama_pasien    = $_POST['nama_pasien'];
-    $nrm            = $_POST['nrm'];
+    $nrm1           = $_POST['nrm1'];
+    $nrm2           = $_POST['nrm2'];
+    $nrm3           = $_POST['nrm3'];
+    $nrm            = $_POST['nrm1'].$_POST['nrm2'].$_POST['nrm3'];
     $sex            = $_POST['sex'];
     $tgl_lahir      = $_POST['th']."-".$_POST['bln']."-".$_POST['tgl'];
     $status_nikah   = $_POST['status_nikah'];
@@ -39,7 +42,6 @@ if(isset($_POST['add-pasien'])){
             $masuk_ruangan = mysqli_query($host,"INSERT INTO pasien_daftar_ruangan SET 
                             key_trx                     = '$key_trx',
                             nrm                         = '$nrm',
-                            dx_medis                    = '$dx_medis',
                             id_ruangan                  = '$id_ruangan',
                             has_pasien_daftar_ruangan   = '$has_pasien'
                         ");            

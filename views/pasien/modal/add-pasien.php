@@ -16,10 +16,17 @@
                                         <tr>
                                             <td>NRM</td>
                                             <td>:</td>
-                                            <td>
-                                                <input type="number" class="form-control form-control-sm" placeholder="Nomor Rekam Medik" name="nrm" required>
+                                            <td colspan="4">
+                                                <div class="row">
+                                                    <div class="col-4"><input type="number" class="form-control form-control-sm" placeholder="0000 sd 9999" name="nrm1" required min="0000" max="9999"></div>
+                                                    <div class="col-4"><input type="number" class="form-control form-control-sm" placeholder="00 sd 99" name="nrm2" required min="00" max="99"></div>
+                                                    <div class="col-4"><input type="number" class="form-control form-control-sm" placeholder="00 sd 99" name="nrm3" required min="00" max="99"></div>
+                                                    
+                                                </div>
+                                                
                                                 <input type="hidden" class="form-control form-control-sm" name="add-pasien" value="<?= uniqid() ?>">
                                             </td>
+                                            
                                         </tr>
                                         <tr>
                                             <td>Nama</td>
@@ -27,8 +34,6 @@
                                             <td>
                                                 <input type="text" class="form-control form-control-sm" placeholder="nama pasien" name="nama_pasien" required>
                                             </td>
-                                        </tr>
-                                        <tr>
                                             <td>JK</td>
                                             <td>:</td>
                                             <td>
@@ -45,14 +50,15 @@
                                                 </select>
                                             </td>
                                         </tr>
+                                        
                                         <tr>
                                             <td>Tgl Lahir</td>
                                             <td>:</td>
                                             <td>
                                                 <div class="row">
-                                                    <div class="col-md-4">
+                                                    <div class="col-4">
                                                         <select class="form-control form-control-sm" required name="tgl">
-                                                            <option value=''>--tanggal--</option>
+                                                            <option value=''>tgl</option>
                                                             <?php
                                                             $a    =1;
                                                             while($a <= 31){
@@ -64,9 +70,9 @@
                                                             ?>
                                                         </select>
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <div class="col-4">
                                                         <select class="form-control form-control-sm" required name="bln">
-                                                            <option value=''>--bulan--</option>
+                                                            <option value=''>bln</option>
                                                             <?php
                                                             $b    =1;
                                                             while($b <= 12){
@@ -78,9 +84,9 @@
                                                             ?>
                                                         </select>
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    <div class="col-4">
                                                         <select class="form-control form-control-sm" required name="th">
-                                                            <option value=''>--tahun--</option>
+                                                            <option value=''>th</option>
                                                             <?php
                                                             $c      =1900;
                                                             $d      = date('Y');
@@ -95,15 +101,14 @@
                                                     </div>
                                                 </div>
                                             </td>
+                                            <td>NIK</td>
+                                            <td>:</td>
+                                            <td><input type="number" class="form-control form-control-sm" placeholder="nomor ktp" name="nik"></td>
                                                 
                                         </tr>
+                                        
                                         <tr>
-                                            <td>No KTP</td>
-                                            <td>:</td>
-                                            <td><input type="number" class="form-control form-control-sm" placeholder="NIK" name="nik"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Status Menikah</td>
+                                            <td>Status</td>
                                             <td>:</td>
                                             <td>
                                                 <select class="form-control form-control-sm" name="status_nikah" required>
@@ -118,8 +123,6 @@
                                                     ?>
                                                 </select>
                                             </td>
-                                        </tr>
-                                        <tr>
                                             <td>Agama</td>
                                             <td>:</td>
                                             <td>
@@ -136,6 +139,7 @@
                                                 </select>
                                             </td>
                                         </tr>
+                                        
                                         <tr>
                                             <td>Ruangan</td>
                                             <td>:</td>
@@ -152,9 +156,7 @@
                                                     ?>
                                                 </select>
                                             </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Diagnosa Medis</td>
+                                            <td>Diagnosa</td>
                                             <td>:</td>
                                             <td>
                                                 <select class="form-control form-control-sm" name="dx_medis" required>
@@ -170,6 +172,7 @@
                                                 </select>
                                             </td>
                                         </tr>
+                                        
                                     </table>
                                 </div>
                                 <div class="modal-footer bg-secondary">

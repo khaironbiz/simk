@@ -52,10 +52,9 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>NRM</th>
-                                <th>Nama Pasien</th>
-                                <th>Jenis Kelamin</th>
-                                <th>Tanggal Lahir</th>
+                                <th>Identitas</th>
+                                <th>Administrasi</th>
+                                <th>Klinis</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -66,23 +65,103 @@
                                                     JOIN pasien_daftar on pasien_daftar.key_trx= pasien_daftar_ruangan.key_trx
                                                     JOIN pasien_db on pasien_db.nrm = pasien_daftar_ruangan.nrm
                                                     JOIN ruangan on ruangan.id = pasien_daftar_ruangan.id_ruangan
+                                                    WHERE pasien_daftar_ruangan.keluar = '0'
                                                     ORDER BY pasien_daftar_ruangan.id_kamar ASC, pasien_daftar_ruangan.id_bed ASC");
                             while($data         = mysqli_fetch_array($sql_pasien)){
                               
                             ?>
                             <tr>
                                 <td width="10px"><?= $no++; ?></td>
-                                <td><?= $data['nrm'];?></td>
-                                <td><?= ucwords(strtolower($data['nama_pasien']));?></td>
                                 <td>
-                                  <?php
-                                    $id_sex   = $data['sex'];
-                                    $sql_sex  = mysqli_query($host, "SELECT * FROM db_sub_master WHERE id='$id_sex'");
-                                    $sex      = mysqli_fetch_array($sql_sex);
-                                    echo $sex['nama_submaster']
-                                  ?>
+                                  <table>
+                                    <tr>
+                                      <td>NRM</td>
+                                      <td>:</td>
+                                      <td><?= $data['nrm'];?></td>
+                                    </tr>
+                                    <tr>
+                                      <td>Nama</td>
+                                      <td>:</td>
+                                      <td><?= ucwords(strtolower($data['nama_pasien']));?></td>
+                                    </tr>
+                                    <tr>
+                                      <td>JK</td>
+                                      <td>:</td>
+                                      <td><?= sub_master($data['sex']) ;?></td>
+                                    </tr>
+                                    <tr>
+                                      <td>Tgl Lahir</td>
+                                      <td>:</td>
+                                      <td><?= $data['tgl_lahir']?></td>
+                                    </tr>
+                                    <tr>
+                                      <td>Usia</td>
+                                      <td>:</td>
+                                      <td>
+                                        <?= "(". usia($data['tgl_lahir'])->y." tahun ".usia($data['tgl_lahir'])->m." bulan ".usia($data['tgl_lahir'])->d." hari )"?>
+                                      </td>
+                                    </tr>
+                                  </table>
                                 </td>
-                                <td><?= $data['tgl_lahir'];?></td>
+                                <td>
+                                  <table>
+                                    <tr>
+                                      <td>Masuk RS</td>
+                                      <td>:</td>
+                                      <td><?= $data['waktu_masuk'] ?></td>
+                                    </tr>
+                                    <tr>
+                                      <td>LOS</td>
+                                      <td>:</td>
+                                      <td><?= usia($data['waktu_masuk'])->d ." Hari"?></td>
+                                    </tr>
+                                    <tr>
+                                      <td>Kamar</td>
+                                      <td>:</td>
+                                      <td><?= $data['id_kamar']." . ".$data['id_bed']?></td>
+                                    </tr>
+                                    <tr>
+                                      <td>Masuk Kamar</td>
+                                      <td>:</td>
+                                      <td><?= $data['waktu_masuk_bed'] ?></td>
+                                    </tr>
+                                    <tr>
+                                      <td>LOS Ruangan</td>
+                                      <td>:</td>
+                                      <td><?= usia($data['waktu_masuk_bed'])->d ." Hari"?></td>
+                                    </tr>
+                                  </table>
+                                </td>
+                                <td>
+                                  <table>
+                                    <tr>
+                                      <td>PA</td>
+                                      <td>:</td>
+                                      <td><?= $data['pa']?></td>
+                                    </tr>
+                                    <tr>
+                                      <td>PP</td>
+                                      <td>:</td>
+                                      <td><?= $data['pp']?></td>
+                                    </tr>
+                                    <tr>
+                                      <td>Dx Medis</td>
+                                      <td>:</td>
+                                      <td><?= $data['pp']?></td>
+                                    </tr>
+                                    <tr>
+                                      <td>Label Risiko</td>
+                                      <td>:</td>
+                                      <td><?= $data['pp']?></td>
+                                    </tr>
+                                    <tr>
+                                      <td>Barthel Index</td>
+                                      <td>:</td>
+                                      <td><?= $data['pp']?></td>
+                                    </tr>
+                                  </table>
+                                </td>
+                                
                                 <td>
                                   <a href="detail.php?key=<?= $data['has_pasien_db'];?>" class="btn btn-info btn-sm">Detail</a>
                                   
@@ -95,10 +174,9 @@
                         <tfoot>
                             <tr>
                                 <th>#</th>
-                                <th>NRM</th>
-                                <th>Nama Pasien</th>
-                                <th>Jenis Kelamin</th>
-                                <th>Tanggal Lahir</th>
+                                <th>Identitas</th>
+                                <th>Administrasi</th>
+                                <th>Klinis</th>
                                 <th>Aksi</th>
                             </tr>
                         </tfoot>
