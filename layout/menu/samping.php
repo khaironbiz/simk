@@ -146,24 +146,14 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-envelope"></i>
+            <a href="<?= $site_url ?>/ruangan/pelayanan.php" class="nav-link">
+              <i class="nav-icon fas fa-hospital-alt"></i>
               <p>
                 Ruangan
-                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?= $site_url ?>/ruangan/pelayanan.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Data Base Ruangan</p>
-                </a>
-              </li>
-              
-              
-            </ul>
           </li>
+          
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-envelope"></i>
