@@ -1,21 +1,6 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1><?= $judul; ?></h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active"><?= $judul; ?></li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
+    
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -44,15 +29,17 @@
                     <?php
                     include("../core/security/admin-akses.php");
                     if($count_admin >0){
-                        // include('modal/add-pasien.php');
-                        // include('aksi/add-pasien.php');
+                        include('modal/realisasi-shift.php');
+                        include('aksi/realisasi-shift.php');
                     }
+                    $hari_ini = date('Y-m-d');
+                    echo $hari_ini
                     ?>
                     <table id="example1" class="table table-sm table-hover">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Layanan</th>
+                                <th>Shift</th>
                                 <th>Count</th>
                                 <th>Aksi</th>
                             </tr>
@@ -60,13 +47,16 @@
                         <tbody>
                             <?php
                             $no=1;
-                            $sql_layanan    = mysqli_query($host,"SELECT * FROM db_sub_master WHERE id_master = '29'");
-                            while($data = mysqli_fetch_array($sql_layanan)){
+                            $sql        = mysqli_query($host,"SELECT DISTINCT(shift) FROM laporan_shift_perawat WHERE tgl = '$hari_ini'");
+                            while($data = mysqli_fetch_array($sql)){
+                              $shift    = $data['shift'];
+                              $sql_shift= mysqli_query($host,"SELECT * FROM laporan_shift_perawat WHERE shift ='$shift' and tgl='$hari_ini'");
+                              $count_shift= mysqli_num_rows($sql_shift);
                             ?>
                             <tr>
                                 <td width="10px"><?= $no++; ?></td>
-                                <td><?= $data['nama_submaster']?></td>
-                                <td></td>
+                                <td><?= $data['shift']?></td>
+                                <td><?= $count_shift ?></td>
                                 <td>
                                   <a href="index.php?admisi=<?= $data['has']?>" class="btn btn-danger btn-sm">Daftar</a>
                                 </td>
@@ -78,7 +68,7 @@
                         <tfoot>
                             <tr>
                                 <th>#</th>
-                                <th>Layanan</th>
+                                <th>Shift</th>
                                 <th>Count</th>
                                 <th>Aksi</th>
                             </tr>
