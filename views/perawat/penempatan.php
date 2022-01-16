@@ -70,7 +70,7 @@
                         <tbody>
                             <?php
                             $no=1;
-                            $sql_layanan        = mysqli_query($host,"SELECT * FROM nira WHERE blokir ='N' and ruangan ='$ruangan_ini' ORDER BY nama LIMIT 3");
+                            $sql_layanan        = mysqli_query($host,"SELECT * FROM nira WHERE blokir ='N' and ruangan ='$ruangan_ini' ORDER BY nama ");
                             while($data         = mysqli_fetch_array($sql_layanan)){
                                 $id_ruangan     = id_ruangan($data['ruangan']);
                                 $has_ruangan    = has_ruangan($id_ruangan);
