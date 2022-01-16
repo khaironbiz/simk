@@ -33,4 +33,10 @@ function keluar_shift($id){
     }
     return $master;
 }
+function count_shift($shift){
+    include('../auth/koneksi.php');
+    $sql    = mysqli_query($host,"SELECT * FROM laporan_shift_perawat WHERE shift = '$shift'");
+    $count  = mysqli_num_rows($sql);    
+    return $count;
+}
 ?>

@@ -12,7 +12,24 @@
                                     </button>
                                 </div>
                                 <div class="modal-body ">
-                                    <div class="mb-1 row">
+                                    <div class="row">
+                                        <label for="staticEmail" class="col-3 col-form-label">Ruangan</label>
+                                        <div class="col-9 col-md-6">
+                                            <select class="form-control form-control-sm" name="shift" required>
+                                                    <option value="">--Pilih--</option>
+                                                    <?php
+                                                    $sql_shift = mysqli_query($host, "SELECT * FROM ruangan WHERE type='1'");
+                                                    while($shift   = mysqli_fetch_array( $sql_shift)){
+                                                    ?>
+                                                    <option value="<?= $shift['kode']?>"><?= $shift['nama_shift']?></option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                            </select>
+                                        
+                                        </div>
+                                    </div>
+                                    <div class="row">
                                         <label for="staticEmail" class="col-3 col-form-label">Shift</label>
                                         <div class="col-9 col-md-6">
                                             <select class="form-control form-control-sm" name="shift" required>
