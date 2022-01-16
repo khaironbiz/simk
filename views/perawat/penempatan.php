@@ -63,7 +63,7 @@
                             $no=1;
                             $sql_layanan        = mysqli_query($host,"SELECT * FROM nira WHERE blokir ='N' ORDER BY nama");
                             while($data         = mysqli_fetch_array($sql_layanan)){
-                                if($data['ruangan'] =''){
+                                if($data['ruangan'] !=''){
                                 $id_ruangan     = id_ruangan($data['ruangan']);
                                 $has_ruangan    = has_ruangan($id_ruangan);
                                 }else{
