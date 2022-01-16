@@ -48,9 +48,13 @@
                         // include('aksi/add-pasien.php');
                     }
 
-                    if(id_ruangan('Poliklinik Eksekutif') !=''){
+                    if(id_ruangan('Poliklinik Eksekutif') =='NULL'){
+                        echo "Ganti Ruangan";
+                        
+                    }else{
                         echo id_ruangan('Poliklinik Eksekutif');
-                    }
+                        $ruangan_ini = $data_pengguna['ruangan'];
+                    
                     ?>
                     <table id="example1" class="table table-sm table-hover">
                         <thead>
@@ -59,21 +63,17 @@
                                 <th>Nama</th>
                                 <th>Penempatan</th>
                                 <th>ID</th>
+                                <th>Has</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             $no=1;
-                            $sql_layanan        = mysqli_query($host,"SELECT * FROM nira WHERE blokir ='N' ORDER BY nama");
+                            $sql_layanan        = mysqli_query($host,"SELECT * FROM nira WHERE blokir ='N' and ruangan ='$ruangan_ini' ORDER BY nama LIMIT 3");
                             while($data         = mysqli_fetch_array($sql_layanan)){
-                                if(id_ruangan($data['ruangan']) !='' | has_ruangan(id_ruangan($data['ruangan'])) !=''){
                                 $id_ruangan     = id_ruangan($data['ruangan']);
                                 $has_ruangan    = has_ruangan($id_ruangan);
-                                }else{
-                                    $id_ruangan = " error";
-                                    $has_ruangan= "NULL";
-                                }
                                 
                             ?>
                             <tr>
@@ -96,10 +96,14 @@
                                 <th>Nama</th>
                                 <th>Penempatan</th>
                                 <th>ID</th>
+                                <th>Has</th>
                                 <th>Aksi</th>
                             </tr>
                         </tfoot>
                     </table>
+                    <?php
+                    }
+                    ?>
                 </div>
                 
                 <!-- /.card-body -->

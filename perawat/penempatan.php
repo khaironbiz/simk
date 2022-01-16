@@ -2,7 +2,7 @@
 include("../auth/session.php");
 include("../function/function.php");
 
-$judul      = "Data Base Pasien";
+$judul      = "Perawat ". $data_pengguna['ruangan'];
 $template   = "../theme/table-simple.php";
 $wrapp      = "../core/wrapp.php";
 $content    = "../views/perawat/penempatan.php";
