@@ -47,6 +47,10 @@
                         // include('modal/add-pasien.php');
                         // include('aksi/add-pasien.php');
                     }
+
+                    if(id_ruangan('Poliklinik Eksekutif') !=''){
+                        echo id_ruangan('Poliklinik Eksekutif');
+                    }
                     ?>
                     <table id="example1" class="table table-sm table-hover">
                         <thead>
@@ -63,7 +67,7 @@
                             $no=1;
                             $sql_layanan        = mysqli_query($host,"SELECT * FROM nira WHERE blokir ='N' ORDER BY nama");
                             while($data         = mysqli_fetch_array($sql_layanan)){
-                                if($data['ruangan'] !=''){
+                                if(id_ruangan($data['ruangan']) !='' | has_ruangan(id_ruangan($data['ruangan'])) !=''){
                                 $id_ruangan     = id_ruangan($data['ruangan']);
                                 $has_ruangan    = has_ruangan($id_ruangan);
                                 }else{
