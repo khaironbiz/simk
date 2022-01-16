@@ -35,48 +35,51 @@
             }
             ?>
             <div class="card">
-              <div class="card-header">
+              <div class="card-header bg-dark">
+                <?php
+                include('menu/index.php');
+                ?>
+              </div>
                 <div class="card-body">
                     <?php
                     include("../core/security/admin-akses.php");
                     if($count_admin >0){
-                        include('modal/add-pasien.php');
-                        include('aksi/add-pasien.php');
+                        // include('modal/add-pasien.php');
+                        // include('aksi/add-pasien.php');
                     }
                     ?>
                     <table id="example1" class="table table-sm table-hover">
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Instalasi</th>
-                                <th>Ruangan</th>
-                                <th>Kapasitas</th>
-                                <th>Terisi</th>
-                                <th>Sisa</th>
+                                <th>Nama</th>
+                                <th>Penempatan</th>
+                                <th>ID</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             $no=1;
-                            while($data = mysqli_fetch_array($sql_ruangan)){
+                            $sql_layanan        = mysqli_query($host,"SELECT * FROM nira WHERE blokir ='N' ORDER BY nama");
+                            while($data         = mysqli_fetch_array($sql_layanan)){
+                                if($data['ruangan'] =''){
+                                $id_ruangan     = id_ruangan($data['ruangan']);
+                                $has_ruangan    = has_ruangan($id_ruangan);
+                                }else{
+                                    $id_ruangan = " error";
+                                    $has_ruangan= "NULL";
+                                }
+                                
                             ?>
                             <tr>
                                 <td width="10px"><?= $no++; ?></td>
-                                <td>
-                                  <?php
-                                    $id_instalasi   = $data['id_instalasi'];
-                                    $sql_instalasi= mysqli_query($host, "SELECT * FROM db_sub_master WHERE id='$id_instalasi'");
-                                    $instalasi      = mysqli_fetch_array($sql_instalasi);
-                                    echo $instalasi['nama_submaster']." --".$instalasi['id']
-                                  ?>
-                                </td>
+                                <td><?= $data['nama']?></td>
                                 <td><?= $data['ruangan'];?></td>
-                                <td><?= $data['kapasitas'];?></td>
-                                <td></td>
-                                <td></td>
+                                <td><?= $id_ruangan; ?></td>
+                                <td><?= $has_ruangan; ?></td>
                                 <td>
-                                  <a href="detail.php?key=<?= $data['has_pasien_db'];?>" class="btn btn-info btn-sm">Detail</a>
+                                  <a href="index.php?admisi=<?= $data['has_ruangan']?>" class="btn btn-danger btn-sm">Daftar</a>
                                 </td>
                             </tr>
                             <?php
@@ -86,17 +89,15 @@
                         <tfoot>
                             <tr>
                                 <th>#</th>
-                                <th>Instalasi</th>
-                                <th>Ruangan</th>
-                                <th>Kapasitas</th>
-                                <th>Terisi</th>
-                                <th>Sisa</th>
+                                <th>Nama</th>
+                                <th>Penempatan</th>
+                                <th>ID</th>
                                 <th>Aksi</th>
                             </tr>
                         </tfoot>
                     </table>
                 </div>
-                <a href=""><?= $data_pengguna['id_ruangan']?></a>
+                
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
