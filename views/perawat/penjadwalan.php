@@ -37,11 +37,13 @@
                     ?>
                     <table id="example1" class="table table-sm table-hover">
                         <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Shift</th>
-                                <th>Count</th>
-                                <th>Aksi</th>
+                          <tr>
+                            <th>#</th>
+                            <th>Shift</th>
+                            <th>Count</th>
+                            <th>Mulai Laporan</th>
+                            <th>Ahir Laporan</th>
+                            <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,13 +52,19 @@
                             $sql        = mysqli_query($host,"SELECT DISTINCT(shift) FROM laporan_shift_perawat WHERE tgl = '$hari_ini'");
                             while($data = mysqli_fetch_array($sql)){
                               $shift    = $data['shift'];
+                              $masuk    = $hari_ini." ". masuk_shift($shift);
                               $sql_shift= mysqli_query($host,"SELECT * FROM laporan_shift_perawat WHERE shift ='$shift' and tgl='$hari_ini'");
                               $count_shift= mysqli_num_rows($sql_shift);
+                              $time_masuk = strtotime($masuk);
+                              $time_keluar= $time_masuk+(60*60*12);
+                              $jam_selesai = date('Y-m-d H:i:s',$time_keluar)
                             ?>
                             <tr>
                                 <td width="10px"><?= $no++; ?></td>
                                 <td><?= $data['shift']?></td>
-                                <td><?= $count_shift ?></td>
+                                <td><?= $count_shift; ?></td>
+                                <td><?= $masuk ?></td>
+                                <td><?= $jam_selesai ?></td>
                                 <td>
                                   <a href="index.php?admisi=<?= $data['has']?>" class="btn btn-danger btn-sm">Daftar</a>
                                 </td>
@@ -66,12 +74,14 @@
                             ?>
                         </tbody>
                         <tfoot>
-                            <tr>
-                                <th>#</th>
-                                <th>Shift</th>
-                                <th>Count</th>
-                                <th>Aksi</th>
-                            </tr>
+                          <tr>
+                            <th>#</th>
+                            <th>Shift</th>
+                            <th>Count</th>
+                            <th>Mulai Laporan</th>
+                            <th>Ahir Laporan</th>
+                            <th>Aksi</th>
+                          </tr>
                         </tfoot>
                     </table>
                 </div>

@@ -13,7 +13,7 @@
                                     <a class="nav-link text-white" href="<?= $site_url?>/perawat/register.php">Pasien</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" href="<?= $site_url?>/perawat/register.php">Jadwal</a>
+                                    <a class="nav-link text-white" href="<?= $site_url?>/perawat/realisasi-shift.php">Realisasi Jadwal</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-white" href="<?= $site_url?>/perawat/register.php">Pasien Kelolaan</a>
