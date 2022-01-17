@@ -1,5 +1,5 @@
 <?php
-if(isset($_POST['realisasi-shift'])){
+if(isset($_POST['tidak-hadir'])){
     $id_ruangan = $_POST['id_ruangan'];
     $ruangan    = ruangan($id_ruangan);
     $y          = $_POST['y'];
@@ -20,7 +20,7 @@ if(isset($_POST['realisasi-shift'])){
                         tahun       = '$y',
                         bulan       = '$m',
                         tanggal     = '$d',
-                        hadir       = 'Y',
+                        hadir       = 'N',
                         shift       = '$shift',
                         created_at  = '$time[$i]',
                         created_by  = '$user_check',

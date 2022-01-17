@@ -1,8 +1,8 @@
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    Realisasi Shift
+                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#tidak-hadir">
+                    Input Tidak Hadir
                 </button>
                 <form action="" method="POST">
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="tidak-hadir" tabindex="-1" aria-labelledby="tidak-hadirLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header bg-dark">
@@ -27,16 +27,16 @@
                                                     }
                                                     ?>
                                             </select>
-                                            <input type="hidden" name="realisasi-shift" value="<?= uniqid()?>">
+                                            <input type="hidden" name="tidak-hadir" value="<?= uniqid()?>">
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <label for="staticEmail" class="col-3 col-form-label">Shift</label>
+                                        <label for="staticEmail" class="col-3 col-form-label">Alasan Tidak Hadir</label>
                                         <div class="col-9 col-md-6">
                                             <select class="form-control form-control-sm" name="shift" required>
                                                     <option value="">--Pilih--</option>
                                                     <?php
-                                                    $sql_shift = mysqli_query($host, "SELECT * FROM shift_perawat WHERE type='1'");
+                                                    $sql_shift = mysqli_query($host, "SELECT * FROM shift_perawat WHERE type='0'");
                                                     while($shift   = mysqli_fetch_array( $sql_shift)){
                                                     ?>
                                                     <option value="<?= $shift['kode']?>"><?= $shift['nama_shift']?></option>
@@ -109,32 +109,32 @@
                                             $hari_ini               = date('Y-m-d');
                                             $ruanganku              = $data_pengguna['ruangan'];
                                             $norut                  = 1;
-                                            $sql_perawat            = mysqli_query($host,"SELECT * FROM nira WHERE ruangan ='$ruanganku' and blokir ='N' ORDER BY nama");
-                                            while($data_perawat     = mysqli_fetch_array($sql_perawat)){
-                                                $id_perawat         = $data_perawat['nira'];
-                                                $sql_realisasi      = mysqli_query($host,"SELECT * FROM laporan_shift_perawat WHERE id_perawat='$id_perawat' AND tgl='$hari_ini'");
-                                                $count_realisasi    = mysqli_num_rows($sql_realisasi);
-                                                $realisasi          = mysqli_fetch_array($sql_realisasi);
+                                            $sql_perawat_ini        = mysqli_query($host,"SELECT * FROM nira WHERE ruangan ='$ruanganku' and blokir ='N' ORDER BY nama");
+                                            while($data_perawat_ini = mysqli_fetch_array($sql_perawat_ini)){
+                                                $id_perawat_ini     = $data_perawat_ini['nira'];
+                                                $sql_realisasi_ini  = mysqli_query($host,"SELECT * FROM laporan_shift_perawat WHERE id_perawat='$id_perawat_ini' AND tgl='$hari_ini'");
+                                                $count_realisasi_ini= mysqli_num_rows($sql_realisasi_ini);
+                                                $realisasi_ini      = mysqli_fetch_array($sql_realisasi_ini);
                                             
                                         ?>
                                         <tr>
                                             <td><?= $norut++?></td>
                                             <td>
                                                 <?php
-                                                if($count_realisasi <1){
+                                                if($count_realisasi_ini <1){
                                                 ?>
-                                                    <input type="checkbox" value="<?= $data_perawat['nira']?>" name="nira[]"> <?= $data_perawat['nama']?>
+                                                    <input type="checkbox" value="<?= $data_perawat_ini['nira']?>" name="nira[]"> <?= $data_perawat_ini['nama']?>
                                                 <?php
                                                 }else{
-                                                    echo $data_perawat['nama'];
+                                                    echo $data_perawat_ini['nama'];
                                                 }
                                                 ?>
                                             </td>
-                                            <td><?= $data_perawat['pendidikan']?></td>
+                                            <td><?= $data_perawat_ini['pendidikan']?></td>
                                             <td>
                                                 <?php
-                                                if($count_realisasi>0){
-                                                    echo nama_shift($realisasi['shift']);
+                                                if($count_realisasi_ini>0){
+                                                    echo nama_shift($realisasi_ini['shift']);
                                                 }
                                                 ?>
                                             </td>

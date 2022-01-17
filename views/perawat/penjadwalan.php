@@ -91,9 +91,20 @@
             <!-- /.card -->
             <div class="card">
               <div class="card-header bg-black">
-                <b>Perawat Libur/Tidak Hadir</b>
+                <div class="row">
+                  <div class="col-6">
+                    <b>Perawat Libur/Tidak Hadir</b>
+                  </div>
+                  <div class="col-6 text-right">
+                    
+                  </div>
+                </div>
               </div>
               <div class="card-body">
+                <?php
+                    include('aksi/tidak-hadir.php');
+                    include('modal/tidak-hadir.php');
+                ?>
                 <table class="table table-sm table-hover">
                   <tr>
                     <th>No</th>
@@ -112,7 +123,7 @@
                   ?>
                   <tr>
                     <td><?= $y++?></td>
-                    <td><?= $tidak_hadir['shift']?></td>
+                    <td><?= nama_shift($tidak_hadir['shift'])?></td>
                     <td><?= $count_shift ?></td>
                     <td></td>
                   </tr>
@@ -123,10 +134,54 @@
               </div>
             </div>
             <div class="card">
-              <div class="card-header bg-danger">
-                <b>Belum Diinput</b>
+              <div class="card-header bg-success">
+                <b>Rekapitulasi Shift</b>
               </div>
               <div class="card-body">
+                <table class="table">
+                  <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>NIRA</th>
+                    <?php
+                    $id_ruangan = id_ruangan($data_pengguna['ruangan']);
+                    $sql        = mysqli_query($host,"SELECT DISTINCT(shift) FROM laporan_shift_perawat WHERE tgl = '$hari_ini' AND id_ruangan ='$id_ruangan'");
+                    while($kode_shift = mysqli_fetch_array($sql)){
+                      $kode_shift_ini = $kode_shift['shift'];
+                    ?>
+                    <th><?= $kode_shift_ini ?></th>
+                    <?php
+                    }
+                    ?>
+                  </tr>
+                  <?php
+                  $ruanganku            = $data_pengguna['ruangan'];
+                  $num                  = 1;
+                  $sql_perawat_ruangan  = mysqli_query($host,"SELECT * FROM nira WHERE ruangan = '$ruanganku' and blokir='N'");
+                  while($data_perawat_ruangan = mysqli_fetch_array($sql_perawat_ruangan)){
+                  $nira_perawat         = $data_perawat_ruangan['nira'];
+                  ?>
+                  <tr>
+                    <td><?= $num++?></td>
+                    <td><?= $data_perawat_ruangan['nama']?></td>
+                    <td><?= $nira_perawat; ?></td>
+                    <?php
+                    $id_ruangan       = id_ruangan($data_pengguna['ruangan']);
+                    $sql              = mysqli_query($host,"SELECT DISTINCT(shift) FROM laporan_shift_perawat WHERE tgl = '$hari_ini' AND id_ruangan ='$id_ruangan'");
+                    while($data_ini   = mysqli_fetch_array($sql)){
+                      $shift_ini      = $data_ini['shift'];
+                      $sql_count_ini  = mysqli_query($host,"SELECT * FROM laporan_shift_perawat WHERE tgl='$hari_ini' AND id_ruangan ='$id_ruangan' AND shift='$shift_ini' AND id_perawat ='$nira_perawat'");
+                      $count_ini      = mysqli_num_rows($sql_count_ini);
+                    ?>
+                    <td><?= $count_ini?></td>
+                    <?php
+                    }
+                    ?>
+                  </tr>
+                  <?php
+                  }
+                  ?>
+                </table>
               </div>
             </div>
           </div>
