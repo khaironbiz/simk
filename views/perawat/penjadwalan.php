@@ -157,7 +157,7 @@
                   <?php
                   $ruanganku            = $data_pengguna['ruangan'];
                   $num                  = 1;
-                  $sql_perawat_ruangan  = mysqli_query($host,"SELECT * FROM nira WHERE ruangan = '$ruanganku' and blokir='N'");
+                  $sql_perawat_ruangan  = mysqli_query($host,"SELECT * FROM nira WHERE ruangan = '$ruanganku' and blokir='N' ORDER BY nama ASC");
                   while($data_perawat_ruangan = mysqli_fetch_array($sql_perawat_ruangan)){
                   $nira_perawat         = $data_perawat_ruangan['nira'];
                   ?>
