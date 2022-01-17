@@ -59,7 +59,6 @@
                                     $no     = 1;
                                     $sql    = mysqli_query($host,"SELECT * FROM shift_perawat ORDER BY id");
                                     while($data = mysqli_fetch_array($sql)){
-                                        $has_shift_ini = has_shift($data['kode']);
                                 ?>
                                 <tr>
                                     <td><?= $no ++; ?></td>
