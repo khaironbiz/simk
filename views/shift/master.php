@@ -53,13 +53,13 @@
                                     <th>Kode Shift</th>
                                     <th>Jam Masuk</th>
                                     <th>Jam Keluar</th>
-                                    <th>Jam Kerja</th>
                                     <th>Aksi</th>
                                 </tr>
                                 <?php
                                     $no     = 1;
                                     $sql    = mysqli_query($host,"SELECT * FROM shift_perawat ORDER BY id");
                                     while($data = mysqli_fetch_array($sql)){
+                                        $has_shift_ini = has_shift($data['kode']);
                                 ?>
                                 <tr>
                                     <td><?= $no ++; ?></td>
@@ -67,7 +67,6 @@
                                     <td><?= $data['kode']?></td>
                                     <td><?= $data['jam_mulai']?></td>
                                     <td><?= $data['jam_selesai']?></td>
-                                    <td></td>
                                     <td>
                                         <?php
                                             include('modal/edit.php');
