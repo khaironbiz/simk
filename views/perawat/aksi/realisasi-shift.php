@@ -1,7 +1,7 @@
 <?php
 if(isset($_POST['nira'])){
-    $ruangan    = $data_pengguna['ruangan'];
-    $id_ruangan = id_ruangan($ruangan);
+    $id_ruangan = $_POST['id_ruangan'];
+    $ruangan    = ruangan($id_ruangan);
     $y          = $_POST['y'];
     $m          = $_POST['m'];
     $d          = $_POST['d'];

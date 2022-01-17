@@ -15,13 +15,14 @@
                                     <div class="row">
                                         <label for="staticEmail" class="col-3 col-form-label">Ruangan</label>
                                         <div class="col-9 col-md-6">
-                                            <select class="form-control form-control-sm" name="shift" required>
-                                                    <option value="">--Pilih--</option>
+                                            <select class="form-control form-control-sm" name="id_ruangan" required>
+                                                    <option value="<?= id_ruangan($data_pengguna['ruangan'])?>"><?= $data_pengguna['ruangan']?></option>
                                                     <?php
-                                                    $sql_shift = mysqli_query($host, "SELECT * FROM ruangan WHERE type='1'");
-                                                    while($shift   = mysqli_fetch_array( $sql_shift)){
+                                                    $id_ruanganku   = id_ruangan($data_pengguna['ruangan']);
+                                                    $sql_ruanganku  = mysqli_query($host, "SELECT * FROM ruangan WHERE id !='$id_ruanganku'");
+                                                    while($ruanganku= mysqli_fetch_array( $sql_ruanganku)){
                                                     ?>
-                                                    <option value="<?= $shift['kode']?>"><?= $shift['nama_shift']?></option>
+                                                    <option value="<?= $ruanganku['id']?>"><?= $ruanganku['ruangan']?></option>
                                                     <?php
                                                     }
                                                     ?>
@@ -133,7 +134,7 @@
                                             <td>
                                                 <?php
                                                 if($count_realisasi>0){
-                                                    echo $realisasi['shift'];
+                                                    echo nama_shift($realisasi['shift']);
                                                 }
                                                 ?>
                                             </td>

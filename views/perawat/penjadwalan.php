@@ -62,7 +62,7 @@
                             ?>
                             <tr>
                                 <td width="10px"><?= $no++; ?></td>
-                                <td><?= $data['shift']?></td>
+                                <td><?= nama_shift($data['shift'])?></td>
                                 <td><?= $count_shift; ?></td>
                                 <td><?= $masuk ?></td>
                                 <td><?= $jam_selesai ?></td>
