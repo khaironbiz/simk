@@ -13,7 +13,7 @@
                                     <a class="nav-link text-white" href="<?= $site_url?>/perawat/register.php">Pasien</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" href="<?= $site_url?>/perawat/realisasi-shift.php">Realisasi Jadwal</a>
+                                    <a class="nav-link text-white" href="<?= $site_url?>/perawat/penjadwalan.php">Realisasi Jadwal</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-white" href="<?= $site_url?>/perawat/register.php">Pasien Kelolaan</a>
@@ -25,6 +25,7 @@
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="#">STR Rekap</a>
                                         <a class="dropdown-item" href="#">SIPP Rekap</a>
+                                        <a class="dropdown-item" href="<?= $site_url?>/shift/master.php">Master Shift</a>
                                     <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="#">STR Ke SDM</a>
                                     </div>
