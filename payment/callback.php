@@ -7,7 +7,7 @@ include('../auth/session.php');
     $key_akun           = $data_akun['api'];
     $merchant_code      = $data_akun['merchant_code'];
 
-$apiKey = $key_akun; // Your api key
+$apiKey = 'e09dd1d01a70d0f4d6953c711d4fa776'; // Your api key
 $merchantCode = isset($_POST['merchantCode']) ? $_POST['merchantCode'] : null; 
 $amount = isset($_POST['amount']) ? $_POST['amount'] : null; 
 $merchantOrderId = isset($_POST['merchantOrderId']) ? $_POST['merchantOrderId'] : null; 

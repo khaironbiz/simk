@@ -32,8 +32,8 @@ if(isset($_POST['total'])){
     $merchant_code      = $data_akun['merchant_code'];
 
     //
-    $merchantCode       = $merchant_code; // dari dashboard duitku
-    $merchantKey        = $key_akun; // dari dashboard duitku
+    $merchantCode       = 'D2881'; // dari dashboard duitku
+    $merchantKey        = 'e09dd1d01a70d0f4d6953c711d4fa776'; // dari dashboard duitku
     $paymentAmount      = $total;
     $paymentMethod      = $payment; // VC = Credit Card
     $merchantOrderId    = $id_invoice; // dari merchant, unik
