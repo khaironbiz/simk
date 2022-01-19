@@ -1,12 +1,12 @@
 <?php
 
      // Set your merchant code (Note: Server key for sandbox and production mode are different)
-    $merchantCode = "YOUR MERCHANT CODE"; 
+    $merchantCode = "D2881"; 
     // Set your merchant key (Note: Server key for sandbox and production mode are different)
-    $merchantKey = "YOUR MERCHANT KEY";
+    $merchantKey = "e09dd1d01a70d0f4d6953c711d4fa776";
 
     $datetime = date('Y-m-d H:i:s');  
-    $paymentAmount = '10000';
+    $paymentAmount = 100000;
     $signature = hash('sha256',$merchantCode . $paymentAmount . $datetime . $merchantKey);
 
     $itemsParam = array(
@@ -18,12 +18,12 @@
 
     class emp{}
 
-    $params = array_merge((array)$result,$itemsParam);
+    $params = array_merge((array)$itemsParam);
 
     $params_string = json_encode($params);
 
-    $url = 'https://sandbox.duitku.com/webapi/api/merchant/paymentmethod/getpaymentmethod'; 
-
+    //$url = 'https://sandbox.duitku.com/webapi/api/merchant/paymentmethod/getpaymentmethod'; 
+    $url    = 'https://passport.duitku.com/webapi/api/merchant/paymentmethod/getpaymentmethod';
     $ch = curl_init();
 
     curl_setopt($ch, CURLOPT_URL, $url); 
@@ -42,7 +42,13 @@
 
     if($httpCode == 200)
     {
-            echo $request ;
+            $request ;
+            $result = json_decode($request, true);
+            $bayar  = $result['paymentFee'];
+            
+            
+            //echo $result['responseCode'];
+            
     }
     else{
             $response = new emp();

@@ -59,19 +59,24 @@ $count_trx  = mysqli_num_rows($sql);
                                 
                             </tr>
                             <tr>
-                                <td colspan="2" class="text-center"><b>Channel Pembayaran</b></td>
-                                <td colspan="2">
-                                    <select class="form-control form-control-sm" name="id_channel" required>
-                                        <option value="" class="text-center">Pilih</option>
-                                        <?php
-                                            $sql_channel = mysqli_query($host,"SELECT * FROM channel_dana WHERE blokir ='N'");
-                                            while($data_channel= mysqli_fetch_array($sql_channel)){
+                                <td colspan="4" class="text-center"><b>Metode Pembayaran<br></td><td></td>
+                            </tr>
+                            <tr>
+                                
+                                <td colspan="5">
+                                    <?php
+                                        include('payment-method.php');
+                                        foreach($bayar as $b){                                            
                                         ?>
-                                        <option value="<?= $data_channel['id']?>"><?= $data_channel['channel']?></option>
-                                        <?php
-                                            }
-                                        ?>
-                                    </select>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="id_channel" value="<?=  $b['paymentMethod']?>">
+                                            <img src="<?=  $b['paymentImage']?>">
+                                        </div>
+                                        
+                                    <?php
+                                        }
+                                    ?>
+                                    
                                 </td>
                                 <td><input type="hidden" name="total" value="<?= $total['total']?>"></td>
                             </tr>
