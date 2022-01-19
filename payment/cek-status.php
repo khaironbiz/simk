@@ -39,7 +39,7 @@ include('../auth/session.php');
         $statusCode         = $result['statusCode'];
         $statusMessage      = $result['statusMessage'];
         $update_callback    = mysqli_query($host,"UPDATE invoice SET 
-                                    callback    ='$statusMessage',
+                                    callback    = '$statusCode',
                                     pesan       = '$statusMessage'  WHERE id_invoice='$merchantOrderId'");
         
     }else{
