@@ -43,7 +43,7 @@ include('../auth/session.php');
                                     pesan       = '$statusMessage'  WHERE id_invoice='$merchantOrderId'");
         
     }else{
-        echo $httpCode;
+        //echo $httpCode;
     }
         
 ?>
@@ -62,32 +62,48 @@ include('../auth/session.php');
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card mt-5">
-                        <div class="card-header">
+                        <div class="card-header text-center">
                             <b>Status Transaksi</b>
                         </div>
+                        <?php
+                        if($httpCode == 200){
+                        ?>
                         <div class="card-body">
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Nomor Invoice</label>
-                                <div class="col-sm-8"><?= $merchantOrderId?></div>
+                                <div class="col-sm-8">: <?= $merchantOrderId?></div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Reference</label>
-                                <div class="col-sm-8"><?= $reference?></div>
+                                <div class="col-sm-8">: <?= $reference?></div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Jumlah</label>
-                                <div class="col-sm-8"><?= $amount?> </div>
+                                <div class="col-sm-8">: <?= $amount?> </div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Status</label>
-                                <div class="col-sm-8"><?= $statusCode?></div>
+                                <div class="col-sm-8">: <?= $statusCode?></div>
                             </div>
                             <div class="row">
                                 <label class="col-sm-4 col-form-label">Keterangan</label>
-                                <div class="col-sm-8"><?= $statusMessage?></div>
+                                <div class="col-sm-8">: <?= $statusMessage?></div>
                             </div>
                         </div>
-                        <div class="card-footer">
+                        <?php
+                        }else{                            
+                    
+                        ?>
+                        <div class="card-body text-center">
+                            <?php
+                                echo "<h6>Transaksi tidak ditemukan</h6><hr>";
+                                echo "<h2>$httpCode</h2>";
+                            ?>
+                        </div>
+                        <?php
+                        }
+                        ?>
+                        <div class="card-footer text-center">
                             <a href="transaksi.php" class="btn btn-sm btn-danger">Kembali</a>
                         </div>
                     </div>

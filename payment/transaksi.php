@@ -19,10 +19,9 @@ $count_trx  = mysqli_num_rows($sql);
             <div class="row justify-content-center">
                 <div class="col-md-12">
                     <h1>Transaksi</h1>
-                    
                     <?php
-                        if($count_trx>0){
-                            
+                    include('modal/add-tansaksi.php');
+                    if($count_trx>0){     
                     ?>
                         <table class="table">
                             <tr>
@@ -48,13 +47,10 @@ $count_trx  = mysqli_num_rows($sql);
                                 <td><?= number_format($data['biaya_real'])?></td>
                                 <th><?= $data['pesan']?></th>
                                 <th><a href="cek-status.php?key=<?= $data['id_invoice'];?>" class="btn btn-sm btn-success">Update Status</a></th>
-                                
                             </tr>
                             <?php
                                 }
-                                
                             ?>
-                            
                         </table>
                     <?php
                         }else{
@@ -65,8 +61,6 @@ $count_trx  = mysqli_num_rows($sql);
                 </div>
             </div>
         </div>
-        
-    
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </body>
 </html>

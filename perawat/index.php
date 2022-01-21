@@ -6,6 +6,4 @@ $wrapp      = "../core/wrapp.php";
 $content    = "../views/perawat/data-base.php";
 include($template);
 
-
-
 ?>

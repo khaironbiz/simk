@@ -4,9 +4,9 @@ if(isset($_POST['total'])){
     $id_invoice     = uniqid();
     $total          = $_POST['total'];
     $id_channel     = $_POST['id_channel'];
-    $cari_channel   = mysqli_query($host,"SELECT * FROM channel_dana WHERE id='$id_channel'");
-    $data_cahnnel   = mysqli_fetch_array($cari_channel);
-    $payment        = $data_cahnnel['kode'];
+    // $cari_channel   = mysqli_query($host,"SELECT * FROM channel_dana WHERE id='$id_channel'");
+    // $data_cahnnel   = mysqli_fetch_array($cari_channel);
+    // $payment        = $data_cahnnel['kode'];
     // echo $total. "<br>";
     // echo $id_channel;
     $create_invoice = mysqli_query($host,"INSERT INTO invoice SET 
@@ -35,7 +35,7 @@ if(isset($_POST['total'])){
     $merchantCode       = 'D2881'; // dari dashboard duitku
     $merchantKey        = 'e09dd1d01a70d0f4d6953c711d4fa776'; // dari dashboard duitku
     $paymentAmount      = $total;
-    $paymentMethod      = $payment; // VC = Credit Card
+    $paymentMethod      = $id_channel; // VC = Credit Card
     $merchantOrderId    = $id_invoice; // dari merchant, unik
     $productDetails     = 'Tes pembayaran menggunakan Duitku';
     $email              = $email_pengguna; // email pelanggan anda
@@ -48,14 +48,14 @@ if(isset($_POST['total'])){
     $expiryPeriod       = 10; // atur waktu kadaluarsa dalam hitungan menit
     $signature          = md5($merchantCode . $merchantOrderId . $paymentAmount . $merchantKey);
     // Customer Detail
-    $firstName = $nama_pengguna;
-    $lastName = "DPK PPNI RSPON";
+    $firstName          = $nama_pengguna;
+    $lastName           = "DPK PPNI RSPON";
     // Address
-    $alamat = "Jl. Kembangan Raya";
-    $city = "Jakarta";
-    $postalCode = "11530";
-    $countryCode = "ID";
-    $address = array(
+    $alamat             = "Jl. Kembangan Raya";
+    $city               = "Jakarta";
+    $postalCode         = "11530";
+    $countryCode        = "ID";
+    $address            = array(
         'firstName'     => $firstName,
         'lastName'      => $lastName,
         'address'       => $alamat,
@@ -64,7 +64,7 @@ if(isset($_POST['total'])){
         'phone'         => $phoneNumber,
         'countryCode'   => $countryCode
     );
-    $customerDetail = array(
+    $customerDetail         = array(
         'firstName'         => $firstName,
         'lastName'          => $lastName,
         'email'             => $email,
@@ -84,22 +84,22 @@ if(isset($_POST['total'])){
     //     $item1, $item2
     // );
     $params = array(
-        'merchantCode' => $merchantCode,
-        'paymentAmount' => $paymentAmount,
-        'paymentMethod' => $paymentMethod,
-        'merchantOrderId' => $merchantOrderId,
-        'productDetails' => $productDetails,
-        'additionalParam' => $additionalParam,
-        'merchantUserInfo' => $merchantUserInfo,
-        'customerVaName' => $customerVaName,
-        'email' => $email,
-        'phoneNumber' => $phoneNumber,
+        'merchantCode'      => $merchantCode,
+        'paymentAmount'     => $paymentAmount,
+        'paymentMethod'     => $paymentMethod,
+        'merchantOrderId'   => $merchantOrderId,
+        'productDetails'    => $productDetails,
+        'additionalParam'   => $additionalParam,
+        'merchantUserInfo'  => $merchantUserInfo,
+        'customerVaName'    => $customerVaName,
+        'email'             => $email,
+        'phoneNumber'       => $phoneNumber,
         // 'itemDetails' => $itemDetails,
-        'customerDetail' => $customerDetail,
-        'callbackUrl' => $callbackUrl,
-        'returnUrl' => $returnUrl,
-        'signature' => $signature,
-        'expiryPeriod' => $expiryPeriod
+        'customerDetail'    => $customerDetail,
+        'callbackUrl'       => $callbackUrl,
+        'returnUrl'         => $returnUrl,
+        'signature'         => $signature,
+        'expiryPeriod'      => $expiryPeriod
     );
 
     $params_string = json_encode($params);
