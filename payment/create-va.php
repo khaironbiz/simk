@@ -4,15 +4,15 @@ if(isset($_POST['total'])){
     $id_invoice     = uniqid();
     $total          = $_POST['total'];
     $id_channel     = $_POST['id_channel'];
-    // $cari_channel   = mysqli_query($host,"SELECT * FROM channel_dana WHERE id='$id_channel'");
-    // $data_cahnnel   = mysqli_fetch_array($cari_channel);
-    // $payment        = $data_cahnnel['kode'];
-    // echo $total. "<br>";
-    // echo $id_channel;
+    $lama_menunggu  = 120; //menit
+    $waktu_tunggu   = $lama_menunggu*60;//detik
+    $expired        = time()+$waktu_tunggu;
+    $waktu_exp      = date('Y-m-d h:i:s',$expired);
     $create_invoice = mysqli_query($host,"INSERT INTO invoice SET 
                         id_invoice  = '$id_invoice',
                         id_customer = '$user_check',
                         biaya_real  = '$total',
+                        exp_date    = '$waktu_exp',
                         id_bank     = '$id_channel'");
     if($create_invoice){
         $update_invoice_detail = mysqli_query($host,"UPDATE invoice_detail SET
@@ -37,7 +37,7 @@ if(isset($_POST['total'])){
     $paymentAmount      = $total;
     $paymentMethod      = $id_channel; // VC = Credit Card
     $merchantOrderId    = $id_invoice; // dari merchant, unik
-    $productDetails     = 'Tes pembayaran menggunakan Duitku';
+    $productDetails     = 'Pembayaran Invoice '.$id_invoice;
     $email              = $email_pengguna; // email pelanggan anda
     $phoneNumber        = $hp_pengguna ; // nomor telepon pelanggan anda (opsional)
     $additionalParam    = ''; // opsional

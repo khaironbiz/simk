@@ -30,6 +30,9 @@ if(!empty($merchantCode) && !empty($amount) && !empty($merchantOrderId) && !empt
         $update_invoice = mysqli_query($host,"UPDATE invoice SET 
                             callback    = '$resultCode' WHERE 
                             id_invoice  = '$merchantOrderId'");
+        $update_invoice_detail = mysqli_query($host,"UPDATE invoice_detail SET 
+                            callback    = '$resultCode' WHERE 
+                            id_invoice  = '$merchantOrderId'");
         echo "SUCCESS"; // Please response with success
     }
     else
