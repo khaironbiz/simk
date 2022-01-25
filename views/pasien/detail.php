@@ -134,18 +134,32 @@
                                 <tr>
                                     <td>Diagnosa</td>
                                     <td>:</td>
-                                    <td>CVD SI</td>
+                                    <td><?= dx_medis($pasien_daftar['dx_medis'])?></td>
                                 </tr>
                                 <tr>
                                     <td>DPJP</td>
                                     <td>:</td>
-                                    <td>DR. dr. Andi Basuki Prima Birawa Sp.S(K), MARS</td>
+                                    <td><?= dokter($pasien_daftar['dpjp'])?></td>
                                 </tr>
                                 <tr>
                                     <td>Konsultasi</td>
                                     <td>:</td>
                                     <td></td>
                                 </tr>
+                                <?php
+                                $urut                   = 1;
+                                $cari_konsultasi        = mysqli_query($host,"SELECT * FROM pasien_dokter WHERE key_trx = '$key_trx'");
+                                while($data_konsultasi  = mysqli_fetch_array($cari_konsultasi)){
+                                ?>
+                                <tr>
+                                    
+                                    <td></td>
+                                    <td><?= $urut++."."?></td>
+                                    <td><?= dokter($data_konsultasi['id_dokter'])?></td>
+                                </tr>
+                                <?php
+                                }
+                                ?>
                             </table>
                         </div>
                         <div class="col-md-6">
@@ -153,7 +167,7 @@
                                 <tr>
                                     <div class="row">
                                         <div class="col-md-6"><b>Keperawatan</b></div>
-                                        <div class="col-md-6 text-right"><a href="" class="btn btn-info btn-sm">Update</a></div>
+                                        <div class="col-md-6 text-right"><a href="keperawatan.php?key=<?= $_GET['key']; ?>" class="btn btn-info btn-sm">Update</a></div>
                                     </div>
                                     
                                     

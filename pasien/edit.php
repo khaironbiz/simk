@@ -11,16 +11,11 @@ if($count_pasien <1){
     $template   = "../theme/table.php";
     $wrapp      = "../core/wrapp.php";
     $content    = "../views/page/not-found.php";
-    
 }else{
     $judul      = $data_pasien['nama_pasien'];
     $template   = "../theme/table.php";
     $wrapp      = "../core/wrapp.php";
     $content    = "../views/pasien/edit.php";
 }
-
 include($template);
-
-
-
 ?>

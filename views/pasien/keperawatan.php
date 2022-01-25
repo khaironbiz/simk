@@ -29,19 +29,23 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
+                        <?php 
+                        $id_ruangan = id_ruangan($data_pengguna['ruangan']);
+                        $ruanganku  = $data_pengguna['ruangan'];
+                        ?>
                         <div class="col-md-6">
                             <form action="" method="POST">
                                 <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Diagnosa</label>
+                                    <label class="col-sm-2 col-form-label">Perawat Primer</label>
                                     <div class="col-sm-10">
                                         <input type="hidden" name="update_dokter" class="form-control" value="<?= $_GET['key']?>">
                                         <select class="form-control form-control-sm" name="dx_medis">
                                             <option value="<?= $pasien_daftar['dx_medis']?>"><?= dx_medis($pasien_daftar['dx_medis'])?></option>
                                             <?php
-                                            $cari_dx    = mysqli_query($host,"SELECT * FROM dx_medis ORDER BY dx_medis ASC ");
-                                            while($data_dx  = mysqli_fetch_array($cari_dx)){
+                                            $cari_nira    = mysqli_query($host,"SELECT * FROM nira WHERE ruangan = '$ruanganku' ORDER BY nama ASC ");
+                                            while($data_nira  = mysqli_fetch_array($cari_nira)){
                                             ?>
-                                            <option value="<?= $data_dx['id']?>"><?= $data_dx['dx_medis']?></option>
+                                            <option value="<?= $data_nira['nira']?>"><?= $data_nira['nama']?></option>
                                             <?php
                                             }
                                             ?>
