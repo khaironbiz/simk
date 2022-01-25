@@ -4,5 +4,6 @@ include('usia.php');
 include('ruangan.php');
 include('diagnosa.php');
 include('shift.php');
+include('pasien.php');
 
 ?>

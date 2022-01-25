@@ -1,21 +1,6 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active"><?= $judul; ?></li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
+    
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -35,7 +20,7 @@
             unset($_SESSION['status']);
             }
             ?>
-            <div class="card">
+            <div class="card mt-2">
                 <div class="card-header">
                     <?php
                     include('menu/pasien-detail.php')
@@ -43,9 +28,9 @@
                 </div>
                 <div class="card-body">
                     <div class="card-header row mb-1 bg-black">
-                        <div class="col-6"><h4>Data Dasar</h4></div>
+                        <div class="col-6">Data Dasar</div>
                         <div class="col-6 text-right">
-                            <a href="edit.php?key=<?=$_GET['key']; ?>" class="btn btn-success btn-sm">Edit</a>
+                            <a href="edit.php?key=<?=$_GET['key']; ?>" class="btn btn-success btn-xs">Edit Data Dasar</a>
                         </div>
                     </div>
                     
@@ -137,6 +122,67 @@
                             </table>
                         </div>
                         <div class="col-md-6">
+                            <table class="table table-sm">
+                                <tr>
+                                    <div class="row">
+                                        <div class="col-md-6"><b>Klinis</b></div>
+                                        <div class="col-md-6 text-right"><a href="klinis.php?key=<?= $_GET['key']; ?>" class="btn btn-info btn-sm">Update</a></div>
+                                    </div>
+                                    
+                                    
+                                </tr>
+                                <tr>
+                                    <td>Diagnosa</td>
+                                    <td>:</td>
+                                    <td>CVD SI</td>
+                                </tr>
+                                <tr>
+                                    <td>DPJP</td>
+                                    <td>:</td>
+                                    <td>DR. dr. Andi Basuki Prima Birawa Sp.S(K), MARS</td>
+                                </tr>
+                                <tr>
+                                    <td>Konsultasi</td>
+                                    <td>:</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <table class="table table-sm">
+                                <tr>
+                                    <div class="row">
+                                        <div class="col-md-6"><b>Keperawatan</b></div>
+                                        <div class="col-md-6 text-right"><a href="" class="btn btn-info btn-sm">Update</a></div>
+                                    </div>
+                                    
+                                    
+                                </tr>
+                                <tr>
+                                    <td>PP</td>
+                                    <td>:</td>
+                                    <td>Asih Dwihayu Pangesti, S.Kep., Ners</td>
+                                </tr>
+                                <tr>
+                                    <td>Barthel Index</td>
+                                    <td>:</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>NEWSS</td>
+                                    <td>:</td>
+                                    <td></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>Label Risiko</td>
+                                    <td>:</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+
+                        </div>
+                        <div class="col-md-6">
                             <table class="table table-responsive-sm">
                                 <tr>
                                     <th colspan="3">
@@ -186,10 +232,15 @@
                                 </tr>
                             </table>
                         </div>
+                        
                     </div>
                     
                 </div>
                 <!-- /.card-body -->
+                <div class="card-footer text-center">
+                    <a href="detail.php?key=<?= $data['has_pasien_db'];?>" class="btn btn-danger btn-sm">Keluar</a>
+                    <a href="pasien-ruangan.php" class="btn btn-primary btn-sm">Back</a>
+                </div>
             </div>
             <!-- /.card -->
           </div>

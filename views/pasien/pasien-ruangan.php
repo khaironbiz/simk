@@ -84,11 +84,11 @@
                       </form>
                       <?php
                       }
-                    ?>
+                      ?>
                       
                     </div>
                   </div>
-                    
+                  <div class="row table-responsive">
                     <?php
                       if($data_pengguna['id_ruangan'] < 1){
                       }else{
@@ -96,11 +96,11 @@
                     <table id="example1" class="table table-sm table-hover">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Identitas</th>
-                                <th>Administrasi</th>
-                                <th>Klinis</th>
-                                <th>Aksi</th>
+                                <th width="2%">#</th>
+                                <th width="32%">Identitas</th>
+                                <th width="32%">Administrasi</th>
+                                <th width="31%">Klinis</th>
+                                <th width="3%">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -167,14 +167,14 @@
                                       <td><?= $data['id_kamar']." . ".$data['id_bed']?></td>
                                     </tr>
                                     <tr>
-                                      <td>Masuk Kamar</td>
+                                      <td>DPJP</td>
                                       <td>:</td>
-                                      <td><?= $data['waktu_masuk_bed'] ?></td>
+                                      <td></td>
                                     </tr>
                                     <tr>
-                                      <td>LOS Ruangan</td>
+                                      <td>Konsultasi</td>
                                       <td>:</td>
-                                      <td><?= usia($data['waktu_masuk_bed'])->d ." Hari"?></td>
+                                      <td></td>
                                     </tr>
                                   </table>
                                 </td>
@@ -209,27 +209,19 @@
                                 </td>
                                 
                                 <td>
-                                  <a href="detail.php?key=<?= $data['has_pasien_db'];?>" class="btn btn-info btn-sm">Detail</a>
-                                  
+                                  <a href="detail.php?key=<?= $data['has_px_daftar'];?>" class="btn btn-info btn-sm mb-1">Detail</a>
                                 </td>
                             </tr>
                             <?php
                                 }
                             ?>
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>#</th>
-                                <th>Identitas</th>
-                                <th>Administrasi</th>
-                                <th>Klinis</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </tfoot>
+                        
                     </table>
                     <?php
                       }
                     ?>
+                  </div>
                 </div>
                 <!-- /.card-body -->
             </div>
