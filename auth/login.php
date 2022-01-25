@@ -32,11 +32,13 @@ if (isset($_POST['username'])) {
             // the message
             $email_penerima = $nira['email'];
             $nama_penerima  = $nira['nama'];
-            $msg = "First line of text\nSecond line of text";
-            // use wordwrap() if lines are longer than 70 characters
-            $msg = wordwrap($msg,70);
-            // send email
-            mail($email_penerima,"Judul Email",$msg);
+            $to             = $email_penerima;
+            $subject        = "My subject";
+            $txt            = "Hello world!";
+            $headers        = "From: admin@ppni.or.id" . "\r\n" .
+            "CC: khaironbiz@yahoo.com";
+
+            mail($to,$subject,$txt,$headers);
                         
             header("location: $site_url/regulasi/"); // Mengarahkan ke halaman profil
         }elseif ($rows < 1) {
