@@ -126,7 +126,7 @@
                                 <tr>
                                     <div class="row">
                                         <div class="col-md-6"><b>Klinis</b></div>
-                                        <div class="col-md-6 text-right"><a href="klinis.php?key=<?= $_GET['key']; ?>" class="btn btn-info btn-sm">Update</a></div>
+                                        <div class="col-md-6 text-right"><a href="klinis.php?key=<?= $has_px_daftar; ?>&id=<?= $_GET['key']?>" class="btn btn-info btn-sm">Update</a></div>
                                     </div>
                                     
                                     

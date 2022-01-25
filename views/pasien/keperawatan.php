@@ -24,7 +24,7 @@
                 <div class="card-header">
                     <?php
                     include('menu/pasien-detail.php');
-                    include('aksi/klinis.php');
+                    include('aksi/keperawatan.php');
                     ?>
                 </div>
                 <div class="card-body">
@@ -35,15 +35,15 @@
                         ?>
                         <div class="col-md-6">
                             <form action="" method="POST">
-                                <div class="form-group row">
+                                <div class="row">
                                     <label class="col-sm-2 col-form-label">Perawat Primer</label>
                                     <div class="col-sm-10">
-                                        <input type="hidden" name="update_dokter" class="form-control" value="<?= $_GET['key']?>">
-                                        <select class="form-control form-control-sm" name="dx_medis">
-                                            <option value="<?= $pasien_daftar['dx_medis']?>"><?= dx_medis($pasien_daftar['dx_medis'])?></option>
+                                        <input type="hidden" name="update_kamar" class="form-control" value="<?= $_GET['key']?>">
+                                        <select class="form-control form-control-sm" name="pp" required>
+                                            <option value="<?= $data_pasien_ruangan['pp']?>"><?= perawat($data_pasien_ruangan['pp'])?></option>
                                             <?php
-                                            $cari_nira    = mysqli_query($host,"SELECT * FROM nira WHERE ruangan = '$ruanganku' ORDER BY nama ASC ");
-                                            while($data_nira  = mysqli_fetch_array($cari_nira)){
+                                            $cari_nira          = mysqli_query($host,"SELECT * FROM nira WHERE ruangan = '$ruanganku' ORDER BY nama ASC ");
+                                            while($data_nira    = mysqli_fetch_array($cari_nira)){
                                             ?>
                                             <option value="<?= $data_nira['nira']?>"><?= $data_nira['nama']?></option>
                                             <?php
@@ -52,20 +52,30 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">DPJP</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-control form-control-sm" name="dpjp">
-                                            <option value="<?=$pasien_daftar['dpjp'] ?>"><?= dokter($pasien_daftar['dpjp']); ?></option>
+                                <div class="row">
+                                    <label class="col-sm-2">Kamar</label>
+                                    <div class="col-sm-4">
+                                        <select class="form-control form-control-sm" name="id_kamar">
+                                            <option value="<?=  $data_pasien_ruangan['id_kamar']?>"><?=  $data_pasien_ruangan['id_kamar']?></option>
                                         <?php
-                                            $cari_dokter    = mysqli_query($host,"SELECT * FROM dokter where blokir='0'");
-                                            while($data_dokter    = mysqli_fetch_array($cari_dokter)){
+                                            $id_ruangan         = $data_pasien_ruangan['id_ruangan'];
+                                            $cari_kamar         = mysqli_query($host,"SELECT * FROM ruangan_kamar where id_ruangan='$id_ruangan'");
+                                            while($data_kamar   = mysqli_fetch_array($cari_kamar)){
                                         ?>
-                                        <option value="<?= $data_dokter['id_dokter']?>"><?= $data_dokter['nama_dokter']?></option>
+                                        <option value="<?= $data_kamar['no_kamar']?>"><?= $data_kamar['no_kamar']?></option>
                                         <?php
                                             }
                                         ?>
                                         </select>
+                                        
+                                    </div>
+                                    <label class="col-sm-2">Bed</label>
+                                    <div class="col-sm-4">
+                                        <select class="form-control form-control-sm" name="id_bed">
+                                            <option value="<?=  $data_pasien_ruangan['id_bed']?>"><?=  $data_pasien_ruangan['id_bed']?></option>
+                                        
+                                        </select>
+                                        
                                     </div>
                                 </div>
                                 <div class="row">
@@ -75,21 +85,68 @@
                         </div>
                         <div class="col-md-6 table-responsive">
                             <form action="" method="POST">
-                                <div class="form-group row">
-                                    <label class="col-sm-2 col-form-label">Konsultasi</label>
-                                    <div class="col-sm-8">
-                                        <select class="form-control form-control-sm" name="id_dokter" required>
+                                <div class="row">
+                                    <label class="col-sm-3 col-form-label">Diagnosa Kep</label>
+                                    <div class="col-sm-4">
+                                        <select class="form-control form-control-sm" name="id_dx_kep" required>
                                             <option value="">---pilih---</option>
                                             <?php
-                                                $cari_dokter    = mysqli_query($host,"SELECT * FROM dokter where blokir='0'");
+                                                $cari_dokter    = mysqli_query($host,"SELECT * FROM dx_kep ORDER BY dx_kep ASC");
                                                 while($data_dokter    = mysqli_fetch_array($cari_dokter)){
                                             ?>
-                                            <option value="<?= $data_dokter['id_dokter']?>"><?= $data_dokter['nama_dokter']?></option>
+                                            <option value="<?= $data_dokter['id']?>"><?= $data_dokter['dx_kep']?></option>
                                             <?php
                                                 }
                                             ?>
                                         </select>
-                                        <input type="hidden" class="form-control" name="add_konsultasi" value="<?= $_GET['key']?>">
+                                        <input type="hidden" class="form-control" name="add_dx_kep" value="<?= $_GET['key']?>">
+                                    </div>
+                                    
+                                </div>
+                                <div class="row">
+                                    <label class="col-sm-3 col-form-label">Tanggal Ditegakkan</label>
+                                    <div class="col-2">
+                                        <select class="form-control form-control-sm" required name="tgl">
+                                            <option value='<?= date('d')?>'><?= date('d')?></option>
+                                                <?php
+                                                $a    =1;
+                                                while($a <= 31){
+                                                ?>
+                                                <option value="<?= $a?>"><?= $a?></option>
+                                                <?php
+                                                $a++;
+                                                }
+                                                ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-2">
+                                        <select class="form-control form-control-sm" required name="bln">
+                                            <option value='<?= date('m')?>'><?= date('m')?></option>
+                                            <?php
+                                            $b    =1;
+                                            while($b <= 12){
+                                            ?>
+                                            <option value="<?= $b?>"><?= $b?></option>
+                                            <?php
+                                            $b++;
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-2">
+                                        <select class="form-control form-control-sm" required name="th">
+                                            <option value='<?= date('Y')?>'><?= date('Y')?></option>
+                                            <?php
+                                            $c      =date('Y')-1;
+                                            $d      = date('Y');
+                                            while($c <= $d){
+                                            ?>
+                                            <option value="<?= $c?>"><?= $c?></option>
+                                            <?php
+                                            $c++;
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                     <div class="col-sm-2">
                                         <button class="btn btn-sm btn-primary">Tambah</button>
@@ -99,16 +156,18 @@
                             <table class="table table-hover">
                                 <tr>
                                     <th>#</th>
-                                    <th>Nama Dokter</th>
+                                    <th>DX Kep</th>
+                                    <td>Ditegakkan</td>
+                                    <td>Teratasi</td>
                                 </tr>
                                 <?php
                                 $urut                   = 1;
-                                $cari_konsultasi        = mysqli_query($host,"SELECT * FROM pasien_dokter WHERE key_trx = '$key_trx'");
-                                while($data_konsultasi  = mysqli_fetch_array($cari_konsultasi)){
+                                $cari_dx_kep        = mysqli_query($host,"SELECT * FROM pasien_dx_kep WHERE key_trx = '$key_trx_ruangan'");
+                                while($data_dx_kep  = mysqli_fetch_array($cari_dx_kep)){
                                 ?>
                                 <tr>
                                     <td><?= $urut++?></td>
-                                    <td><?= dokter($data_konsultasi['id_dokter'])?></td>
+                                    <td><?= $data_dx_kep['id_dx_kep']?></td>
                                     <td></td>
                                 </tr>
                                 <?php

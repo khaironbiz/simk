@@ -117,7 +117,7 @@
                 <!-- /.card-body -->
                 <div class="card-footer text-center">
                     
-                    <a href="detail.php?key=<?= $_GET['key']?>" class="btn btn-primary btn-sm">Back</a>
+                    <a href="detail.php?key=<?= $_GET['id']?>" class="btn btn-primary btn-sm">Back</a>
                 </div>
             </div>
             <!-- /.card -->

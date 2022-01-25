@@ -209,7 +209,7 @@
                                 </td>
                                 
                                 <td>
-                                  <a href="detail.php?key=<?= $data['has_px_daftar'];?>" class="btn btn-info btn-sm mb-1">Detail</a>
+                                  <a href="detail.php?key=<?= $data['has_pasien_daftar_ruangan'];?>" class="btn btn-info btn-sm mb-1">Detail</a>
                                 </td>
                             </tr>
                             <?php
