@@ -1,6 +1,7 @@
 <?php
 include 'site.php';
 include 'koneksi.php';
+
 session_start(); // Memulai Session
 $error = ''; // Variabel untuk menyimpan pesan error
 if (isset($_POST['username'])) {
@@ -27,7 +28,16 @@ if (isset($_POST['username'])) {
             $_SESSION['email'] = $nira['email']; // Membuat Sesi/session
             $_SESSION['status']="Login Suksess";
             $_SESSION['status_info']="success";
-            
+            //send email
+            // the message
+            $email_penerima = $nira['email'];
+            $nama_penerima  = $nira['nama'];
+            $msg = "First line of text\nSecond line of text";
+            // use wordwrap() if lines are longer than 70 characters
+            $msg = wordwrap($msg,70);
+            // send email
+            mail($email_penerima,"Judul Email",$msg);
+                        
             header("location: $site_url/regulasi/"); // Mengarahkan ke halaman profil
         }elseif ($rows < 1) {
             $_SESSION['status']="Password tidak sesuai";

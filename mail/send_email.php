@@ -9,7 +9,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 //Load Composer's autoloader
-require 'vendor/autoload.php';
+require '../vendor/mail/autoload.php';
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
 try {
@@ -30,13 +30,14 @@ try {
     // $mail->addCC('cc@example.com');
     // $mail->addBCC('bcc@example.com');
     //Attachments
-    $mail->addAttachment('assets/file/SertifikatHIPENI.pdf');         //Add attachments
+    $mail->addAttachment('../assets/files/regulasi/17db1fa0722d82774b5d423559d611f7.pdf');         //Add attachments
+    $mail->addAttachment('../assets/files/regulasi/9734d89f9816ebce9fa4697e5bb4a0ca.pdf');  
     // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Here is the subject';
-    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+    $mail->Subject = 'Regulasi';
+    $mail->Body    = 'Berikut kami kirimkan <b>regulasi!</b>';
+    //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
     $mail->send();
     //echo 'Message has been sent';
 } 
