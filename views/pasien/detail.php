@@ -140,8 +140,9 @@
                                 </tr>
                                 <tr>
                                     <td  width="20%">Diagnosa</td>
-                                    <td>:</td>
-                                    <td><?= dx_medis($pasien_daftar['dx_medis'])?></td>
+                                    <td  width="2%">:</td>
+                                    <td  width="78%"><?= dx_medis($pasien_daftar['dx_medis'])?></td>
+                                    
                                 </tr>
                                 <tr>
                                     <td>DPJP</td>
@@ -187,14 +188,30 @@
                                 <tr>
                                     <td>Barthel Index</td>
                                     <td>:</td>
-                                    <td></td>
+                                    <?php
+                                    $sql_bi     = mysqli_query($host,"SELECT * FROM pasien_bi WHERE key_trx='$key_trx_ruangan' ORDER BY id_pasien_bi DESC LIMIT 1");
+                                    $count_bi   = mysqli_num_rows($sql_bi);
+                                    if($count_bi>0){
+                                        $data_bi    = mysqli_fetch_array($sql_bi);
+                                        if($data_bi['total'] < 5){
+                                            $keterangan = "Ketergantungan Total";
+                                        }elseif($data_bi['total'] < 9){
+                                            $keterangan = "Ketergantungan Berat";
+                                        }elseif($data_bi['total'] < 12){
+                                            $keterangan = "Ketergantungan Sedang";
+                                        }elseif($data_bi['total'] < 20){
+                                            $keterangan = "Ketergantungan Ringan";
+                                        }else{
+                                            $keterangan = "Mandiri";
+                                            
+                                        }
+                                    }else{
+                                        $keterangan = "NULL";
+                                    }
+                                    
+                                    ?>
+                                    <td><?= $keterangan; ?></td>
                                 </tr>
-                                <tr>
-                                    <td>NEWSS</td>
-                                    <td>:</td>
-                                    <td></td>
-                                </tr>
-                                
                                 <tr>
                                     <td>Label Risiko</td>
                                     <td>:</td>

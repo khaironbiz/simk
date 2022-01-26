@@ -277,6 +277,107 @@
                                     ?>
                                 </table>
                             </div>
+                            <div class="col-md-6 table-responsive">
+                                <form action="" method="POST">
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label">Barthel Index</label>
+                                        <div class="col-sm-2">
+                                            <input type="number" class="form-control form-control-sm" name="total" max="20">
+                                            <input type="hidden" class="form-control" name="add_bi" value="<?= $_GET['key']?>">
+                                        </div>
+                                        <label class="col-sm-2 col-form-label">Jam</label>
+                                        <div class="col-sm-2">
+                                            <input type="time" class="form-control form-control-sm" name="jam" value="<?= date('H:i')?>">
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label">Tanggal</label>
+                                        <div class="col-2">
+                                            <select class="form-control form-control-sm" required name="tgl">
+                                                <option value='<?= date('d')?>'><?= date('d')?></option>
+                                                    <?php
+                                                    $a    =1;
+                                                    while($a <= 31){
+                                                    ?>
+                                                    <option value="<?= $a?>"><?= $a?></option>
+                                                    <?php
+                                                    $a++;
+                                                    }
+                                                    ?>
+                                            </select>
+                                        </div>
+                                        <div class="col-2">
+                                            <select class="form-control form-control-sm" required name="bln">
+                                                <option value='<?= date('m')?>'><?= date('m')?></option>
+                                                <?php
+                                                $b    =1;
+                                                while($b <= 12){
+                                                ?>
+                                                <option value="<?= $b?>"><?= $b?></option>
+                                                <?php
+                                                $b++;
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                        <div class="col-2">
+                                            <select class="form-control form-control-sm" required name="th">
+                                                <option value='<?= date('Y')?>'><?= date('Y')?></option>
+                                                <?php
+                                                $c      =date('Y')-1;
+                                                $d      = date('Y');
+                                                while($c <= $d){
+                                                ?>
+                                                <option value="<?= $c?>"><?= $c?></option>
+                                                <?php
+                                                $c++;
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <button class="btn btn-sm btn-primary">Tambah</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <table class="table table-hover">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Waktu Periksa</th>
+                                        <td>Skore</td>
+                                        <td>Keterangan</td>
+                                    </tr>
+                                    <?php
+                                    $norut          = 1;
+                                    $cari_bi        = mysqli_query($host,"SELECT * FROM pasien_bi WHERE key_trx = '$key_trx_ruangan'");
+                                    while($data_bi  = mysqli_fetch_array($cari_bi)){
+                                    ?>
+                                    <tr>
+                                        <td><?= $norut++?></td>
+                                        <td><?= $data_bi['waktu_periksa']?></td>
+                                        <td><?= $data_bi['total']?></td>
+                                        <td>
+                                            <?php 
+                                            if($data_bi['total'] < 5){
+                                                echo "Ketergantungan Total";
+                                            }elseif($data_bi['total'] < 9){
+                                                echo "Ketergantungan Berat";
+                                            }elseif($data_bi['total'] < 12){
+                                                echo "Ketergantungan Sedang";
+                                            }elseif($data_bi['total'] < 20){
+                                                echo "Ketergantungan Ringan";
+                                            }else{
+                                                echo "Mandiri";
+                                            }
+                                            ?>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    ?>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <!-- /.card-body -->

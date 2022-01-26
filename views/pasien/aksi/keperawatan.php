@@ -80,5 +80,35 @@ if(isset($_POST['add_morse'])){
         echo "<script>document.location=\"$site_url/pasien/keperawatan.php?key=$has_px_ruangan\"</script>";
     }
 }
+if(isset($_POST['add_bi'])){
+    $has_px_ruangan     = $_POST['add_bi'];
+    $th                 = $_POST['th'];
+    $bln                = $_POST['bln'];
+    $tgl                = $_POST['tgl'];
+    $jam                = $_POST['jam'];
+    $waktu_periksa      = $th."-".$bln."-".$tgl."-".$jam;
+    $hari_ini           = date('Y-m-d H:i:s');
+    $key_trx_ruangan    = key_trx_ruangan($has_px_ruangan);
+    $nrm                = pasien_key_trx($key_trx_ruangan);
+    $total              = $_POST['total'];
+    $has_pasien_bi   = md5(uniqid());
+    $tambah_bi       = mysqli_query($host,"INSERT INTO pasien_bi SET 
+                            total               = '$total',
+                            waktu_periksa       = '$waktu_periksa',
+                            key_trx             = '$key_trx_ruangan',
+                            nrm                 = '$nrm',
+                            created_by          = '$user_check',
+                            created_at          = '$hari_ini',
+                            has_pasien_bi    = '$has_pasien_bi'");
+    if($tambah_bi){
+        $_SESSION['status']="Data sukses disimpan";
+        $_SESSION['status_info']="success";
+        echo "<script>document.location=\"$site_url/pasien/keperawatan.php?key=$has_px_ruangan\"</script>";
+    }else{
+        $_SESSION['status']="Data gagal disimpan";
+        $_SESSION['status_info']="danger";
+        echo "<script>document.location=\"$site_url/pasien/keperawatan.php?key=$has_px_ruangan\"</script>";
+    }
+}
 
 ?>

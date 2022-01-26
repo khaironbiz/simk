@@ -209,15 +209,41 @@
                                                         <td>:</td>
                                                         <td><?= dx_medis($data['dx_medis'])?></td>
                                                     </tr>
+                                                    <?php
+                                                    $key_trx            = $data['key_trx'];
+                                                    $sql_morse          = mysqli_query($host,"SELECT * FROM pasien_morse WHERE key_trx='$key_trx' ORDER BY id_pasien_morse DESC LIMIT 1");
+                                                    $count_morse        = mysqli_num_rows($sql_morse);
+                                                    if($count_morse >0){
+                                                        $data_morse     = mysqli_fetch_array($sql_morse);
+                                                        $morse          = $data_morse['total'];
+                                                    }else{
+                                                        $morse          = "NULL";
+                                                    }
+                                                    
+                                                    
+                                                    ?>
                                                     <tr>
-                                                        <td>Label Risiko</td>
+                                                        <td>Risiko Jatuh</td>
                                                         <td>:</td>
-                                                        <td><?= $data['pp']?></td>
+                                                        <td><?= $morse?></td>
                                                     </tr>
+                                                    <?php
+                                                    $key_trx    = $data['key_trx'];
+                                                    $sql_bi     = mysqli_query($host,"SELECT * FROM pasien_bi WHERE key_trx='$key_trx' ORDER BY id_pasien_bi DESC LIMIT 1");
+                                                    $count_bi   = mysqli_num_rows($sql_bi);
+                                                    if($count_bi >0){
+                                                        $data_bi    = mysqli_fetch_array($sql_bi);
+                                                        $bi         = $data_bi['total'];
+                                                    }else{
+                                                        $bi         = "NULL";
+                                                    }
+                                                    
+                                                    
+                                                    ?>
                                                     <tr>
                                                         <td>Barthel Index</td>
                                                         <td>:</td>
-                                                        <td><?= $data['pp']?></td>
+                                                        <td><?= $bi?></td>
                                                     </tr>
                                                 </table>
                                             </td>
