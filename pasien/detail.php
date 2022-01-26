@@ -12,7 +12,9 @@ $data_pasien    = mysqli_fetch_array($sql_pasien);
 $key_trx        = key_trx($has_px_daftar);
 $cari_pendaftaran= mysqli_query($host,"SELECT * FROM pasien_daftar WHERE key_trx='$key_trx'");
 $pasien_daftar  = mysqli_fetch_array($cari_pendaftaran);
-
+//pasien ruangan
+$cari_px_ruangan    = mysqli_query($host,"SELECT * FROM pasien_daftar_ruangan WHERE has_pasien_daftar_ruangan = '$key'");
+$pasien_ruangan     = mysqli_fetch_array($cari_px_ruangan);
 if($count_pasien < 1){
     $judul      = "Page Not Found";
     $template   = "../theme/table.php";

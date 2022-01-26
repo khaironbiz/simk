@@ -2,12 +2,14 @@
                     Pasien Baru
                 </button>
                 <form action="" method="POST">
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header bg-dark">
                                     <h5 class="modal-title" id="exampleModalLabel">Tambah Pasien</h5>
-                                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                                    <button type="button" class="close text-white" data-dismiss="modal"
+                                        aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
@@ -18,21 +20,27 @@
                                             <td>:</td>
                                             <td colspan="4">
                                                 <div class="row">
-                                                    <div class="col-4"><input type="number" class="form-control form-control-sm" placeholder="0000 sd 9999" name="nrm1" required min="0000" max="9999"></div>
-                                                    <div class="col-4"><input type="number" class="form-control form-control-sm" placeholder="00 sd 99" name="nrm2" required min="00" max="99"></div>
-                                                    <div class="col-4"><input type="number" class="form-control form-control-sm" placeholder="00 sd 99" name="nrm3" required min="00" max="99"></div>
-                                                    
+                                                    <div class="col-md-3 mb-1"><input type="number"
+                                                            class="form-control form-control-sm"
+                                                            placeholder="0000 sd 9999" name="nrm1" required min="0000"
+                                                            max="9999"></div>
+                                                    <div class="col-md-2 mb-1"><input type="number"
+                                                            class="form-control form-control-sm" placeholder="00 sd 99"
+                                                            name="nrm2" required min="00" max="99"></div>
+                                                    <div class="col-md-2 mb-1"><input type="number"
+                                                            class="form-control form-control-sm" placeholder="00 sd 99"
+                                                            name="nrm3" required min="00" max="99"></div>
                                                 </div>
-                                                
-                                                <input type="hidden" class="form-control form-control-sm" name="add-pasien" value="<?= uniqid() ?>">
+                                                <input type="hidden" class="form-control form-control-sm"
+                                                    name="add-pasien" value="<?= uniqid() ?>">
                                             </td>
-                                            
                                         </tr>
                                         <tr>
                                             <td>Nama</td>
                                             <td>:</td>
                                             <td>
-                                                <input type="text" class="form-control form-control-sm" placeholder="nama pasien" name="nama_pasien" required>
+                                                <input type="text" class="form-control form-control-sm"
+                                                    placeholder="nama pasien" name="nama_pasien" required>
                                             </td>
                                             <td>JK</td>
                                             <td>:</td>
@@ -43,21 +51,23 @@
                                                     $sql_sex  = mysqli_query($host, "SELECT * FROM db_sub_master WHERE id_master='4'");
                                                     while($sex    = mysqli_fetch_array( $sql_sex)){
                                                     ?>
-                                                    <option value="<?= $sex['id']?>"><?= $sex['nama_submaster']?></option>
+                                                    <option value="<?= $sex['id']?>"><?= $sex['nama_submaster']?>
+                                                    </option>
                                                     <?php
                                                     }
                                                     ?>
                                                 </select>
                                             </td>
                                         </tr>
-                                        
+
                                         <tr>
-                                            <td>Tgl Lahir</td>
-                                            <td>:</td>
+                                            <td width="10%">Tgl Lahir</td>
+                                            <td width="2%">:</td>
                                             <td>
                                                 <div class="row">
-                                                    <div class="col-4">
-                                                        <select class="form-control form-control-sm" required name="tgl">
+                                                    <div class="col-md-4 mb-1">
+                                                        <select class="form-control form-control-sm" required
+                                                            name="tgl">
                                                             <option value=''>tgl</option>
                                                             <?php
                                                             $a    =1;
@@ -70,8 +80,9 @@
                                                             ?>
                                                         </select>
                                                     </div>
-                                                    <div class="col-4">
-                                                        <select class="form-control form-control-sm" required name="bln">
+                                                    <div class="col-md-4 mb-1">
+                                                        <select class="form-control form-control-sm" required
+                                                            name="bln">
                                                             <option value=''>bln</option>
                                                             <?php
                                                             $b    =1;
@@ -84,7 +95,7 @@
                                                             ?>
                                                         </select>
                                                     </div>
-                                                    <div class="col-4">
+                                                    <div class="col-md-4 mb-1">
                                                         <select class="form-control form-control-sm" required name="th">
                                                             <option value=''>th</option>
                                                             <?php
@@ -103,21 +114,24 @@
                                             </td>
                                             <td>NIK</td>
                                             <td>:</td>
-                                            <td><input type="number" class="form-control form-control-sm" placeholder="nomor ktp" name="nik"></td>
-                                                
+                                            <td><input type="number" class="form-control form-control-sm"
+                                                    placeholder="nomor ktp" name="nik"></td>
+
                                         </tr>
-                                        
+
                                         <tr>
                                             <td>Status</td>
                                             <td>:</td>
                                             <td>
-                                                <select class="form-control form-control-sm" name="status_nikah" required>
+                                                <select class="form-control form-control-sm" name="status_nikah"
+                                                    required>
                                                     <option value="">--status pernikahan--</option>
                                                     <?php
                                                     $sql_nikah  = mysqli_query($host, "SELECT * FROM db_sub_master WHERE id_master='7'");
                                                     while($nikah    = mysqli_fetch_array( $sql_nikah)){
                                                     ?>
-                                                    <option value="<?= $nikah['id']?>"><?= $nikah['nama_submaster']?></option>
+                                                    <option value="<?= $nikah['id']?>"><?= $nikah['nama_submaster']?>
+                                                    </option>
                                                     <?php
                                                     }
                                                     ?>
@@ -132,14 +146,15 @@
                                                     $sql_nikah  = mysqli_query($host, "SELECT * FROM db_sub_master WHERE id_master='3'");
                                                     while($nikah    = mysqli_fetch_array( $sql_nikah)){
                                                     ?>
-                                                    <option value="<?= $nikah['id']?>"><?= $nikah['nama_submaster']?></option>
+                                                    <option value="<?= $nikah['id']?>"><?= $nikah['nama_submaster']?>
+                                                    </option>
                                                     <?php
                                                     }
                                                     ?>
                                                 </select>
                                             </td>
                                         </tr>
-                                        
+
                                         <tr>
                                             <td>Ruangan</td>
                                             <td>:</td>
@@ -175,20 +190,25 @@
                                         <tr>
                                             <td>Masuk RS</td>
                                             <td>:</td>
-                                            <td><input class="form-control form-control-sm" type="date" name="date_rs"></td>
+                                            <td><input class="form-control form-control-sm" type="date" name="date_rs">
+                                            </td>
                                             <td>Jam</td>
                                             <td>:</td>
-                                            <td><input class="form-control form-control-sm" type="time" name="time_rs"></td>
+                                            <td><input class="form-control form-control-sm" type="time" name="time_rs">
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Masuk Bed</td>
                                             <td>:</td>
-                                            <td><input class="form-control form-control-sm" type="date" name="date_bed"></td>
+                                            <td><input class="form-control form-control-sm" type="date" name="date_bed">
+                                            </td>
                                             <td>Jam</td>
-                                            <td>:</td>
-                                            <td><input class="form-control form-control-sm" type="time" name="time_bed"></td>
+                                            <td width="2%">:</td>
+                                            <td width="30%"><input class="form-control form-control-sm" type="time"
+                                                    name="time_bed">
+                                            </td>
                                         </tr>
-                                        
+
                                     </table>
                                 </div>
                                 <div class="modal-footer bg-secondary">

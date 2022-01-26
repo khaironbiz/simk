@@ -38,7 +38,7 @@
                         <div class="col-md-6">
                             <table class="table table-sm">
                                 <tr>
-                                    <td width="150px">NRM</td>
+                                    <td width="20%">NRM</td>
                                     <td>: <?= $data_pasien['nrm'];?></td>
                                 </tr>
                                 <tr>
@@ -91,32 +91,39 @@
                         <div class="col-md-6">
                             <table class="table table-sm">
                                 <tr>
-                                    <td width="150px">Pendidikan</td>
-                                    <td>: </td>
+                                    <td  width="20%">Pendidikan</td>
+                                    <td  width="2%">: </td>
+                                    <td  width="78%"></td>
                                 </tr>
                                 <tr>
                                     <td>Pekerjaan</td>
-                                    <td>: </td>
+                                    <td  width="2%">:</td>
+                                    <td  width="78%"></td>
                                 </tr>
                                 <tr>
                                     <td>Alamat</td>
-                                    <td>:</td>
+                                    <td  width="2%">: </td>
+                                    <td  width="78%"></td>
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td>:</td>
+                                    <td  width="2%">: </td>
+                                    <td  width="78%"></td>
                                 </tr>
                                 <tr>
                                     <td>No Telfon</td>
-                                    <td></td>           
+                                    <td  width="2%">: </td>
+                                    <td  width="78%"></td>
                                 </tr>
                                 <tr>
                                     <td>HP</td>
-                                    <td>: <?= $data_pasien['nik'];?></td>
+                                    <td  width="2%">:</td>
+                                    <td  width="78%"><?= $data_pasien['hp'];?></td>
                                 </tr>
                                 <tr>
                                     <td>Email</td>
-                                    <td>:</td>
+                                    <td  width="2%">:</td>
+                                    <td  width="78%"><?= $data_pasien['email'];?></td>
                                 </tr>
                                 
                             </table>
@@ -132,7 +139,7 @@
                                     
                                 </tr>
                                 <tr>
-                                    <td>Diagnosa</td>
+                                    <td  width="20%">Diagnosa</td>
                                     <td>:</td>
                                     <td><?= dx_medis($pasien_daftar['dx_medis'])?></td>
                                 </tr>
@@ -173,9 +180,9 @@
                                     
                                 </tr>
                                 <tr>
-                                    <td>PP</td>
-                                    <td>:</td>
-                                    <td>Asih Dwihayu Pangesti, S.Kep., Ners</td>
+                                    <td width="20%">PP</td>
+                                    <td  width="2%">:</td>
+                                    <td  width="78%"><?= perawat($pasien_ruangan['pp'])?></td>
                                 </tr>
                                 <tr>
                                     <td>Barthel Index</td>
@@ -252,7 +259,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer text-center">
-                    <a href="detail.php?key=<?= $data['has_pasien_db'];?>" class="btn btn-danger btn-sm">Keluar</a>
+                    
                     <a href="pasien-ruangan.php" class="btn btn-primary btn-sm">Back</a>
                 </div>
             </div>

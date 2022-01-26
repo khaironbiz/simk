@@ -23,6 +23,10 @@ if(isset($_POST['update_kamar'])){
 }
 if(isset($_POST['add_dx_kep'])){
     $has_px_ruangan     = $_POST['add_dx_kep'];
+    $th                 = $_POST['th'];
+    $bln                = $_POST['bln'];
+    $tgl                = $_POST['tgl'];
+    $dx_muncul          = $th."-".$bln."-".$tgl;
     $hari_ini           = date('Y-m-d H:i:s');
     $key_trx_ruangan    = key_trx_ruangan($has_px_ruangan);
     $nrm                = pasien_key_trx($key_trx_ruangan);
@@ -30,12 +34,43 @@ if(isset($_POST['add_dx_kep'])){
     $has_pasien_dx_kep  = md5(uniqid());
     $tambah_diagnosa    = mysqli_query($host,"INSERT INTO pasien_dx_kep SET 
                             id_dx_kep           = '$id_dx_kep',
+                            dx_muncul           = '$dx_muncul',
                             key_trx             = '$key_trx_ruangan',
                             nrm                 = '$nrm',
                             created_by          = '$user_check',
                             created_at          = '$hari_ini',
                             has_pasien_dx_kep   = '$has_pasien_dx_kep'");
     if($tambah_diagnosa){
+        $_SESSION['status']="Data sukses disimpan";
+        $_SESSION['status_info']="success";
+        echo "<script>document.location=\"$site_url/pasien/keperawatan.php?key=$has_px_ruangan\"</script>";
+    }else{
+        $_SESSION['status']="Data gagal disimpan";
+        $_SESSION['status_info']="danger";
+        echo "<script>document.location=\"$site_url/pasien/keperawatan.php?key=$has_px_ruangan\"</script>";
+    }
+}
+if(isset($_POST['add_morse'])){
+    $has_px_ruangan     = $_POST['add_morse'];
+    $th                 = $_POST['th'];
+    $bln                = $_POST['bln'];
+    $tgl                = $_POST['tgl'];
+    $jam                = $_POST['jam'];
+    $waktu_periksa      = $th."-".$bln."-".$tgl."-".$jam;
+    $hari_ini           = date('Y-m-d H:i:s');
+    $key_trx_ruangan    = key_trx_ruangan($has_px_ruangan);
+    $nrm                = pasien_key_trx($key_trx_ruangan);
+    $total              = $_POST['total'];
+    $has_pasien_morse   = md5(uniqid());
+    $tambah_morse       = mysqli_query($host,"INSERT INTO pasien_morse SET 
+                            total               = '$total',
+                            waktu_periksa       = '$waktu_periksa',
+                            key_trx             = '$key_trx_ruangan',
+                            nrm                 = '$nrm',
+                            created_by          = '$user_check',
+                            created_at          = '$hari_ini',
+                            has_pasien_morse    = '$has_pasien_morse'");
+    if($tambah_morse){
         $_SESSION['status']="Data sukses disimpan";
         $_SESSION['status_info']="success";
         echo "<script>document.location=\"$site_url/pasien/keperawatan.php?key=$has_px_ruangan\"</script>";
