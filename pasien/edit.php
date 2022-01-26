@@ -6,9 +6,9 @@ $key_trx_ruangan= key_trx_ruangan($key);
 $has_px_daftar  = has_px_daftar($key_trx_ruangan);
 $nrm            = pasien_daftar_has($has_px_daftar);
 
-$sql_pasien = mysqli_query($host,"SELECT * FROM pasien_db WHERE nrm='$nrm'");
-$count_pasien=mysqli_num_rows($sql_pasien);
-$data_pasien= mysqli_fetch_array($sql_pasien);
+$sql_pasien     = mysqli_query($host,"SELECT * FROM pasien_db WHERE nrm='$nrm'");
+$count_pasien   = mysqli_num_rows($sql_pasien);
+$data_pasien    = mysqli_fetch_array($sql_pasien);
 if($count_pasien <1){
     $judul      = "Page Not Found";
     $template   = "../theme/table.php";

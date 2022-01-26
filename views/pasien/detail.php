@@ -98,12 +98,12 @@
                                 <tr>
                                     <td>Pekerjaan</td>
                                     <td  width="2%">:</td>
-                                    <td  width="78%"></td>
+                                    <td  width="78%"><?= sub_master($data_pasien['pekerjaan']);?></td>
                                 </tr>
                                 <tr>
                                     <td>Alamat</td>
                                     <td  width="2%">: </td>
-                                    <td  width="78%"></td>
+                                    <td  width="78%"><?= $data_pasien['alamat'];?></td>
                                 </tr>
                                 <tr>
                                     <td></td>
