@@ -1,5 +1,6 @@
 <?php
 include('../auth/session.php');
+include('../function/function.php');
 $sql        = mysqli_query($host,"SELECT * FROM invoice WHERE id_invoice !='' ORDER BY id DESC LIMIT 20");
 $count_trx  = mysqli_num_rows($sql);
 ?>
@@ -41,7 +42,7 @@ $count_trx  = mysqli_num_rows($sql);
                             <tr>
                                 <td><?= $no++;?></td>
                                 <td><?= $data['id_invoice']?></td>
-                                <td><?= $data_pengguna['nama']?></td>
+                                <td><?= perawat($data['id_customer'])?></td>
                                 <td><?= $data['account']?></td>
                                 <td><?= $data['time']?></td>
                                 <td><?= number_format($data['biaya_real'])?></td>
