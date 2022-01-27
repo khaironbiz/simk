@@ -7,13 +7,10 @@ if (!empty($_GET['q'])){
 		while($d = mysqli_fetch_array($query)){
 			echo "<option value='$d[lokasi_kabupatenkota]&prop=$_GET[q]'>$d[lokasi_nama]</option>";
 		}
-
-
 	}
 }
 
 if (empty($_GET['kel'])){
-
 	if (!empty($_GET['kec']) and !empty($_GET['prop'])){
 		if (ctype_digit($_GET['kec']) and ctype_digit($_GET['prop'])) {
 			$query = mysqli_query($host, "SELECT * FROM id_desa where lokasi_propinsi=$_GET[prop] and lokasi_kecamatan!=0 and lokasi_kelurahan=0 and lokasi_kabupatenkota=$_GET[kec] order by lokasi_nama");

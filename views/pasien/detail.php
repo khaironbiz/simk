@@ -93,7 +93,7 @@
                                 <tr>
                                     <td  width="20%">Pendidikan</td>
                                     <td  width="2%">: </td>
-                                    <td  width="78%"></td>
+                                    <td  width="78%"><?= sub_master($data_pasien['pendidikan']);?></td>
                                 </tr>
                                 <tr>
                                     <td>Pekerjaan</td>
@@ -107,8 +107,8 @@
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td  width="2%">: </td>
-                                    <td  width="78%"></td>
+                                    <td  width="2%">:</td>
+                                    <td  width="78%"><?= kecamatan($data_pasien['kec']).", ".kota($data_pasien['kota']).", ".provinsi($data_pasien['prov'])?></td>
                                 </tr>
                                 <tr>
                                     <td>No Telfon</td>

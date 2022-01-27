@@ -177,13 +177,22 @@
                                                 <td>
                                                     <div class="row">
                                                         <div class="col-6">
-                                                            <select class="form-control form-control-sm" name="prov">
-                                                                <option value="">Provinsi</option>
-                                                            </select>
+                                                            <script src="<?= $site_url?>/assets/js/ajax_kota.js"></script>
+                                                            <select name="prop" id="prop" onchange="ajaxkota(this.value)" class="form-control form-control-sm" required>
+                                                                <option value="<?= $data_pasien['prov']; ?>"><?= provinsi($data_pasien['prov']) ?></option>
+                                                                <?php 
+                                                                $sql_prov   = mysqli_query($host,"SELECT * FROM id_desa where lokasi_kabupatenkota=0 and lokasi_kecamatan=0 and lokasi_kelurahan=0 order by lokasi_nama");
+                                                                //$sql_prov       = mysqli_query($host, "SELECT * FROM provinsi order by nama");
+                                                                    while ($dataProvinsi=mysqli_fetch_array($sql_prov)){
+                                                                        echo '<option value="'.$dataProvinsi['lokasi_propinsi'].'">'.$dataProvinsi['lokasi_nama'].'</option>';
+                                                                    }
+                                                                ?>
+                                                            <select>
+                                                            
                                                         </div>
                                                         <div class="col-6">
-                                                            <select class="form-control form-control-sm" name="kota">
-                                                                <option value="">Kota</option>
+                                                            <select name="kota" id="kota" onchange="ajaxkec(this.value)" class="form-control form-control-sm"/ required>
+                                                                <option value="<?= $data_pasien['kota']; ?>"><?= kota($data_pasien['kota']) ?></option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -232,6 +241,7 @@
                             <div class="card-footer text-center">
                                 <button type="submit" class="btn btn-success">SIMPAN</button>
                                 <a href="detail.php?key=<?= $_GET['key']?>" class="btn btn-danger">Kembali</a>
+                                
                             </div>
                         </div>
                         <!-- /.card -->
