@@ -24,7 +24,7 @@
                     <form action="" method="POST">
                         <input type="hidden" name="add_perencanaan" value="<?= uniqid()?>">
                     <div class="card-header bg-dark">
-                        <b>Jenjang Jabatan Fungsional</b>
+                        <b>Perencanaan SKP PNS</b>
                     </div>
                     <div class="card-body">
                         <?php

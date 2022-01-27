@@ -1,6 +1,6 @@
 <?php
 include("../auth/session.php");
-$judul      = "Data Base Pasien";
+$judul      = "Perencanaan SKP";
 $template   = "../theme/table.php";
 $wrapp      = "../core/wrapp.php";
 $content    = "../views/logbook/index.php";
