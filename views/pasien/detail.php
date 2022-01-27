@@ -27,27 +27,32 @@
                     ?>
                 </div>
                 <div class="card-body">
-                    <div class="card-header row mb-1 bg-black">
-                        <div class="col-6">Data Dasar</div>
-                        <div class="col-6 text-right">
-                            <a href="edit.php?key=<?=$_GET['key']; ?>" class="btn btn-success btn-xs">Edit Data Dasar</a>
-                        </div>
-                    </div>
                     
                     <div class="row">
                         <div class="col-md-6">
                             <table class="table table-sm">
                                 <tr>
+                                    <div class="row">
+                                        <div class="col-md-6"><b>Data Dasar</b></div>
+                                        <div class="col-md-6 text-right">
+                                            <a href="edit.php?key=<?=$_GET['key']; ?>" class="btn btn-success btn-sm">Update</a>
+                                        </div>
+                                    </div>
+                                </tr>
+                                <tr>
                                     <td width="20%">NRM</td>
-                                    <td>: <?= $data_pasien['nrm'];?></td>
+                                    <td  width="2%">:</td>
+                                    <td><?= $data_pasien['nrm'];?></td>
                                 </tr>
                                 <tr>
                                     <td>Nama</td>
-                                    <td>: <?= ucwords(strtolower($data_pasien['nama_pasien']));?></td>
+                                    <td  width="2%">:</td>
+                                    <td><?= ucwords(strtolower($data_pasien['nama_pasien']));?></td>
                                 </tr>
                                 <tr>
                                     <td>Jenis Kelamin</td>
-                                    <td>: 
+                                    <td  width="2%">:</td>
+                                    <td>
                                         <?php
                                             $id_sex     = $data_pasien['sex'];
                                             $sql_sex    = mysqli_query($host, "SELECT * FROM db_sub_master WHERE id='$id_sex'");
@@ -58,15 +63,18 @@
                                 </tr>
                                 <tr>
                                     <td>Tgl Lahir</td>
-                                    <td>: <?= $data_pasien['tgl_lahir'];?></td>           
+                                    <td  width="2%">:</td>
+                                    <td><?= $data_pasien['tgl_lahir'];?></td>           
                                 </tr>
                                 <tr>
                                     <td>No KTP</td>
-                                    <td>: <?= $data_pasien['nik'];?></td>
+                                    <td  width="2%">:</td>
+                                    <td><?= $data_pasien['nik'];?></td>
                                 </tr>
                                 <tr>
                                     <td>Status Menikah</td>
-                                    <td>: 
+                                    <td  width="2%">:</td>
+                                    <td> 
                                         <?php
                                             $id_status_nikah     = $data_pasien['status_nikah'];
                                             $sql_status_nikah    = mysqli_query($host, "SELECT * FROM db_sub_master WHERE id='$id_status_nikah'");
@@ -77,7 +85,8 @@
                                 </tr>
                                 <tr>
                                     <td>Agama</td>
-                                    <td>: 
+                                    <td  width="2%">:</td>
+                                    <td> 
                                         <?php
                                             $id_agama     = $data_pasien['agama'];
                                             $sql_agama    = mysqli_query($host, "SELECT * FROM db_sub_master WHERE id='$id_agama'");
@@ -86,10 +95,6 @@
                                         ?>
                                     </td>
                                 </tr>
-                            </table>
-                        </div>
-                        <div class="col-md-6">
-                            <table class="table table-sm">
                                 <tr>
                                     <td  width="20%">Pendidikan</td>
                                     <td  width="2%">: </td>
@@ -100,34 +105,16 @@
                                     <td  width="2%">:</td>
                                     <td  width="78%"><?= sub_master($data_pasien['pekerjaan']);?></td>
                                 </tr>
-                                <tr>
-                                    <td>Alamat</td>
-                                    <td  width="2%">: </td>
-                                    <td  width="78%"><?= $data_pasien['alamat'];?></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td  width="2%">:</td>
-                                    <td  width="78%"><?= kecamatan($data_pasien['kec']).", ".kota($data_pasien['kota']).", ".provinsi($data_pasien['prov'])?></td>
-                                </tr>
-                                <tr>
-                                    <td>No Telfon</td>
-                                    <td  width="2%">: </td>
-                                    <td  width="78%"></td>
-                                </tr>
+                                
                                 <tr>
                                     <td>HP</td>
                                     <td  width="2%">:</td>
                                     <td  width="78%"><?= $data_pasien['hp'];?></td>
                                 </tr>
-                                <tr>
-                                    <td>Email</td>
-                                    <td  width="2%">:</td>
-                                    <td  width="78%"><?= $data_pasien['email'];?></td>
-                                </tr>
                                 
                             </table>
                         </div>
+                        
                         <div class="col-md-6">
                             <table class="table table-sm">
                                 <tr>
@@ -135,8 +122,6 @@
                                         <div class="col-md-6"><b>Klinis</b></div>
                                         <div class="col-md-6 text-right"><a href="klinis.php?key=<?= $has_px_daftar; ?>&id=<?= $_GET['key']?>" class="btn btn-info btn-sm">Update</a></div>
                                     </div>
-                                    
-                                    
                                 </tr>
                                 <tr>
                                     <td  width="20%">Diagnosa</td>
@@ -168,17 +153,9 @@
                                 <?php
                                 }
                                 ?>
-                            </table>
-                        </div>
-                        <div class="col-md-6">
-                            <table class="table table-sm">
                                 <tr>
-                                    <div class="row">
-                                        <div class="col-md-6"><b>Keperawatan</b></div>
-                                        <div class="col-md-6 text-right"><a href="keperawatan.php?key=<?= $_GET['key']; ?>" class="btn btn-info btn-sm">Update</a></div>
-                                    </div>
-                                    
-                                    
+                                    <td colspan="2"><b>Keperawatan</b></td>
+                                    <td class="text-right"><a href="keperawatan.php?key=<?= $_GET['key']; ?>" class="btn btn-info btn-sm">Update</a></td>
                                 </tr>
                                 <tr>
                                     <td width="20%">PP</td>
@@ -213,13 +190,25 @@
                                     <td><?= $keterangan; ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Label Risiko</td>
+                                    <td>Risiko Jatuh</td>
                                     <td>:</td>
-                                    <td></td>
+                                    <?php
+                                    $cari_morse         = mysqli_query($host,"SELECT * FROM pasien_morse WHERE 
+                                                            key_trx     = '$key_trx_ruangan' ORDER BY id_pasien_morse DESC LIMIT 1");
+                                    $count_morse        = mysqli_num_rows($cari_morse);
+                                    if($count_morse>0){
+                                        $data_morse         = mysqli_fetch_array($cari_morse);
+                                        $morse              = $data_morse['total'];
+                                    }else{
+                                        $morse = "NULL";
+                                    }
+                                    
+                                    ?>
+                                    <td><button class="btn btn-sm btn-<?= label_risiko_jatuh($morse)?>"><?= risiko_jatuh($morse)?></button></td>
                                 </tr>
                             </table>
-
                         </div>
+                        
                         <div class="col-md-6">
                             <table class="table table-responsive-sm">
                                 <tr>

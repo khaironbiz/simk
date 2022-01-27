@@ -32,4 +32,41 @@ function dokter($id){
     }
     return $master;
 }
+
+function risiko_jatuh($skor){
+    if($skor >0){
+        if($skor < 6){
+            $keterangan = "Risiko Jatuh Rendah";
+            }elseif($skor < 14){
+                $keterangan = "Risiko Jatuh Sedang";
+            }elseif($skor >= 14){
+                $keterangan = "Risiko Jatuh Tinggi";
+            
+        }else{
+            $keterangan = "NULL";
+        }
+    }else{
+        $keterangan = "NULL";
+    }
+    
+    return $keterangan;
+}
+function label_risiko_jatuh($skor){
+    if($skor >0){
+        if($skor < 6){
+            $keterangan = "secondary";
+            }elseif($skor < 14){
+                $keterangan = "secondary";
+            }elseif($skor >= 14){
+                $keterangan = "warning";
+            
+        }else{
+            $keterangan = "NULL";
+        }
+    }else{
+        $keterangan = "NULL";
+    }
+    
+    return $keterangan;
+}
 ?>

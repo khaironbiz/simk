@@ -11,13 +11,7 @@ if(isset($_POST['edit_data_dasar'])){
     $status_nikah               = $_POST['status_nikah'];
     $pekerjaan                  = $_POST['pekerjaan'];
     $pendidikan                 = $_POST['pendidikan'];
-    
     $agama                      = $_POST['agama'];
-    $prov                       = $_POST['prov'];
-    $kota                       = $_POST['kota'];
-    $kec                        = $_POST['kec'];
-    $kel                        = $_POST['kel'];
-    $alamat                     = $_POST['alamat'];
     $update_pasien              = mysqli_query($host,"UPDATE pasien_db SET 
                 nama_pasien     = '$nama_pasien',
                 nik             = '$nik',
@@ -28,12 +22,7 @@ if(isset($_POST['edit_data_dasar'])){
                 status_nikah    = '$status_nikah',
                 pekerjaan       = '$pekerjaan',
                 pendidikan      = '$pendidikan',
-                agama           = '$agama',
-                prov            = '$prov',  
-                kota            = '$kota', 
-                kec             = '$kec',             
-                kel             = '$kel',  
-                alamat          = '$alamat' WHERE
+                agama           = '$agama' WHERE
                 nrm             = '$nrm'");
     if($update_pasien){
         $_SESSION['status']="Data berhasil disimpan";

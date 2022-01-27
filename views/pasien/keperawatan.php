@@ -258,19 +258,7 @@
                                         <td><?= $urut++?></td>
                                         <td><?= $data_morse['waktu_periksa']?></td>
                                         <td><?= $data_morse['total']?></td>
-                                        <td>
-                                            <?php 
-                                            if($data_morse['total'] < 6){
-                                                echo "Rendah";
-                                            }elseif($data_morse['total'] < 14){
-                                                echo "Sedang";
-                                            }elseif($data_morse['total'] >= 14){
-                                            ?>
-                                            <button class="btn btn-warning btn-sm">Tinggi</button>
-                                            <?php
-                                            }
-                                            ?>
-                                        </td>
+                                        <td><?= risiko_jatuh($data_morse['total'])?></td>
                                     </tr>
                                     <?php
                                     }
@@ -378,11 +366,154 @@
                                     ?>
                                 </table>
                             </div>
+                            <div class="col-md-6 table-responsive">
+                                <div class="card bg-info">
+                                    <div class="card-header text-center"><b>NEWSS</b></div>
+                                    <div class="card-body">
+                                        <form action="" method="POST">
+                                            <div class="row">
+                                                <label class="col-sm-2 col-form-label">Nafas</label>
+                                                <div class="col-sm-2">
+                                                    <input type="number" class="form-control form-control-sm" name="nafas" max="120">
+                                                    <input type="hidden" class="form-control" name="add_newss" value="<?= $_GET['key']?>">
+                                                </div>
+                                                <label class="col-sm-2 col-form-label">Suhu</label>
+                                                <div class="col-sm-2">
+                                                    <input type="text" class="form-control form-control-sm" name="suhu" required>
+                                                </div>
+                                            
+                                                <label class="col-sm-2 col-form-label">APVU</label>
+                                                <div class="col-sm-2">
+                                                    <select class="form-control form-control-sm" name="apvu" required>
+                                                        <option value="">---</option>
+                                                        <option value="3">Tidak Response</option>
+                                                        <option value="2">Respons Nyeri</option>
+                                                        <option value="1">Respons Suara</option>
+                                                        <option value="0">Compos Mentis</option>
+                                                    </select>
+                                                </div>
+                                                <label class="col-sm-2 col-form-label">Nadi</label>
+                                                <div class="col-sm-2">
+                                                    <input type="number" class="form-control form-control-sm" name="nadi" max="200" required>
+                                                </div>
+                                                <label class="col-sm-2 col-form-label">Sistolik</label>
+                                                <div class="col-sm-2">
+                                                    <input type="number" class="form-control form-control-sm" name="sistolik" max="250" required>
+                                                </div>
+                                                <label class="col-sm-2 col-form-label">Diastolik</label>
+                                                <div class="col-sm-2">
+                                                    <input type="number" class="form-control form-control-sm" name="diastolik" max="200" required>
+                                                </div>
+                                            
+                                            </div>
+                                            <div class="row">
+                                                <label class="col-sm-2 col-form-label">Waktu Periksa</label>
+                                                <div class="col-sm-2">
+                                                    <input type="time" class="form-control form-control-sm" name="jam" value="<?= date('H:i')?>">
+                                                </div>
+                                                <div class="col-2">
+                                                    <select class="form-control form-control-sm" required name="tgl">
+                                                        <option value='<?= date('d')?>'><?= date('d')?></option>
+                                                            <?php
+                                                            $a    =1;
+                                                            while($a <= 31){
+                                                            ?>
+                                                            <option value="<?= $a?>"><?= $a?></option>
+                                                            <?php
+                                                            $a++;
+                                                            }
+                                                            ?>
+                                                    </select>
+                                                </div>
+                                                <div class="col-2">
+                                                    <select class="form-control form-control-sm" required name="bln">
+                                                        <option value='<?= date('m')?>'><?= date('m')?></option>
+                                                        <?php
+                                                        $b    =1;
+                                                        while($b <= 12){
+                                                        ?>
+                                                        <option value="<?= $b?>"><?= $b?></option>
+                                                        <?php
+                                                        $b++;
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                                <div class="col-2">
+                                                    <select class="form-control form-control-sm" required name="th">
+                                                        <option value='<?= date('Y')?>'><?= date('Y')?></option>
+                                                        <?php
+                                                        $c      =date('Y')-1;
+                                                        $d      = date('Y');
+                                                        while($c <= $d){
+                                                        ?>
+                                                        <option value="<?= $c?>"><?= $c?></option>
+                                                        <?php
+                                                        $c++;
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <button class="btn btn-sm btn-primary">Tambah</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <table class="table table-hover table-sm">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Waktu</th>
+                                                <th>Nafas</th>
+                                                <th>Suhu</th>
+                                                <th>Nadi</th>
+                                                <th>TD</th>
+                                                <th>NEWSS</th>
+                                            </tr>
+                                            <?php
+                                            $norut              = 1;
+                                            $cari_newss         = mysqli_query($host,"SELECT * FROM pasien_newss WHERE key_trx = '$key_trx_ruangan'");
+                                            while($data_newss   = mysqli_fetch_array($cari_newss)){
+                                            ?>
+                                            <tr>
+                                                <td><?= $norut++?></td>
+                                                <td><?= $data_newss['waktu_periksa']?></td>
+                                                <td><?= $data_newss['nafas']?></td>
+                                                <td><?= $data_newss['suhu']?></td>
+                                                <td><?= $data_newss['nadi']?></td>
+                                                <td><?= $data_newss['sistolik']." / ".$data_newss['diastolik']?></td>
+                                                <td class="bg-<?= newss($data_newss['newss_score'])?>"><?= $data_newss['newss_score']?></td>
+                                                <td>
+                                                    
+                                                </td>
+                                            </tr>
+                                            <?php
+                                            }
+                                            ?>
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card bg-success">
+                                    <div class="card-body">
+                                        <table class="table table-sm table-hover">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Waktu</th>
+                                                <th>Nafas</th>
+                                                <th>Suhu</th>
+                                                <th>Nadi</th>
+                                                <th>TD</th>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer text-center">
-                        
                         <a href="detail.php?key=<?= $_GET['key']?>" class="btn btn-primary btn-sm">Back</a>
                     </div>
                 </div>

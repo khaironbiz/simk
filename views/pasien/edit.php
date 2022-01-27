@@ -46,7 +46,7 @@
                                 <div class="card-header bg-success text-center">
                                     <b>Pemutakhiran Data Dasar</b>
                                 </div>
-                                <div class="row">
+                                <div class="row justify-content-md-center">
                                     <div class="col-md-6">
                                         <table class="table table-sm">
                                             <tr>
@@ -131,10 +131,6 @@
                                                     </select>
                                                 </td>
                                             </tr>
-                                        </table>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <table class="table table-sm">
                                             <tr>
                                                 <td width="150px">Pendidikan</td>
                                                 <td>
@@ -168,53 +164,7 @@
                                                     </select>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>Alamat</td>
-                                                <td><input type="text" class="form-control form-control-sm" name="alamat" value="<?= $data_pasien['alamat'];?>"></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td>
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <script src="<?= $site_url?>/assets/js/ajax_kota.js"></script>
-                                                            <select name="prop" id="prop" onchange="ajaxkota(this.value)" class="form-control form-control-sm" required>
-                                                                <option value="<?= $data_pasien['prov']; ?>"><?= provinsi($data_pasien['prov']) ?></option>
-                                                                <?php 
-                                                                $sql_prov   = mysqli_query($host,"SELECT * FROM id_desa where lokasi_kabupatenkota=0 and lokasi_kecamatan=0 and lokasi_kelurahan=0 order by lokasi_nama");
-                                                                //$sql_prov       = mysqli_query($host, "SELECT * FROM provinsi order by nama");
-                                                                    while ($dataProvinsi=mysqli_fetch_array($sql_prov)){
-                                                                        echo '<option value="'.$dataProvinsi['lokasi_propinsi'].'">'.$dataProvinsi['lokasi_nama'].'</option>';
-                                                                    }
-                                                                ?>
-                                                            <select>
-                                                            
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <select name="kota" id="kota" onchange="ajaxkec(this.value)" class="form-control form-control-sm"/ required>
-                                                                <option value="<?= $data_pasien['kota']; ?>"><?= kota($data_pasien['kota']) ?></option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td>
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <select class="form-control form-control-sm" name="kec">
-                                                                <option value="">Kecamatan</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <select class="form-control form-control-sm" name="kel">
-                                                                <option value="">Kelurahan</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                            
                                             <tr>
                                                 <td>No Telfon</td>
                                                 <td>
@@ -233,9 +183,9 @@
                                                 <td>Email</td>
                                                 <td><input type="email" name="email" class="form-control form-control-sm" placeholder="email" value="<?= $data_pasien['email'];?>"></td>
                                             </tr>
-                                            
                                         </table>
                                     </div>
+                                    
                                 </div>
                             </div>
                             <div class="card-footer text-center">
