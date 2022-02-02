@@ -172,6 +172,8 @@ function newss($newss_score){
             $master     = "success";
         }if($newss_score > 6){
             $master     = "danger";
+        }if($newss_score == "NULL"){
+            $master     = "black";
         }
     return $master;
 }

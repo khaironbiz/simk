@@ -246,6 +246,23 @@
                                                         <td>:</td>
                                                         <td><?= $bi?></td>
                                                     </tr>
+                                                    <?php
+                                                    $key_trx    = $data['key_trx'];
+                                                    $sql_newss  = mysqli_query($host,"SELECT * FROM pasien_newss WHERE 
+                                                                    key_trx='$key_trx' ORDER BY id_pasien_newss DESC LIMIT 1");
+                                                    $count_newss= mysqli_num_rows($sql_newss);
+                                                    if($count_newss>0){
+                                                        $data_newss = mysqli_fetch_array($sql_newss);
+                                                        $newss      = $data_newss['newss_score'];
+                                                    }else{
+                                                        $newss      = "NULL";
+                                                    }
+                                                    ?>
+                                                    <tr>
+                                                        <td>NEWSS</td>
+                                                        <td>:</td>
+                                                        <td class="bg-<?= newss($newss)?>"><?= $newss?></td>
+                                                    </tr>
                                                 </table>
                                             </td>
 
