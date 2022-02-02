@@ -168,6 +168,8 @@
                                             <?php 
                                             if($data_dx_kep['dx_teratasi'] >0){
                                                 echo $data_dx_kep['dx_teratasi'];
+                                            }else{
+                                                echo "Belum teratasi";
                                             }
                                             
                                             ?>

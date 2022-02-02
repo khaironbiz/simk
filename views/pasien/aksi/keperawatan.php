@@ -32,7 +32,13 @@ if(isset($_POST['add_dx_kep'])){
     $nrm                = pasien_key_trx($key_trx_ruangan);
     $id_dx_kep          = $_POST['id_dx_kep'];
     $has_pasien_dx_kep  = md5(uniqid());
-    $tambah_diagnosa    = mysqli_query($host,"INSERT INTO pasien_dx_kep SET 
+    $cari_dx            = mysqli_query($host,"SELECT * FROM pasien_dx_kep WHERE 
+                            id_dx_kep   = '$id_dx_kep' AND 
+                            key_trx     = '$key_trx_ruangan' AND 
+                            dx_teratasi = '0000-00-00'");
+    $count_dx_ini       = mysqli_num_rows($cari_dx);
+    if($count_dx_ini<1){
+        $tambah_diagnosa= mysqli_query($host,"INSERT INTO pasien_dx_kep SET 
                             id_dx_kep           = '$id_dx_kep',
                             dx_muncul           = '$dx_muncul',
                             key_trx             = '$key_trx_ruangan',
@@ -40,15 +46,21 @@ if(isset($_POST['add_dx_kep'])){
                             created_by          = '$user_check',
                             created_at          = '$hari_ini',
                             has_pasien_dx_kep   = '$has_pasien_dx_kep'");
-    if($tambah_diagnosa){
-        $_SESSION['status']="Data sukses disimpan";
-        $_SESSION['status_info']="success";
-        echo "<script>document.location=\"$site_url/pasien/keperawatan.php?key=$has_px_ruangan\"</script>";
+        if($tambah_diagnosa){
+            $_SESSION['status']="Data sukses disimpan";
+            $_SESSION['status_info']="success";
+            echo "<script>document.location=\"$site_url/pasien/keperawatan.php?key=$has_px_ruangan\"</script>";
+        }else{
+            $_SESSION['status']="Data gagal disimpan";
+            $_SESSION['status_info']="danger";
+            echo "<script>document.location=\"$site_url/pasien/keperawatan.php?key=$has_px_ruangan\"</script>";
+        }
     }else{
-        $_SESSION['status']="Data gagal disimpan";
+        $_SESSION['status']="Data gagal disimpan :<b>DX sudah ditegakkan</b>";
         $_SESSION['status_info']="danger";
-        echo "<script>document.location=\"$site_url/pasien/keperawatan.php?key=$has_px_ruangan\"</script>";
+            echo "<script>document.location=\"$site_url/pasien/keperawatan.php?key=$has_px_ruangan\"</script>";
     }
+    
 }
 if(isset($_POST['add_morse'])){
     $has_px_ruangan     = $_POST['add_morse'];

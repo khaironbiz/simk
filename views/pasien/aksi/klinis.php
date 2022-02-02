@@ -27,22 +27,32 @@ if(isset($_POST['add_konsultasi'])){
     $key_trx            = key_trx($has_px_daftar);
     $id_dokter          = $_POST['id_dokter'];
     $has_pasien_dokter  = md5(uniqid());
-    $tambah_konsultasi  = mysqli_query($host,"INSERT INTO pasien_dokter SET 
+    $sql_dokter         = mysqli_query($host,"SELECT * FROM pasien_dokter WHERE id_dokter='$id_dokter' AND key_trx='$key_trx'");
+    $count_dokter       = mysqli_num_rows($sql_dokter);
+    if($count_dokter <1){
+        $tambah_konsultasi  = mysqli_query($host,"INSERT INTO pasien_dokter SET 
                             id_dokter           = '$id_dokter',
                             key_trx             = '$key_trx',
                             nrm                 = '$nrm',
                             created_by          = '$user_check',
                             created_at          = '$hari_ini',
                             has_pasien_dokter   = '$has_pasien_dokter'");
-    if($tambah_konsultasi){
-        $_SESSION['status']="Data sukses disimpan";
-        $_SESSION['status_info']="success";
-        echo "<script>document.location=\"$site_url/pasien/klinis.php?key=$has_px_daftar\"</script>";
+        if($tambah_konsultasi){
+            $_SESSION['status']="Data sukses disimpan";
+            $_SESSION['status_info']="success";
+            echo "<script>document.location=\"$site_url/pasien/klinis.php?key=$has_px_daftar\"</script>";
+        }else{
+            $_SESSION['status']="Data gagal disimpan";
+            $_SESSION['status_info']="danger";
+            echo "<script>document.location=\"$site_url/pasien/klinis.php?key=$has_px_daftar\"</script>";
+        }
     }else{
-        $_SESSION['status']="Data gagal disimpan";
-        $_SESSION['status_info']="danger";
-        echo "<script>document.location=\"$site_url/pasien/klinis.php?key=$has_px_daftar\"</script>";
+        $_SESSION['status']="Data gagal disimpan karena sudah terdaftar";
+            $_SESSION['status_info']="danger";
+            echo "<script>document.location=\"$site_url/pasien/klinis.php?key=$has_px_daftar\"</script>";
     }
+    
+    
 }
 
 ?>

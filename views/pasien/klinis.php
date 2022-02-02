@@ -33,7 +33,7 @@
                             <form action="" method="POST">
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Diagnosa</label>
-                                    <div class="col-sm-10">
+                                    <div class="col-sm-6">
                                         <input type="hidden" name="update_dokter" class="form-control" value="<?= $_GET['key']?>">
                                         <select class="form-control form-control-sm" name="dx_medis">
                                             <option value="<?= $pasien_daftar['dx_medis']?>"><?= dx_medis($pasien_daftar['dx_medis'])?></option>
@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">DPJP</label>
-                                    <div class="col-sm-10">
+                                    <div class="col-sm-6">
                                         <select class="form-control form-control-sm" name="dpjp">
                                             <option value="<?=$pasien_daftar['dpjp'] ?>"><?= dokter($pasien_daftar['dpjp']); ?></option>
                                         <?php
@@ -63,9 +63,10 @@
                                         ?>
                                         </select>
                                     </div>
+                                    <div class="col-sm-4"><button type="submit" class="btn btn-primary btn-sm">Save</button></div>
                                 </div>
                                 <div class="row">
-                                    <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                                    
                                 </div>
                             </form>
                         </div>
