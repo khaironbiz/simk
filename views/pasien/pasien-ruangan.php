@@ -22,49 +22,49 @@
             <div class="row">
                 <div class="col-12">
                     <?php
-            if(isset($_SESSION['status'])&& $_SESSION['status'] !=""){
-            ?>
-                    <div class="alert alert-<?= $_SESSION['status_info']?> alert-dismissible fade show" role="alert">
-                        <strong>Hay</strong> <?= $_SESSION['status']?>
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                    if(isset($_SESSION['status'])&& $_SESSION['status'] !=""){
+                    ?>
+                        <div class="alert alert-<?= $_SESSION['status_info']?> alert-dismissible fade show" role="alert">
+                            <strong>Hay</strong> <?= $_SESSION['status']?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
                     <?php
-            unset($_SESSION['status']);
-            }
-            ?>
+                    unset($_SESSION['status']);
+                    }
+                    ?>
                     <div class="card">
                         <div class="card-header bg-dark">
                             <?php
-                  include('menu/index.php');
-                ?>
+                            include('menu/index.php');
+                            ?>
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-6">
-                                    <?php
-                        include("../core/security/admin-akses.php");
-                        if($count_admin >0){
-                            include('modal/add-pasien.php');
-                            include('aksi/add-pasien.php');
-                        }
-                      ?>
+                                <?php
+                                    include("../core/security/admin-akses.php");
+                                    if($count_admin >0){
+                                        include('modal/add-pasien.php');
+                                        include('aksi/add-pasien.php');
+                                    }
+                                ?>
                                 </div>
                                 <div class="col-6 text-right">
                                     <?php
-                      if(isset($_POST['edit_ruangan'])){
-                        $id_ruangan = $_POST['id_ruangan'];
-                        $update_ruangan= mysqli_query($host,"UPDATE nira SET id_ruangan='$id_ruangan' WHERE nira='$user_check'");
-                        if($update_ruangan){
-                          $_SESSION['status']="Data gagal disimpan";
-                          $_SESSION['status_info']="danger";
-                          echo "<script>document.location=\"$site_url/pasien/pasien-ruangan.php\"</script>";
-                        }
-                        
-                      }
-                      if($data_pengguna['id_ruangan'] < 1){
-                      ?>
+                                    if(isset($_POST['edit_ruangan'])){
+                                        $id_ruangan = $_POST['id_ruangan'];
+                                        $update_ruangan= mysqli_query($host,"UPDATE nira SET id_ruangan='$id_ruangan' WHERE nira='$user_check'");
+                                        if($update_ruangan){
+                                        $_SESSION['status']="Data gagal disimpan";
+                                        $_SESSION['status_info']="danger";
+                                        echo "<script>document.location=\"$site_url/pasien/pasien-ruangan.php\"</script>";
+                                        }
+                                        
+                                    }
+                                if($data_pengguna['id_ruangan'] < 1){
+                                ?>
                                     <form action="pasien-ruangan.php" method="POST">
                                         <div class="form-check form-check-inline float-end">
                                             <input type="hidden" name="edit_ruangan" value="<?= uniqid()?>">
@@ -72,30 +72,31 @@
                                                 name='id_ruangan'>
                                                 <option value="">Pilih Satu</option>
                                                 <?php
-                              $sql_master   = mysqli_query($host,"SELECT * FROM ruangan WHERE pelayanan ='Y'");
-                              while($data_master = mysqli_fetch_array($sql_master)){
-                            ?>
-                                                <option value="<?= $data_master['id']?>"><?= $data_master['ruangan']?>
+                                                $sql_master   = mysqli_query($host,"SELECT * FROM ruangan WHERE pelayanan ='Y'");
+                                                while($data_master = mysqli_fetch_array($sql_master)){
+                                                ?>
+                                                <option value="<?= $data_master['id']?>">
+                                                    <?= $data_master['ruangan']?>
                                                 </option>
                                                 <?php
-                              }
-                            ?>
+                                                }
+                                                ?>
                                             </select>
                                             <button type="submit"
                                                 class="btn btn-success btn-sm form-check-input">Save</button>
                                         </div>
                                     </form>
                                     <?php
-                      }
-                      ?>
+                                    }
+                                    ?>
 
                                 </div>
                             </div>
                             <div class="row table-responsive">
                                 <?php
-                      if($data_pengguna['id_ruangan'] < 1){
-                      }else{
-                    ?>
+                                if($data_pengguna['id_ruangan'] < 1){
+                                    }else{
+                                ?>
                                 <table id="example1" class="table table-sm table-hover">
                                     <thead>
                                         <tr>
@@ -108,17 +109,17 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                            $id_ruangan_saya    = $data_pengguna['id_ruangan'];
-                            $no                 = 1;
-                            $sql_pasien         = mysqli_query($host, "SELECT * FROM pasien_daftar_ruangan 
-                                                    JOIN pasien_daftar on pasien_daftar.key_trx= pasien_daftar_ruangan.key_trx
-                                                    JOIN pasien_db on pasien_db.nrm = pasien_daftar_ruangan.nrm
-                                                    JOIN ruangan on ruangan.id = pasien_daftar_ruangan.id_ruangan
-                                                    WHERE pasien_daftar_ruangan.keluar = '0' and id_ruangan = '$id_ruangan_saya'
-                                                    ORDER BY pasien_daftar_ruangan.id_kamar ASC, pasien_daftar_ruangan.id_bed ASC");
-                            while($data         = mysqli_fetch_array($sql_pasien)){
-                              
-                            ?>
+                                        $id_ruangan_saya    = $data_pengguna['id_ruangan'];
+                                        $no                 = 1;
+                                        $sql_pasien         = mysqli_query($host, "SELECT * FROM pasien_daftar_ruangan 
+                                                                JOIN pasien_daftar on pasien_daftar.key_trx= pasien_daftar_ruangan.key_trx
+                                                                JOIN pasien_db on pasien_db.nrm = pasien_daftar_ruangan.nrm
+                                                                JOIN ruangan on ruangan.id = pasien_daftar_ruangan.id_ruangan
+                                                                WHERE pasien_daftar_ruangan.keluar = '0' and id_ruangan = '$id_ruangan_saya'
+                                                                ORDER BY pasien_daftar_ruangan.id_kamar ASC, pasien_daftar_ruangan.id_bed ASC");
+                                        while($data         = mysqli_fetch_array($sql_pasien)){
+                                        
+                                        ?>
                                         <tr>
                                             <td width="10px"><?= $no++; ?></td>
                                             <td>
