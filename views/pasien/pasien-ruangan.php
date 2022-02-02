@@ -226,7 +226,7 @@
                                                     <tr>
                                                         <td>Risiko Jatuh</td>
                                                         <td>:</td>
-                                                        <td><?= $morse?></td>
+                                                        <td class="bg-<?= label_risiko_jatuh($morse)?>"><?= risiko_jatuh($morse)." : ".$morse?></td>
                                                     </tr>
                                                     <?php
                                                     $key_trx    = $data['key_trx'];
