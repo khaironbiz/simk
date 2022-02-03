@@ -13,7 +13,7 @@
     <body>
         <div class="container">
             <div class="row">
-                <div class="col table-responsive">
+                <div class="col-md-12 table-responsive">
                     <h1>Dekumen Legal Bermasalah</h1><br>
                     <a href="sipp-bermasalah.php" class="btn btn-primary">SIPP Bermasalah</a><a href="str-bermasalah.php" class="btn btn-danger">STR Bermasalah</a>
                     <table class="table">
