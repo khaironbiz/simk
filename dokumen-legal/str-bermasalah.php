@@ -15,7 +15,9 @@
             <div class="row">
                 <div class="col-md-12 table-responsive">
                     <h1>Dekumen Legal Bermasalah</h1><br>
-                    <a href="sipp-bermasalah.php" class="btn btn-primary">SIPP Bermasalah</a><a href="str-bermasalah.php" class="btn btn-danger">STR Bermasalah</a>
+                    <a href="sipp-bermasalah.php" class="btn btn-primary">SIPP Bermasalah</a>
+                    <a href="str-bermasalah.php" class="btn btn-danger">STR Bermasalah</a>
+                    <a href="https://ppni.or.id/simk/id/upload-sipp-str.php" class="btn btn-success">UPLOD DOKUMEN</a>
                     <table class="table">
                         <tr>
                             <th>#</th>
