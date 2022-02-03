@@ -28,7 +28,7 @@
                         include('../auth/koneksi.php');
                         $no             = 1;
                         $hari_ini       = date('Y-m-d');
-                        $sql            = mysqli_query($host, "SELECT * FROM nira WHERE str_ahir < '$hari_ini' AND blokir ='N'");
+                        $sql            = mysqli_query($host, "SELECT * FROM nira WHERE str_ahir < '$hari_ini' AND blokir ='N' ORDER BY nama");
                         while($data     = mysqli_fetch_array($sql)){
                         ?>
                         <tr>
