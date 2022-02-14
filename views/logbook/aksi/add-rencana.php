@@ -14,19 +14,28 @@ if(isset($_POST['add_perencanaan'])){
         $id_d[$i]           = $id_jab[$i]['id_d'];
         $has[$i]            = md5(uniqid());
         $time[$i]           = date('Y-m-d H:i:s');
-        $coba[$i]           = mysqli_query($host,"INSERT INTO jabfung_rencana SET 
-                        id_th               = '$tahun',
-                        id_perawat          = '$user_check',
-                        level               = '$level_ini[$i]',
-                        id_jabfung          = '$id_jabfung[$i]',
-                        kredit              = '$ak_ini[$i]',
-                        id_a                = '$id_a[$i]',
-                        id_b                = '$id_b[$i]',
-                        id_c                = '$id_c[$i]',
-                        id_d                = '$id_d[$i]',
-                        created_at          = '$time[$i]',
-                        has_jabfung_rencana = '$has[$i]'");
-        $cek            = mysqli_query($host, $coba[$i]);
+        $sql_id[$i]         = mysqli_query($host,"SELECT id_jabfung FROM jabfung_rencana WHERE 
+                                id_jabfung      = '$id_jabfung[$i]' AND 
+                                id_perawat      = '$user_check'");
+        $count[$i]          = mysqli_num_rows($sql_id[$i]);
+        if($count[$i]<1){
+            $coba[$i]       = mysqli_query($host,"INSERT INTO jabfung_rencana SET 
+                            id_th               = '$tahun',
+                            id_perawat          = '$user_check',
+                            level               = '$level_ini[$i]',
+                            id_jabfung          = '$id_jabfung[$i]',
+                            kredit              = '$ak_ini[$i]',
+                            id_a                = '$id_a[$i]',
+                            id_b                = '$id_b[$i]',
+                            id_c                = '$id_c[$i]',
+                            id_d                = '$id_d[$i]',
+                            created_at          = '$time[$i]',
+                            has_jabfung_rencana = '$has[$i]'");
+            $cek            = mysqli_query($host, $coba[$i]);
+        }else{
+
+        }
+        
     }
     if($cek){
         $_SESSION['status']="Data sukses disimpan";

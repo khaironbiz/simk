@@ -405,5 +405,49 @@ function kecamatan($id){
     }
     return $master;
 }
-
+//jabfung
+function unsur($id){
+    include('../auth/koneksi.php');
+    $sql        = mysqli_query($host,"SELECT * FROM jabfung_ak WHERE id_a = '$id'");
+    if(mysqli_num_rows($sql)>0){
+        $data   = mysqli_fetch_array($sql);
+        $master = $data['unsur'];
+    }else{
+        $master = "NULL";
+    }
+    return $master;
+}
+function sub_unsur($id){
+    include('../auth/koneksi.php');
+    $sql        = mysqli_query($host,"SELECT * FROM jabfung_ak WHERE id_b = '$id'");
+    if(mysqli_num_rows($sql)>0){
+        $data   = mysqli_fetch_array($sql);
+        $master = $data['sub_unsur'];
+    }else{
+        $master = "NULL";
+    }
+    return $master;
+}
+function jenis_kegiatan($id){
+    include('../auth/koneksi.php');
+    $sql        = mysqli_query($host,"SELECT * FROM jabfung_ak WHERE id_c = '$id'");
+    if(mysqli_num_rows($sql)>0){
+        $data   = mysqli_fetch_array($sql);
+        $master = $data['jenis'];
+    }else{
+        $master = "NULL";
+    }
+    return $master;
+}
+function kegiatan($id){
+    include('../auth/koneksi.php');
+    $sql        = mysqli_query($host,"SELECT * FROM jabfung_ak WHERE id_d = '$id'");
+    if(mysqli_num_rows($sql)>0){
+        $data   = mysqli_fetch_array($sql);
+        $master = $data['uraian'];
+    }else{
+        $master = "NULL";
+    }
+    return $master;
+}
 ?>
