@@ -135,7 +135,7 @@
             </div>
             <div class="card">
               <div class="card-header bg-success">
-                <b>Rekapitulasi Shift</b>
+                <b>Realisasi Hari Ini</b>
               </div>
               <div class="card-body">
                 <table class="table">
