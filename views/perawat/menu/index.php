@@ -16,7 +16,7 @@
                                     <a class="nav-link text-white" href="<?= $site_url?>/perawat/penjadwalan.php">Realisasi Jadwal</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" href="<?= $site_url?>/perawat/register.php">Pasien Kelolaan</a>
+                                    <a class="nav-link text-white" href="#">Pasien Kelolaan</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
