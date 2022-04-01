@@ -138,7 +138,7 @@
                 <b>Realisasi Hari Ini</b>
               </div>
               <div class="card-body">
-                <table class="table">
+                <table class="table table-sm table-hover">
                   <tr>
                     <th>No</th>
                     <th>Nama</th>
@@ -173,7 +173,7 @@
                       $sql_count_ini  = mysqli_query($host,"SELECT * FROM laporan_shift_perawat WHERE tgl='$hari_ini' AND id_ruangan ='$id_ruangan' AND shift='$shift_ini' AND id_perawat ='$nira_perawat'");
                       $count_ini      = mysqli_num_rows($sql_count_ini);
                     ?>
-                    <td><?= $count_ini?></td>
+                    <td><?php if($count_ini>0){echo $shift_ini;} ?></td>
                     <?php
                     }
                     ?>
