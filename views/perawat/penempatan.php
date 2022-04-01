@@ -24,6 +24,7 @@
                 <?php
                 include('menu/index.php');
                 include('aksi/pindah-ruangan.php');
+                include('aksi/add-perawat.php');
                 ?>
               </div>
                 <div class="card-body">

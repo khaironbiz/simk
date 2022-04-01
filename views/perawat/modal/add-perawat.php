@@ -33,15 +33,21 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Ruangan</label>
                                     <div class="col-sm-10">
-                                        <select class="form-control" name="nira">
+                                        <select class="form-control" name="ruangan" required>
                                             <option value="<?= $data_pengguna['ruangan']?>"><?= $data_pengguna['ruangan']?></option>
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label"></label>
+                                    <div class="col-sm-10">
+                                        <input type="checkbox" name="add_perawat" value="<?= uniqid()?>" required> Benar saya menambahkan perawat baru
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
                             </div>
                             </div>
                         </div>
