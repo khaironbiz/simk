@@ -37,7 +37,7 @@
             <div class="card">
               <div class="card-header bg-dark">
                 <?php
-                  include('menu/index.php');
+                  include('../layout/sub-menu/perawat/index.php');
                 ?>
               </div>
 

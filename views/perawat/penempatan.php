@@ -22,7 +22,7 @@
             <div class="card">
               <div class="card-header bg-dark">
                 <?php
-                include('menu/index.php');
+                include('../layout/sub-menu/perawat/index.php');
                 include('aksi/pindah-ruangan.php');
                 include('aksi/add-perawat.php');
                 ?>

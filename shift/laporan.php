@@ -1,9 +1,9 @@
 <?php
 include("../auth/session.php");
 include("../function/function.php");
-$judul      = "Master Shift";
+$judul      = "Laporan Shift";
 $template   = "../theme/table.php";
 $wrapp      = "../core/wrapp.php";
-$content    = "../views/shift/master.php";
+$content    = "../views/shift/laporan.php";
 include($template);
 ?>
