@@ -31,10 +31,11 @@
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                    Laporan Shift
+                                    Jadwal Kerja
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="<?= $site_url?>/shift/laporan.php">Laporan Ruangan</a>
+                                        <a class="dropdown-item" href="<?= $site_url?>/shift/rencana.php">Rencana Jadwal</a>
+                                        <a class="dropdown-item" href="<?= $site_url?>/shift/laporan.php">Laporan Jadwal</a>
                                         <a class="dropdown-item" href="#">Laporan Rumah Sakit</a>
                                         <a class="dropdown-item" href="<?= $site_url?>/shift/master.php">Master Shift</a>
                                     </div>

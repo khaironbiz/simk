@@ -52,8 +52,8 @@
                                 <th>#</th>
                                 <th>Nama</th>
                                 <th>Penempatan</th>
-                                <th>ID</th>
-                                <th>Has</th>
+                                <th>Jabatan</th>
+                                <th>Pendidikan</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -69,8 +69,8 @@
                                 <td width="10px"><?= $no++; ?></td>
                                 <td><?= $data['nama']?></td>
                                 <td><?= $data['ruangan'];?></td>
-                                <td><?= $id_ruangan; ?></td>
-                                <td><?= $has_ruangan; ?></td>
+                                <td><?= $data['posisi'];?></td>
+                                <td><?= $data['pendidikan'];?></td>
                                 <td>
                                   <!-- Button trigger modal -->
                                   <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal<?= $data['nira']?>">

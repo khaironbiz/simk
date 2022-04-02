@@ -71,7 +71,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= $site_url ?>/perawat" class="nav-link">
+            <a href="<?= $site_url ?>/perawat/penempatan.php" class="nav-link">
               <i class="nav-icon fas fa-calculator"></i>
               <p>
                 Perawat

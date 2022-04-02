@@ -11,4 +11,5 @@ $host = mysqli_connect("194.163.35.184", "u487816097_ppni", "domain250909", "u48
   echo "Koneksi gagal!" . mysqli_connect_error();
   die();
  }
+ mysqli_close($host);
  ?>
