@@ -27,7 +27,7 @@
                 include('aksi/add-perawat.php');
                 ?>
               </div>
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <?php
                     include("../core/security/admin-akses.php");
                     if($count_admin >0){
@@ -51,8 +51,8 @@
                             <tr>
                                 <th>#</th>
                                 <th>Nama</th>
-                                <th>Penempatan</th>
                                 <th>Jabatan</th>
+                                <th>Status</th>
                                 <th>Pendidikan</th>
                                 <th>Aksi</th>
                             </tr>
@@ -60,16 +60,16 @@
                         <tbody>
                             <?php
                             $no=1;
-                            $sql_layanan        = mysqli_query($host,"SELECT * FROM nira WHERE blokir ='N' and ruangan ='$ruangan_ini' ORDER BY nama LIMIT 3 ");
+                            $sql_layanan        = mysqli_query($host,"SELECT * FROM nira WHERE blokir ='N' and ruangan ='$ruangan_ini' ORDER BY nama ");
                             while($data         = mysqli_fetch_array($sql_layanan)){
                                 $id_ruangan     = id_ruangan($data['ruangan']);
                                 $has_ruangan    = has_ruangan($id_ruangan);
                             ?>
                             <tr>
                                 <td width="10px"><?= $no++; ?></td>
-                                <td><?= $data['nama']?></td>
-                                <td><?= $data['ruangan'];?></td>
-                                <td><?= $data['posisi'];?></td>
+                                <td><?= $data['nama']?><br><?= $data['nip']?></td>
+                                <td><?= $data['posisi'];?><br><?= $data['pk']?></td>
+                                <td><?= $data['kategori'];?><br><?= $data['jabfung']?></td>
                                 <td><?= $data['pendidikan'];?></td>
                                 <td>
                                   <!-- Button trigger modal -->
