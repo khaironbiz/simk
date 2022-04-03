@@ -405,6 +405,17 @@ function kecamatan($id){
     }
     return $master;
 }
+function kelurahan($id){
+    include('../auth/koneksi.php');
+    $sql        = mysqli_query($host,"SELECT * FROM id_desa WHERE lokasi_kelurahan = '$id'");
+    if(mysqli_num_rows($sql)>0){
+        $data   = mysqli_fetch_array($sql);
+        $master = $data['lokasi_nama'];
+    }else{
+        $master = "NULL";
+    }
+    return $master;
+}
 //jabfung
 function unsur($id){
     include('../auth/koneksi.php');

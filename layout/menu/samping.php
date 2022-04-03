@@ -46,10 +46,10 @@
             
           </li>
           <li class="nav-item">
-            <a href="../widgets.html" class="nav-link">
+            <a href="<?= $site_url ?>/user/" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Widgets
+                My Profile
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
