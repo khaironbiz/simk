@@ -40,10 +40,11 @@
                           <tr>
                             <th>#</th>
                             <th>Shift</th>
-                            <th>Count</th>
+                            <th>Hari Ini</th>
+                            <th>Bulan Ini</th>
+                            <th>Tahun Ini</th>
                             <th>Mulai Laporan</th>
                             <th>Ahir Laporan</th>
-                            <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -64,26 +65,17 @@
                                 <td width="10px"><?= $no++; ?></td>
                                 <td><?= nama_shift($data['shift'])?></td>
                                 <td><?= $count_shift; ?></td>
+                                <td></td>
+                                <td></td>
                                 <td><?= $masuk ?></td>
                                 <td><?= $jam_selesai ?></td>
-                                <td>
-                                  <a href="index.php?admisi=<?= $data['has']?>" class="btn btn-danger btn-sm">Daftar</a>
-                                </td>
+                                
                             </tr>
                             <?php
                                 }
                             ?>
                         </tbody>
-                        <tfoot>
-                          <tr>
-                            <th>#</th>
-                            <th>Shift</th>
-                            <th>Count</th>
-                            <th>Mulai Laporan</th>
-                            <th>Ahir Laporan</th>
-                            <th>Aksi</th>
-                          </tr>
-                        </tfoot>
+                        
                     </table>
                 </div>
                 <!-- /.card-body -->
@@ -138,7 +130,7 @@
                 <b>Realisasi Hari Ini</b>
               </div>
               <div class="card-body">
-                <table class="table table-sm table-hover">
+                <table class="table table-sm table-hover table-bordered">
                   <tr>
                     <th>No</th>
                     <th>Nama</th>
@@ -153,6 +145,7 @@
                     <?php
                     }
                     ?>
+                    <th>Aksi</th>
                   </tr>
                   <?php
                   $ruanganku            = $data_pengguna['ruangan'];
@@ -177,6 +170,7 @@
                     <?php
                     }
                     ?>
+                    <td><button class="btn btn-success btn-sm">Edit</button></td>
                   </tr>
                   <?php
                   }

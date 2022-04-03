@@ -184,7 +184,7 @@
                                     }elseif($data_jadwal['shift']=='S'){
                                         $background="bg-warning";
                                     }elseif($data_jadwal['shift']=='M'){
-                                        $background="bg-dark";
+                                        $background="bg-black";
                                     }else{
                                         $background="";
                                     }
