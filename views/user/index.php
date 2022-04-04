@@ -27,8 +27,8 @@
               <div class="card-body box-profile">
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle w-30"
-                       src="https://ppni.or.id/simk/id/image/<?= $data_pengguna['foto']?>"
-                       alt="User profile picture">
+                      src="https://ppni.or.id/simk/id/image/<?= $data_pengguna['foto']?>"
+                      alt="User profile picture">
                 </div>
 
                 <h3 class="profile-username text-center"><?= $data_pengguna['nama']?></h3>
@@ -108,15 +108,53 @@
                 <div class="tab-content">
                   <div class="active tab-pane" id="logbook">
                     <h5>Logbook</h5>
-                    
-                    
                   </div>
                   <!-- /.tab-pane -->
                   <div class="tab-pane" id="jadwal">
                     <h5>Jadwal</h5>
+                    <?php
+                    $max_date   = 31;
+                    $max_bulan  = 12;
+                    ?>
+                    <div class="table-responsive">
+                      <table class="table table-sm table-bordered">
+                        <tr>
+                          
+                          <th rowspan="2" class="text-midle">Bulan</th>
+                          <td colspan="<?= $max_date?>" class="text-center">Tanggal</td>
+                        </tr>
+                        <tr>
+                          <?php
+                          $tanggal_urut = 1;
+                          while($tanggal_urut <= $max_date){
+                          ?>
+                          <td><?= str_pad($tanggal_urut++, 2, '0', STR_PAD_LEFT)?></td>
+                          <?php
+                          }
+                          ?>
+                        </tr>
+                        <?php
+                        $bulan_urut = 1;
+                          while($bulan_urut <= $max_bulan){
+                        ?>
+                        <tr>
+                          <td><?= str_pad($bulan_urut++, 2, '0', STR_PAD_LEFT)?></td>
+                          <?php
+                          $tanggal_urut_2 = 1;
+                          while($tanggal_urut_2 <= $max_date){
+                          ?>
+                          <td></td>
+                          <?php
+                          }
+                          ?>
+                        </tr>
+                          <?php
+                          }
+                          ?>
+                      </table>
+                    </div>
                   </div>
                   <!-- /.tab-pane -->
-
                   <div class="tab-pane" id="laporan">
                     <h5>Laporan</h5>
                   </div>
