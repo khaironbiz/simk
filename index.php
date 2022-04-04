@@ -39,7 +39,7 @@ include("auth/login.php");
           unset($_SESSION['status']);
           }else{
           ?>
-          <p class="login-box-msg">Sign in to start your session</p>
+          <p class="login-box-msg">Sign in to start your session <?php if(isset($_SESSION['login_user'])){header("location: $site_url/user/");} ?></p>
           <?php
           }
           ?>

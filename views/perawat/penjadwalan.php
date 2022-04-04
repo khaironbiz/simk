@@ -145,7 +145,7 @@
                     <?php
                     }
                     ?>
-                    <th>Aksi</th>
+                    
                   </tr>
                   <?php
                   $ruanganku            = $data_pengguna['ruangan'];
@@ -163,14 +163,16 @@
                     $sql              = mysqli_query($host,"SELECT DISTINCT(shift) FROM laporan_shift_perawat WHERE tgl = '$hari_ini' AND id_ruangan ='$id_ruangan'");
                     while($data_ini   = mysqli_fetch_array($sql)){
                       $shift_ini      = $data_ini['shift'];
-                      $sql_count_ini  = mysqli_query($host,"SELECT * FROM laporan_shift_perawat WHERE tgl='$hari_ini' AND id_ruangan ='$id_ruangan' AND shift='$shift_ini' AND id_perawat ='$nira_perawat'");
+                      $sql_count_ini  = mysqli_query($host,"SELECT * FROM laporan_shift_perawat WHERE tgl='$hari_ini'  AND shift='$shift_ini' AND id_perawat ='$nira_perawat'");
                       $count_ini      = mysqli_num_rows($sql_count_ini);
+                      $data_shift_ini = mysqli_fetch_array($sql_count_ini)
                     ?>
-                    <td><?php if($count_ini>0){echo $shift_ini;} ?></td>
+                    <td><?php if($count_ini>0){include('modal/edit-shift.php');} ?></td>
+                    
                     <?php
                     }
                     ?>
-                    <td><button class="btn btn-success btn-sm">Edit</button></td>
+                    
                   </tr>
                   <?php
                   }
