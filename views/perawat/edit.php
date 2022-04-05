@@ -2,221 +2,158 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active"><?= $judul; ?></li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active"><?= $judul; ?></li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
     </section>
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <?php
-
-            if(isset($_SESSION['status'])&& $_SESSION['status'] !=""){
-            ?>
-            <div class="alert alert-<?= $_SESSION['status_info']?> alert-dismissible fade show" role="alert">
-              <strong>Hay</strong> <?= $_SESSION['status']?>
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <?php
-            unset($_SESSION['status']);
-            }
-            ?>
-            <form>
-                <div class="card">
-                <div class="card-header bg-dark">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
                     <?php
-                    include('menu/pasien-detail.php')
+                    if(isset($_SESSION['status'])&& $_SESSION['status'] !=""){
                     ?>
-                </div>
-                <div class="card-body">
-                    <h4>Pemutakhiran Data</h4>
-                    <div class="row">
-                        
-                        <div class="col-md-6">
-                            <table class="table table-sm">
-                                <tr>
-                                    <td width="150px">NRM</td>
-                                    <td>: <?= $data_pasien['nrm'];?></td>
-                                </tr>
-                                <tr>
-                                    <td>Nama</td>
-                                    <td>: <?= ucwords(strtolower($data_pasien['nama_pasien']));?></td>
-                                </tr>
-                                <tr>
-                                    <td>Jenis Kelamin</td>
-                                    <td>: 
-                                        <?php
-                                            $id_sex     = $data_pasien['sex'];
-                                            $sql_sex    = mysqli_query($host, "SELECT * FROM db_sub_master WHERE id='$id_sex'");
-                                            $sex        = mysqli_fetch_array($sql_sex);
-                                            echo $sex['nama_submaster']
-                                        ?>                 
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Tgl Lahir</td>
-                                    <td>: <?= $data_pasien['tgl_lahir'];?></td>           
-                                </tr>
-                                <tr>
-                                    <td>No KTP</td>
-                                    <td>: <?= $data_pasien['nik'];?></td>
-                                </tr>
-                                <tr>
-                                    <td>Status Menikah</td>
-                                    <td>
-                                        <?php
-                                            $id_status_nikah     = $data_pasien['status_nikah'];
-                                            $sql_status_nikah    = mysqli_query($host, "SELECT * FROM db_sub_master WHERE id='$id_status_nikah'");
-                                            $status_nikah        = mysqli_fetch_array($sql_status_nikah);
-                                        ?>
-                                        <select class="form-control form-control-sm">
-                                            <option value="<?= $id_status_nikah?>"><?= $status_nikah['nama_submaster']?></option>
-                                            <?php
-                                            $sql_nikah  = mysqli_query($host,"SELECT * FROM db_sub_master WHERE id_master='7'");
-                                            while($data_nikah= mysqli_fetch_array($sql_nikah)){
-                                            ?>
-                                            <option value="<?= $data_nikah['id']?>"><?= $data_nikah['nama_submaster']?></option>
-                                            <?php
-                                            }
-                                            ?>
-                                        </select> 
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Agama</td>
-                                    <td>
-                                        <?php
-                                            $id_agama     = $data_pasien['agama'];
-                                            $sql_agama    = mysqli_query($host, "SELECT * FROM db_sub_master WHERE id='$id_agama'");
-                                            $agama        = mysqli_fetch_array($sql_agama);
-                                            $agama['nama_submaster'];
-                                        ?>
-                                        <select class="form-control form-control-sm">
-                                            <option value="<?= $id_agama?>"><?= $agama['nama_submaster'];?></option>
-                                            <?php
-                                            $sql_aqama  = mysqli_query($host,"SELECT * FROM db_sub_master WHERE id_master='3'");
-                                            while($data_agama   = mysqli_fetch_array($sql_aqama)){
-                                            ?>
-                                            <option value="<?= $data_agama['id'];?>"><?= $data_agama['nama_submaster'];?></option>
-                                            <?php
-                                            }
-                                            ?>
-                                        </select>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="col-md-6">
-                            <table class="table table-sm">
-                                <tr>
-                                    <td width="150px">Pendidikan</td>
-                                    <td>
-                                        
-                                        <select class="form-control form-control-sm">
-                                            <?php
-                                            $id_pendidikan     = $data_pasien['pendidikan'];
-                                            $sql_pendidikan    = mysqli_query($host, "SELECT * FROM db_sub_master WHERE id='$id_pendidikan'");
-                                            $pendidikan        = mysqli_fetch_array($sql_pendidikan);
-                                            $count_pendidikan  = mysqli_num_rows($sql_pendidikan);
-                                            if($count_pendidikan>0){
-                                            ?>
-                                            <option value="<?= $id_pendidikan;?>"><?= $pendidikan['nama_submaster'];?></option>
-                                            <?php
-                                            }
-                                            ?>
-                                            <option value="">pilih pendidikan</option>
-                                            <?php
-                                            $sql_pendidikan  = mysqli_query($host,"SELECT * FROM db_sub_master WHERE id_master='26'");
-                                            while($data_pendidikan   = mysqli_fetch_array($sql_pendidikan)){
-                                            ?>
-                                            <option value="<?= $data_pendidikan['id']?>"><?= $data_pendidikan['nama_submaster']?></option>
-                                            <?php
-                                            }
-                                            ?>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Pekerjaan</td>
-                                    <td>
-                                        <select class="form-control form-control-sm">
-                                            <?php
-                                            $id_pendidikan     = $data_pasien['pendidikan'];
-                                            $sql_pendidikan    = mysqli_query($host, "SELECT * FROM db_sub_master WHERE id='$id_pendidikan'");
-                                            $pendidikan        = mysqli_fetch_array($sql_pendidikan);
-                                            $count_pendidikan  = mysqli_num_rows($sql_pendidikan);
-                                            if($count_pendidikan>0){
-                                            ?>
-                                            <option value="<?= $id_pendidikan;?>"><?= $pendidikan['nama_submaster'];?></option>
-                                            <?php
-                                            }else{
-                                            ?>
-                                            <option value="">pilih pekerjaan</option>
-                                            <?php
-                                            }
-                                            $sql_pekerjaan  = mysqli_query($host,"SELECT * FROM db_sub_master WHERE id_master='31'");
-                                            while($data_pekerjaan   = mysqli_fetch_array($sql_pekerjaan)){
-                                            ?>
-                                            <option value="<?= $data_pekerjaan['id']?>"><?= $data_pekerjaan['nama_submaster']?></option>
-                                            <?php
-                                            }
-                                            ?>
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Alamat</td>
-                                    <td>:</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>:</td>
-                                </tr>
-                                <tr>
-                                    <td>No Telfon</td>
-                                    <td></td>           
-                                </tr>
-                                <tr>
-                                    <td>HP</td>
-                                    <td>: <?= $data_pasien['nik'];?></td>
-                                </tr>
-                                <tr>
-                                    <td>Email</td>
-                                    <td>:</td>
-                                </tr>
-                                
-                            </table>
-                        </div>
-                        <a href="" class="btn btn-success btn-sm">Edit</a><a href="" class="btn btn-danger btn-sm">Blokir</a>
+                    <div class="alert alert-<?= $_SESSION['status_info']?> alert-dismissible fade show" role="alert">
+                    <strong>Hay</strong> <?= $_SESSION['status']?>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                     </div>
-                    
+                    <?php
+                    unset($_SESSION['status']);
+                    }
+                    ?>
+                    <form>
+                        <div class="card">
+                        <div class="card-header bg-dark">
+                            <?php
+                            include('../layout/sub-menu/perawat/index.php')
+                            ?>
+                        </div>
+                        <div class="card-body">
+                            <h4>Pemutakhiran Data</h4>
+                            <div class="row">
+                                
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <label class="col-sm-2 col-4 col-form-label">Nama</label>
+                                        <div class="col-sm-10 col-8">
+                                            <input type="text" readonly class="form-control form-control-sm" value="<?= ucwords(strtolower($data_anggota['nama']));?>">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-sm-2 col-4 col-form-label">NIRA</label>
+                                        <div class="col-sm-10 col-8">
+                                            <input type="number" readonly class="form-control form-control-sm" value="<?= $data_anggota['nira']?>">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-sm-2 col-4 col-form-label">Tgl Lahir</label>
+                                        <div class="col-sm-10 col-8">
+                                            <input type="date" readonly class="form-control form-control-sm" value="<?= $data_anggota['ttl'];?>">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-sm-2 col-4 col-form-label">NIK</label>
+                                        <div class="col-sm-10 col-8">
+                                            <input type="text" readonly class="form-control form-control-sm" value="<?= $data_anggota['ktp'];?>">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-sm-2 col-4 col-form-label">Status </label>
+                                        <div class="col-sm-10 col-8">
+                                            <input type="text" readonly class="form-control form-control-sm" value="<?= $data_anggota['status'];?>">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-sm-2 col-4 col-form-label">Agama </label>
+                                        <div class="col-sm-10 col-8">
+                                            <input type="text" readonly class="form-control form-control-sm" value="<?= $data_anggota['agama'];?>">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <label class="col-sm-2 col-4 col-form-label">Pendidikan </label>
+                                        <div class="col-sm-4 col-8">
+                                            <input type="text" readonly class="form-control form-control-sm" value="<?= $data_anggota['pendidikan'];?>">
+                                        </div>
+                                        <label class="col-sm-2 col-4 col-form-label">PT </label>
+                                        <div class="col-sm-4 col-8">
+                                            <input type="text" readonly class="form-control form-control-sm" value="<?= $data_anggota['universitas'];?>">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-sm-2 col-4 col-form-label">Pegawai </label>
+                                        <div class="col-sm-4 col-8">
+                                            <input type="text" readonly class="form-control form-control-sm" value="<?= $data_anggota['kategori'];?>">
+                                        </div>
+                                        <label class="col-sm-2 col-4 col-form-label">Jabfung </label>
+                                        <div class="col-sm-4 col-8">
+                                            <input type="text" readonly class="form-control form-control-sm" value="<?= $data_anggota['jabfung'];?>">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-sm-2 col-4 col-form-label">Alamat </label>
+                                        <div class="col-sm-10 col-8">
+                                            <input type="text" readonly class="form-control form-control-sm" value="<?= $data_anggota['alamat'];?>">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-sm-2 col-4 col-form-label">Provinsi </label>
+                                        <div class="col-sm-4 col-8">
+                                            <input type="text" readonly class="form-control form-control-sm" value="<?= provinsi($data_anggota['prop']);?>">
+                                        </div>
+                                        <label class="col-sm-2 col-4 col-form-label">Kota </label>
+                                        <div class="col-sm-4 col-8">
+                                            <input type="text" readonly class="form-control form-control-sm" value="<?= kota($data_anggota['kota']);?>">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-sm-2 col-4 col-form-label">Kecamatan </label>
+                                        <div class="col-sm-4 col-8">
+                                            <input type="text" readonly class="form-control form-control-sm" value="<?= kecamatan($data_anggota['kec']);?>">
+                                        </div>
+                                        <label class="col-sm-2 col-4 col-form-label">Kelurahan </label>
+                                        <div class="col-sm-4 col-8">
+                                            <input type="text" readonly class="form-control form-control-sm" value="<?= kelurahan($data_anggota['kel']);?>">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-sm-2 col-4 col-form-label">Email </label>
+                                        <div class="col-sm-4 col-8">
+                                            <input type="text" readonly class="form-control form-control-sm" value="<?= $data_anggota['email'];?>">
+                                        </div>
+                                        <label class="col-sm-2 col-4 col-form-label">HP </label>
+                                        <div class="col-sm-4 col-8">
+                                            <input type="text" readonly class="form-control form-control-sm" value="<?= $data_anggota['hp'];?>">
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="" class="btn btn-success btn-sm">Edit</a><a href="" class="btn btn-danger btn-sm">Blokir</a>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                    </form>
                 </div>
-                <!-- /.card-body -->
+                <!-- /.col -->
             </div>
-            <!-- /.card -->
-            </form>
-            
-          </div>
-          <!-- /.col -->
+            <!-- /.row -->
         </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
+        <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+</div>
+<!-- /.content-wrapper -->

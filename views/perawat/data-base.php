@@ -148,7 +148,7 @@
                                 </td>
                                 
                                 <td>
-                                  <a class="btn btn-success btn-sm" href="#">Update</a>
+                                  <a class="btn btn-success btn-sm" href="<?= $site_url?>/perawat/edit.php?key=<?= $data['kode']?>">Update</a>
                                 </td>
                             </tr>
                             <?php

@@ -36,7 +36,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="mb-3 row">
+                                            <div class="row">
                                                 <label class="col-3 col-form-label">Tanggal</label>
                                                 <div class="col-3 col-md-2">
                                                     <select class="form-control form-control-sm" name="d" required>

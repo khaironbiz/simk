@@ -123,16 +123,6 @@
                                 }
                             ?>
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>#</th>
-                                <th>Nama</th>
-                                <th>Penempatan</th>
-                                <th>ID</th>
-                                <th>Has</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </tfoot>
                     </table>
                     <?php
                     }
