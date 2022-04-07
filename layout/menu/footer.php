@@ -5,6 +5,6 @@
     <strong>Copyright &copy; 2014-<?= date('Y'); ?> <a href="<?= $site_url; ?>"><?= $nama_web; ?></a>.</strong> All rights reserved.
   </footer>
   <?php
-mysqli_close($host);
+// mysqli_close($host);
 
 ?>
