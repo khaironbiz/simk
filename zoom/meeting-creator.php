@@ -1,18 +1,26 @@
 <?php
-if(isset($_POST['create_meeting'])){
+if(isset($_POST['topik'])){
 	include('config.php');
 	include('api.php');
-	$date_meeting 	= $_POST['date_meeting'];
-	$waktu_awal 	= $_POST['waktu_awal'];
-	$start_date 	= $date_meeting." ".$waktu_awal;
-	$durasi 		= $_POST['durasi'];
-	$topik 			= $_POST['topik'];
-	$passcode 		= $_POST['pascode'];
+
+    //post
+    $durasi_jam     = $_POST['durasi_jam']*60*60;
+    $durasi_menit   = $_POST['durasi_menit']*60;
+    $durasi         = $durasi_jam+$durasi_menit;
+    $start          = strtotime($_POST['date_meeting']." ".$_POST['waktu_awal'])+(60*60*2);
+    $finish         = $start+$durasi;
+    $topik          = $_POST['topik'];
+    $passcode       = $_POST['passcode'];
+
+
+
+
+
 	$key_meeting 	= uniqid();
 	//setup meeting 
 	$arr['topic']		= $topik;
-	$arr['start_date']	= $date_meeting;
-	$arr['duration']	= $durasi;
+	$arr['start_date']	= date("Y-m-d H:i:s", $start);
+	$arr['duration']	= ($durasi/60);
 	$arr['password']	= $passcode;
 	$arr['type']		= '2';
 	$result=createMeeting($arr);
