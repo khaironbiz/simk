@@ -55,25 +55,23 @@ include($wrapp);
     <script src="<?= $site_url;?>/assets/AdminLTE/dist/js/demo.js"></script>
     <!-- Page specific script -->
     <script>
-    $(function() {
+    $(function () {
         $("#example1").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            "buttons": ["csv", "excel", "pdf", "print"]
-            //"buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            "responsive": true, "lengthChange": true, "autoWidth": false,
+            // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            "buttons": ["excel", "pdf"]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         $('#example2').DataTable({
             "paging": true,
             "lengthChange": false,
             "searching": false,
-            "ordering": true,
+            "ordering": false,
             "info": true,
             "autoWidth": false,
             "responsive": true,
         });
     });
-    </script>
+</script>
 </body>
 
 </html>
