@@ -14,32 +14,15 @@ if (isset($_POST['username'])) {
             echo "<script> alert(\"Maaf username $username tidak terdaftar\");</script>";
         }
         if ($rows1 > 0) {
-            $url = $site_url . '/auth/reset-password.php?id=' . $data['kode'];
-            $kepada = $username; //email tujuan
-            $subject = 'Reset Password'; //judul email
-            $dari = "From: admin@ppni.or.id \n";
-            $dari .= "Content-type: text/html \r\n";
-            $pesan = 'Silahkan klik tautan dibawah untuk reset password  <br>';
-            $pesan .= "
-                    <html>
-                        <body with ='350'>
-                            <p>
-                            $url
-                            <a href='$url'>Reset Password</a>
-                            </p>
-                            <table>
-                                <tr>
-                                    <td>DPK PPNI Rumah Sakit Pusat Otak Nasional</td>
-                                    </tr>
-                                <tr>
-                                        <td><img src='https://ppni.or.id/ipaymu/image/ppni.png' class='img-rounded' alt='Cinque Terre' width='84' height='84'></td>
-                                    </tr>
-                            </table>
-                        </body>
-                    </html>";
+            $url        = $site_url . '/auth/reset-password.php?id=' . $data['kode'];
+            $kepada     = $username; //email tujuan
+            $subject    = 'Reset Password'; //judul email
+            $dari       = "From: admin@ppni.or.id \n";
+            $dari       .= "Content-type: text/html \r\n";
+            $pesan      = 'Silahkan klik tautan dibawah untuk reset password : '.$url;
             $kirim_email = mail($kepada, $subject, $pesan, $dari); //fungsi untuk kirim email
             if ($kirim_email) {
-                header('location: ../event'); // Mengarahkan ke halaman profil
+                header("location: $site_url"); // Mengarahkan ke halaman profil
             }
         }
 
