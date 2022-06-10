@@ -1,5 +1,7 @@
 <?php
-include("session.php");
+// include("session.php");
+include 'site.php';
+include 'koneksi.php';
 include("reset-account.php");
 ?>
 <!doctype html>

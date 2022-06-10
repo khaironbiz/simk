@@ -15,7 +15,6 @@ if (isset($_POST['username'])) {
         }
         if ($rows1 > 0) {
             $url = $site_url . '/auth/reset-password.php?id=' . $data['kode'];
-            echo "<script> alert(\"$url tidak terdaftar\");</script>";
             $kepada = $username; //email tujuan
             $subject = 'Reset Password'; //judul email
             $dari = "From: admin@ppni.or.id \n";

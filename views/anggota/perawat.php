@@ -35,39 +35,32 @@
                     <th>#</th>
                     <th>Nama</th>
                     <th>NIRA</th>
-                    <th>Email</th>
-                    <th>HP</th>
+                    <th>KTP</th>
+                    <th>NPWP</th>
+                    <th>NIP</th>
                     <th>Pendidikan</th>
                   </tr>
                   </thead>
                   <tbody>
                     <?php
                     $no           = 1;
-                    $sql_perawat  = mysqli_query($host, "SELECT * FROM nira WHERE blokir='N'");
+                    $sql_perawat  = mysqli_query($host, "SELECT * FROM nira WHERE blokir='N' ORDER BY nama ASC");
                     while($data   = mysqli_fetch_array($sql_perawat)){
                     ?>
                     <tr>
                       <td width="10px"><?= $no++; ?></td>
                       <td><?= $data['nama'];?></td>
                       <td><?= $data['nira'];?></td>
-                      <td><?= $data['email'];?></td>
-                      <td><?= $data['hp'];?></td>
+                      <td>'<?= $data['ktp'];?></td>
+                      <td>#<?= $data['npwp'];?></td>
+                      <td>#<?= $data['nip'];?></td>
                       <td><?= $data['pendidikan'];?></td>
                     </tr>
                     <?php
                       }
                     ?>
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>#</th>
-                    <th>Nama</th>
-                    <th>NIRA</th>
-                    <th>Email</th>
-                    <th>HP</th>
-                    <th>Pendidikan</th>
-                  </tr>
-                  </tfoot>
+                  
                 </table>
               </div>
               <!-- /.card-body -->
