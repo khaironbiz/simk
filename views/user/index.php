@@ -111,7 +111,8 @@
                   </div>
                   <!-- /.tab-pane -->
                   <div class="tab-pane" id="jadwal">
-                    
+                    <h5>Jadwal Bulan Ini</h5>
+                    <h5>Rekap Jadwal</h5>
                   </div>
                   <!-- /.tab-pane -->
                   <div class="tab-pane" id="laporan">
