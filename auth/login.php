@@ -39,7 +39,7 @@ if (isset($_POST['username'])) {
             "CC: khaironbiz@yahoo.com";
             mail($to,$subject,$txt,$headers);
                         
-            header("location: $site_url/regulasi/"); // Mengarahkan ke halaman profil
+            header("location: $site_url/validasi/"); // Mengarahkan ke halaman profil
         }elseif ($rows < 1) {
             $_SESSION['status']     = "Password tidak sesuai";
             $_SESSION['status_info']= "danger";
