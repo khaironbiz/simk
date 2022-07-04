@@ -7,6 +7,7 @@
     <list default="true" id="06e1d9cd-230d-4cf0-ba4a-082d7378c146" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zoom/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/zoom/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zoom/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/zoom/config.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zoom/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/zoom/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zoom/meeting-creator.php" beforeDir="false" afterPath="$PROJECT_DIR$/zoom/meeting-creator.php" afterDir="false" />
     </list>
@@ -52,7 +53,7 @@
       <workItem from="1645492583921" duration="125000" />
       <workItem from="1649910799095" duration="93000" />
       <workItem from="1649911048880" duration="13034000" />
-      <workItem from="1656906888243" duration="2213000" />
+      <workItem from="1656906888243" duration="4249000" />
     </task>
     <servers />
   </component>

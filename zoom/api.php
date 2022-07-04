@@ -46,7 +46,7 @@ function createMeeting($data = array())
     $request_url = "https://api.zoom.us/v2/users/" . EMAIL_ID . "/meetings";
     $token = array(
         "iss" => API_KEY,
-        "exp" => time() //60 seconds as suggested
+        "exp" => time() + 3600 //60 seconds as suggested
         
     );
     $getJWTKey = JWT::encode($token, API_SECRET);

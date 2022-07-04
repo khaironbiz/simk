@@ -48,9 +48,9 @@
                                                 $jam_ahir       = $jam_awal + (12*($kos_jam));
                                                 $xx             = 1;
                                                 while($xx<=48):
-                                                   $detik_list  = ($xx*30*60);
+                                                   $detik_list  = ($xx*30*60)+3600;
                                                    $jam_list    = $jam_awal + $detik_list;
-                                                   $jam_list    = date("H:i",$jam_list);
+                                                   $jam_list    = date("H:i:00",$jam_list);
                                             ?>
                                             <option><?=  $jam_list ?></option>
                                             <?php
