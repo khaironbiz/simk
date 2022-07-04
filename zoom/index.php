@@ -42,17 +42,16 @@
                                         <select class="form-control form-control-sm" name="waktu_awal">
                                             <?php
                                                 $time           = date('Y-m-d H').":00:00";
-                                               $jam_sekarang    = strtotime($time);
-                                               $kos_jam         = 60*60;
-                                               $jam_awal        = $jam_sekarang-($kos_jam);
-                                               $jam_ahir        = $jam_awal+(12*($kos_jam));
-                                               $xx= 1;
-                                               while($xx<=48):
+                                                $jam_sekarang   = strtotime($time);
+                                                $kos_jam        = 60*60;
+                                                $jam_awal       = $jam_sekarang-($kos_jam);
+                                                $jam_ahir       = $jam_awal + (12*($kos_jam));
+                                                $xx             = 1;
+                                                while($xx<=48):
                                                    $detik_list  = ($xx*30*60);
-                                                   $jam_list    = $jam_awal+ $detik_list;
+                                                   $jam_list    = $jam_awal + $detik_list;
                                                    $jam_list    = date("H:i",$jam_list);
                                             ?>
-
                                             <option><?=  $jam_list ?></option>
                                             <?php
                                                $xx++;
@@ -85,7 +84,7 @@
                                             <option value="">--pilih--</option>
                                             <?php
                                             $menit  = 0;
-                                            while($menit <4){
+                                            while($menit < 4){
                                             ?>
                                             <option value=<?= $menit*15?>><?= $menit*15?> Menit</option>
                                             <?php
