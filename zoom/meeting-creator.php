@@ -7,7 +7,7 @@ if(isset($_POST['topik'])){
     $durasi_jam     = $_POST['durasi_jam']*60*60;
     $durasi_menit   = $_POST['durasi_menit']*60;
     $durasi         = $durasi_jam+$durasi_menit;
-    $start          = strtotime($_POST['date_meeting']." ".$_POST['waktu_awal'])+(60*60*2);
+    $start          = strtotime($_POST['date_meeting']." ".$_POST['waktu_awal']);
     $finish         = $start+$durasi;
     $topik          = $_POST['topik'];
     $passcode       = $_POST['passcode'];
