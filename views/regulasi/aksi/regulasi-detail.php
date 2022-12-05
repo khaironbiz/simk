@@ -28,7 +28,7 @@ if(isset($_POST['id_regulasi'])){
     if($count < 1){
         if(in_array($file_ext, $allowed_ext) === true){
             if($file_size < $file_size_allowed){
-                $lokasi = "../assets/files/regulasi/".$regulasi_file;
+                $lokasi = "../../assets/files/regulasi/".$regulasi_file;
 				$simpan_file    = move_uploaded_file($file_tmp, $lokasi);
                 $input_data     = mysqli_query($host, "INSERT INTO regulasi_detail SET 
                                     id_regulasi_jenis   = '$id_regulasi_jenis',

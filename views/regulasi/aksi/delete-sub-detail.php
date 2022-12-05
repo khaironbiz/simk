@@ -12,7 +12,7 @@ if(isset($_POST['has_regulasi_detail'])){
     if($count_nira > 0){
         if($count > 0 ){
             //hapus file
-            $target = "../assets/files/regulasi/".$has_regulasi_detail.".pdf";
+            $target = "../../assets/files/regulasi/".$has_regulasi_detail.".pdf";
             if(file_exists($target)){
                 unlink($target);
             }

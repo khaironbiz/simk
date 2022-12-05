@@ -25,7 +25,7 @@ if(isset($_POST['id_form'])){
     if($count < 1){
         if(in_array($file_ext, $allowed_ext) === true){
             if($file_size < $file_size_allowed){
-                $lokasi = "../assets/files/form/".$form_file;
+                $lokasi = "../../assets/files/form/".$form_file;
 				$simpan_file    = move_uploaded_file($file_tmp, $lokasi);
                 $input_data     = mysqli_query($host, "INSERT INTO form_detail SET 
                                     id_form             = '$id_form',
