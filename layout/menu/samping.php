@@ -189,12 +189,18 @@
           if($list_admin >0){
           ?>
           <li class="nav-header">Admin Area</li>
-          <li class="nav-item">
-            <a href="<?= $site_url ?>/home/perawat.php" class="nav-link">
-              <i class="nav-icon far fa-circle text-danger"></i>
-              <p class="text">Data Anggota</p>
-            </a>
-          </li>
+              <li class="nav-item">
+                <a href="<?= $site_url ?>/perawat/mutasi.php" class="nav-link">
+                  <i class="nav-icon far fa-circle text-danger"></i>
+                  <p class="text">Mutasi Perawat</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                  <a href="<?= $site_url ?>/regulasi" class="nav-link">
+                      <i class="nav-icon far fa-circle text-warning"></i>
+                      <p>Regulasi</p>
+                  </a>
+              </li>
           <li class="nav-item">
             <a href="<?= $site_url ?>/regulasi" class="nav-link">
               <i class="nav-icon far fa-circle text-warning"></i>
