@@ -29,7 +29,7 @@ if(isset($_POST['mutasi_antar_ruang'])){
             // isi qrcode yang ingin dibuat. akan muncul saat di scan
             $isi = "https://rspon.net/surat/mutasi-perawat.php?key=".$has_baru;
             // perintah untuk membuat qrcode dan menyimpannya dalam folder temp
-            $create_qr = QRcode::png($isi, $penyimpanan . "qrcode_saya.png");
+            $create_qr = QRcode::png($isi, $penyimpanan . $has_baru.".png");
             if($create_qr){
 
             }else{
