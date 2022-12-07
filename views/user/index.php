@@ -123,6 +123,11 @@
                 <!-- /.tab-content -->
               </div><!-- /.card-body -->
             </div>
+              <div class="card">
+                  <div class="card-header">
+                      Surat Kewanangan Klinis
+                  </div>
+              </div>
             <!-- /.card -->
           </div>
           <!-- /.col -->
