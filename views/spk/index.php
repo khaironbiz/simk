@@ -127,7 +127,7 @@
                           <th>#</th>
                           <th>Nama</th>
                           <th>NIRA</th>
-                          <th>NO SPK</th>
+                          <th>Level PK</th>
                           <th>Tgl SPK</th>
                           <th>EXP SPK</th>
                           <th>Aksi</th>
@@ -136,14 +136,17 @@
                     <tbody>
                       <?php
                       $no         = 1;
-                      $sql_spk    = mysqli_query($host, "SELECT * FROM spk_perawat JOIN nira on nira.nira=spk_perawat.id_perawat ORDER BY spk_perawat.id DESC");
+                      $sql_spk    = mysqli_query($host, "SELECT * FROM spk_perawat 
+                                            JOIN nira on nira.nira=spk_perawat.id_perawat 
+                                            JOIN db_sub_master on db_sub_master.id=spk_perawat.level_pk
+                                            ORDER BY spk_perawat.id DESC");
                       while($data = mysqli_fetch_array($sql_spk)){
                       ?>
                       <tr>
                           <td><?= $no++; ?></td>
                           <td><?= $data['nama']; ?></td>
                           <td><?= $data['id_perawat']; ?></td>
-                          <td><?= $data['nomor_surat']; ?></td>
+                          <td><?= $data['nama_submaster']; ?></td>
                           <td><?= $data['tgl_surat']; ?></td>
                           <td><?= $data['tgl_exp']; ?></td>
                           <td><a href="<?= $site_url?>/../assets/files/spk/<?= $data['file']?>" class="btn btn-sm btn-info">View</a></td>
