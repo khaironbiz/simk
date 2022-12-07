@@ -1,10 +1,10 @@
 <?php
 include('../auth/session.php');
-$tahun_ini  = date('Y');
-$awal_tahun = $tahun_ini."-01-01 00:00:00";
-$time_tahun = strtotime($awal_tahun);
+$tahun_ini      = date('Y');
+$awal_tahun     = $tahun_ini."-01-01 00:00:00";
+$time_tahun     = strtotime($awal_tahun);
 $time_validasi  = time();
-$time_lapor = $data_pengguna['time_validasi'];
+$time_lapor     = $data_pengguna['time_validasi'];
 
 if(isset($_SESSION['login_user'])){
     if(isset($_POST['ktp'])){
@@ -31,7 +31,8 @@ if(isset($_SESSION['login_user'])){
         if($time_lapor > $time_tahun){
             header("location: $site_url/user");
         }else{
-            echo "Harus lapor";
+            header("location: $site_url/user");
+//            echo "Harus lapor";
         }
         
     }
