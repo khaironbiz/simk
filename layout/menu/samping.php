@@ -196,9 +196,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                  <a href="<?= $site_url ?>/regulasi" class="nav-link">
-                      <i class="nav-icon far fa-circle text-warning"></i>
-                      <p>Regulasi</p>
+                  <a href="<?= $site_url ?>/spk" class="nav-link">
+                      <i class="nav-icon far fa-circle text-info"></i>
+                      <p>SPK Perawat</p>
                   </a>
               </li>
           <li class="nav-item">

@@ -5,6 +5,7 @@ if(isset($_POST['mutasi_antar_ruang'])){
     $id_perawat     = $_POST['id_perawat'];
     $ruangan_asal   = $_POST['ruangan_asal'];
     $ruangan_baru   = $_POST['ruangan_baru'];
+    $nomor_surat    = $_POST['nomor_surat'];
     $has_baru       = md5(uniqid());
     $sql            = mysqli_query($host,"SELECT * FROM penempatan_detail WHERE id_penempatan='$id_penempatan' AND id_perawat='$id_perawat'");
     $count          = mysqli_num_rows($sql);
@@ -12,6 +13,7 @@ if(isset($_POST['mutasi_antar_ruang'])){
     if($count <1 ){
         $input_data = mysqli_query($host, "INSERT INTO penempatan_detail SET
                               id_penempatan     = '$id_penempatan',
+                              nomor_surat       = '$nomor_surat',
                               id_perawat        = '$id_perawat',
                               ruangan_asal      = '$ruangan_asal',
                               ruangan_baru      = '$ruangan_baru',

@@ -25,10 +25,16 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Nomor Surat</label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" name="nomor_surat" required placeholder="nomor surat yang akan dibuat">
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label class="col-sm-4 col-form-label">Nama Perawat</label>
                             <div class="col-sm-8">
-                                <select class="form-control" name="id_perawat">
-                                    <option>---pilih---</option>
+                                <select class="form-control" name="id_perawat" required>
+                                    <option value="">---pilih---</option>
                                     <?php
                                     $sql_perawat = mysqli_query($host,"SELECT * FROM nira WHERE blokir ='N' order by nama ASC");
                                     while($data_perawat = mysqli_fetch_array($sql_perawat)){
@@ -43,8 +49,8 @@
                         <div class="form-group row">
                             <label class="col-sm-4 col-form-label">Ruangan Asal</label>
                             <div class="col-sm-8">
-                                <select class="form-control" name="ruangan_asal">
-                                    <option>---pilih---</option>
+                                <select class="form-control" name="ruangan_asal" required>
+                                    <option value="">---pilih---</option>
                                     <?php
                                         $sql_ruangan = mysqli_query($host,"SELECT * FROM ruangan order by id ASC");
                                         while($data_ruangan = mysqli_fetch_array($sql_ruangan)){
@@ -59,8 +65,8 @@
                         <div class="form-group row">
                             <label class="col-sm-4 col-form-label">Ruangan Baru</label>
                             <div class="col-sm-8">
-                                <select class="form-control" name="ruangan_baru">
-                                    <option>---pilih---</option>
+                                <select class="form-control" name="ruangan_baru" required>
+                                    <option value="">---pilih---</option>
                                     <?php
                                     $sql_ruangan = mysqli_query($host,"SELECT * FROM ruangan order by id ASC");
                                     while($data_ruangan = mysqli_fetch_array($sql_ruangan)){
