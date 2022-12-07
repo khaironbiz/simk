@@ -136,7 +136,7 @@
                     <tbody>
                       <?php
                       $no         = 1;
-                      $sql_spk    = mysqli_query($host, "SELECT * FROM spk_perawat JOIN nira on nira.nira=spk_perawat.id_perawat ");
+                      $sql_spk    = mysqli_query($host, "SELECT * FROM spk_perawat JOIN nira on nira.nira=spk_perawat.id_perawat ORDER BY spk_perawat.id DESC");
                       while($data = mysqli_fetch_array($sql_spk)){
                       ?>
                       <tr>
