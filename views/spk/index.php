@@ -69,7 +69,7 @@
                                           $sql_nira = mysqli_query($host, "SELECT * FROM nira WHERE blokir='N' ORDER BY nama ASC");
                                           while ($data_nira = mysqli_fetch_array($sql_nira)){
                                           ?>
-                                              <option value="<?= $data_nira['nira']?>"><?= $data_nira['nama']?></option>
+                                              <option value="<?= $data_nira['nira']?>"><?= $data_nira['nama']?> <?= $data_nira['nip']?></option>
                                           <?php
                                           }
                                           ?>
@@ -149,7 +149,9 @@
                           <td><?= $data['nama_submaster']; ?></td>
                           <td><?= $data['tgl_surat']; ?></td>
                           <td><?= $data['tgl_exp']; ?></td>
-                          <td><a href="<?= $site_url?>/../assets/files/spk/<?= $data['file']?>" class="btn btn-sm btn-info">View</a></td>
+                          <td>
+                              <a href="<?= $site_url?>/../assets/files/spk/<?= $data['file']?>" class="btn btn-sm btn-info">View</a>
+                          </td>
                       </tr>
                       <?php
                         }
@@ -157,6 +159,7 @@
                     </tbody>
 
                   </table>
+                    <a href="active.php" class="btn btn-primary">SPK Active</a>
                 </div>
                 <!-- /.card-body -->
             </div>
