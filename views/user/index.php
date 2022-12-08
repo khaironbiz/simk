@@ -27,7 +27,7 @@
               <div class="card-body box-profile">
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle w-30"
-                      src="https://ppni.or.id/simk/id/image/<?= $data_pengguna['foto']?>"
+                      src="https://ppni.or.id/simk/id/image/foto/<?= $data_pengguna['foto']?>"
                       alt="User profile picture">
                 </div>
 
@@ -124,8 +124,38 @@
               </div><!-- /.card-body -->
             </div>
               <div class="card">
-                  <div class="card-header">
-                      Surat Kewanangan Klinis
+                  <div class="card-header"><b>Surat Penugasan Klinis</b></div>
+                  <div class="table-responsive">
+                      <table class="table table-striped" id="exaple1">
+                          <thead>
+                          <tr>
+                              <th>No</th>
+                              <th>Level PK</th>
+                              <th>Tanggal SPK</th>
+                              <th>Tanggal Ekp</th>
+                              <th>File</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <?php
+                          $no=1;
+                          $sql_skp = mysqli_query($host, "SELECT * FROM spk_perawat 
+                                                    JOIN db_sub_master on spk_perawat.level_pk=db_sub_master.id
+                                                    WHERE id_perawat='$user_check' ORDER BY tgl_surat DESC");
+                          while($data_spk = mysqli_fetch_array($sql_skp)){
+                          ?>
+                          <tr>
+                              <td><?= $no++;?></td>
+                              <td><?= $data_spk['nama_submaster']?></td>
+                              <td><?= $data_spk['tgl_surat']?></td>
+                              <td><?= $data_spk['tgl_exp']?></td>
+                              <td><a href="https://rspon.net/ppni/assets/files/spk/<?= $data_spk['file']?>" class="btn btn-sm btn-info" target="_blank">Download</a></td>
+                          </tr>
+                          <?php
+                          }
+                          ?>
+                          </tbody>
+                      </table>
                   </div>
               </div>
             <!-- /.card -->
