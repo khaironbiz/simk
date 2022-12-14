@@ -33,13 +33,13 @@
                             <?php
                             $no         = 1;
                             $now        = time();
-                            $sql_meeting = mysqli_query($host, "SELECT * FROM zoom_meeting WHERE start_time>'$now'");
+                            $sql_meeting = mysqli_query($host, "SELECT * FROM zoom_meeting WHERE start_time>'$now' ORDER BY start_time ASC");
                             while ($data_meeting = mysqli_fetch_array($sql_meeting)){
                             ?>
                             <tr>
                                 <td><?= $no++ ?></td>
                                 <td><?= $data_meeting['meeting_topic']?></td>
-                                <td><?= $data_meeting['start_time']?></td>
+                                <td><?= date('d-m-Y H:i:s', $data_meeting['start_time'])?></td>
                                 <td><?= ($data_meeting['end_time']-$data_meeting['start_time'])/60; ?> Minutes</td>
                                 <td><?= $data_meeting['timezone']?></td>
                                 <td class="text-center"><a href="<?= $data_meeting['start_url']?>" class="btn btn-sm btn-primary">Start</a></td>
