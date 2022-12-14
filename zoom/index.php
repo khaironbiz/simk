@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-    <title>Create Meeting Zoom</title>
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -11,7 +10,7 @@
     </head>
     <?php
     date_default_timezone_set("Asia/Jakarta");
-    // include('../auth/session.php');
+     include('../auth/session.php');
     ?>
     <body>
         <div class="container">
