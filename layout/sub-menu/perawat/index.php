@@ -15,6 +15,9 @@
                                     <a class="nav-link text-white" href="<?= $site_url?>/perawat/penjadwalan.php">Realisasi Jadwal</a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link text-white" href="<?= $site_url?>/perawat/rekening.php">Rekening</a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link text-white" href="#">Pasien Kelolaan</a>
                                 </li>
                                 <li class="nav-item dropdown">
