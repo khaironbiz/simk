@@ -7,7 +7,6 @@ $https          = $_SERVER['HTTPS'];
 }
 
 $url_1          = "http://localhost/simk";
-$url_1          = "https://rspon.net/ppni/simk";
 $url_2          = "https://rspon.net/ppni/simk";
 $url_3          = "http://rspon.net/ppni/simk";
 $server_host = $_SERVER['SERVER_NAME'];
