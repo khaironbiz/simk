@@ -103,6 +103,7 @@
                                 </div>
                             </div>
                             <div class="card-footer">
+                                <a href="meeting.php" class="btn btn-sm btn-primary">BACK</a>
                                 <button class="btn btn-sm btn-danger" type="submit">SAVE</button>
                             </div>
                         </div>

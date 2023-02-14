@@ -58,7 +58,7 @@ if(isset($_POST['topik'])){
                                     password        = '$password',
                                     has             = '$key_meeting'");
         if($create_meeting){
-            header("location: $join_url"); // Mengarahkan url meeting
+            header("location: meeting.php"); // Mengarahkan url meeting
         }else{
             echo "Gagal Simpan";
         }
