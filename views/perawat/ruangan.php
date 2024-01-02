@@ -112,7 +112,7 @@
                             <?php
                             $id_ruangan = $_GET['key'];
                             $numb       = 1;
-                            $sql_nira   = mysqli_query($host,"SELECT * FROM nira WHERE id_ruangan ='$id_ruangan' order by id_pk DESC, nama ASC ");
+                            $sql_nira   = mysqli_query($host,"SELECT * FROM nira WHERE id_ruangan ='$id_ruangan' AND blokir ='N' order by id_pk DESC, nama ASC");
                             while ($data_nira = mysqli_fetch_array($sql_nira)){
                             ?>
                             <tr>

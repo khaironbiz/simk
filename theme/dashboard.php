@@ -71,7 +71,7 @@ include($wrapp);
 <!-- AdminLTE App -->
 <script src="https://adminlte.io/themes/v3/dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="https://adminlte.io/themes/v3/dist/js/demo.js"></script>
+
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="https://adminlte.io/themes/v3/dist/js/pages/dashboard.js"></script>
 </body>
