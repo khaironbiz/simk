@@ -53,7 +53,6 @@ include($wrapp);
     <script src="https://adminlte.io/themes/v3/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="https://adminlte.io/themes/v3/dist/js/demo.js"></script>
-    <script src="https://adminlte.io/themes/v3/dist/js/demo.js"></script>
     <!-- Page specific script -->
     <script>
     $(function () {

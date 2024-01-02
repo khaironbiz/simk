@@ -63,7 +63,7 @@
                             </tbody>
 
                         </table>
-                        <a href="ruangan.php" class="btn btn-danger">Back</a>
+                        <a href="ruangan.php" class="btn btn-danger mt-3">Back</a>
                         <?php
                     }else{
 
