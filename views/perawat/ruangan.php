@@ -34,15 +34,79 @@
 
                     if(id_ruangan($data_pengguna['ruangan']) =='NULL'){
                         echo "Ganti Ruangan";
-                        
+                    }elseif(isset($_GET['nira'])){?>
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                <form action="" method="post">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <b>Edit Data Ruangan dan PK</b>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <label class="col-sm-4">Nama</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control" name="nira">
+                                                    <option value="<?= $_GET['nira'] ?>"><?= $nira['nama']?></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-1">
+                                            <label class="col-sm-4">Ruangan</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control" name="ruangan">
+                                                    <?php
+                                                    while($data_ruangan = mysqli_fetch_array($ruangan)){
+                                                    ?>
+                                                    <option value="<?= $data_ruangan['id']?>" <?php if($data_ruangan['id'] == $nira['id_ruangan']) echo "selected" ?>><?= $data_ruangan['ruangan']?></option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-1">
+                                            <label class="col-sm-4">Level PK</label>
+                                            <div class="col-sm-8">
+                                                <select class="form-control" name="level_pk">
+                                                    <?php
+                                                    while($data_pk = mysqli_fetch_array($level_pk)){
+                                                    ?>
+                                                    <option value="<?= $data_pk['id']?>" <?php if($data_pk['id'] == $nira['id_pk']) echo "selected" ?>><?= $data_pk['nama_submaster'] ?></option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-1">
+                                            <input name = "update_ruangan" type="checkbox" required>  Saya setuju update data diatas
+                                        </div>
+
+
+
+
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="?key=<?= $nira['id_ruangan']?>" class="btn btn-danger">Back</a>
+                                        <button type="submit"  class="btn btn-success">Save</button>
+                                    </div>
+                                </div>
+                                </form>
+
+                            </div>
+
+                        </div>
+                        <?php
                     }elseif(isset($_GET['key'])) {?>
                             <b>Penempatan perawat</b>
-                        <table class="table table-sm table-striped">
+                        <table id="example1"  class="table table-sm table-striped">
                             <thead>
                             <th>#</th>
                             <th>Nama</th>
                             <th>Pendidikan</th>
                             <th>Level PK</th>
+                            <td>Aksi</td>
                             </thead>
                             <tbody>
                             <?php
@@ -56,6 +120,9 @@
                                 <td><?= $data_nira['nama'] ?></td>
                                 <td><?= $data_nira['pendidikan'] ?></td>
                                 <td><?= $data_nira['id_pk']." -- ".$data_nira['pk']?></td>
+                                <td>
+                                    <a href="?nira=<?= $data_nira['nira']?>" class="btn btn-sm btn-success">Edit</a>
+                                </td>
                             </tr>
                             <?php
                             }
