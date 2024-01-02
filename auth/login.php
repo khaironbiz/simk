@@ -8,9 +8,10 @@ if (isset($_POST['username'])) {
     // Variabel username dan password
     $username   = $_POST['username'];
     $password   = $_POST['password'];
+    $hash_password = md5($password);
     $queryuser  = mysqli_query($host,"select * from nira where email='$username'");
     $rows1      = mysqli_num_rows($queryuser);
-    $query      = mysqli_query($host,"select * from nira where pass='$password' AND email='$username' and blokir='N'");
+    $query      = mysqli_query($host,"select * from nira where pass='$hash_password' AND email='$username' and blokir='N'");
     $rows       = mysqli_num_rows($query);
     $nira       = mysqli_fetch_array($query);
     if (empty($_POST['username']) || empty($_POST['password'])) {
@@ -46,7 +47,7 @@ if (isset($_POST['username'])) {
             //echo "<script> alert(\"Maaf kombinasi username dan pasword tidak sesuai \");</script>";
             echo "<script>document.location=\"$site_url\"</script>";
         }
-        mysql_close($host); // Menutup koneksi
+        mysqli_close($host); // Menutup koneksi
     }
 
 
