@@ -9,7 +9,7 @@
                                     <a class="nav-link text-white" href="<?= $site_url?>/perawat/penempatan.php">Perawat</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" href="#">Pasien</a>
+                                    <a class="nav-link text-white" href="<?= $site_url?>/perawat/ruangan.php">Ruangan</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-white" href="<?= $site_url?>/perawat/penjadwalan.php">Realisasi Jadwal</a>

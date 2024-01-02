@@ -29,13 +29,42 @@
                     <?php
                     include("../core/security/admin-akses.php");
                     if($count_admin >0){
-                        // include('modal/add-pasien.php');
-                        // include('aksi/add-pasien.php');
+
                     }
 
                     if(id_ruangan($data_pengguna['ruangan']) =='NULL'){
                         echo "Ganti Ruangan";
                         
+                    }elseif(isset($_GET['key'])) {?>
+                            <b>Penempatan perawat</b>
+                        <table class="table table-sm table-striped">
+                            <thead>
+                            <th>#</th>
+                            <th>Nama</th>
+                            <th>Pendidikan</th>
+                            <th>Level PK</th>
+                            </thead>
+                            <tbody>
+                            <?php
+                            $id_ruangan = $_GET['key'];
+                            $numb       = 1;
+                            $sql_nira   = mysqli_query($host,"SELECT * FROM nira WHERE id_ruangan ='$id_ruangan' order by id_pk DESC, nama ASC ");
+                            while ($data_nira = mysqli_fetch_array($sql_nira)){
+                            ?>
+                            <tr>
+                                <td><?= $numb++ ?></td>
+                                <td><?= $data_nira['nama'] ?></td>
+                                <td><?= $data_nira['pendidikan'] ?></td>
+                                <td><?= $data_nira['id_pk']." -- ".$data_nira['pk']?></td>
+                            </tr>
+                            <?php
+                            }
+                            ?>
+                            </tbody>
+
+                        </table>
+                        <a href="ruangan.php" class="btn btn-danger">Back</a>
+                        <?php
                     }else{
 
                     ?>
@@ -86,7 +115,9 @@
                                 $count_ruangan_nira = mysqli_num_rows(mysqli_query($host,"SELECT * FROM nira WHERE id_ruangan='$id_ruangan' AND id_pk !='0'"))
                                 ?>
                                 <td class="text-center"><?= $count_ruangan_nira ?></td>
-                                <td></td>
+                                <td class="text-center">
+                                    <a href="?key=<?= $data['id'] ?>" class="btn btn-sm btn-info">Detail</a>
+                                </td>
                             </tr>
                             <?php
                                 }
