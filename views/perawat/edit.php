@@ -140,7 +140,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="ruangan.php?nira=<?= $data_anggota['nira']?>" class="btn btn-success btn-sm">Edit</a>
+                                <a href="ruangan.php?nira=<?= $data_anggota['nira']?>" class="btn btn-success btn-sm mr-1">Edit</a>
                                 <a href="" class="btn btn-danger btn-sm">Blokir</a>
                             </div>
                         </div>
