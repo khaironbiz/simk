@@ -88,7 +88,7 @@
 
                                     </div>
                                     <div class="card-footer">
-                                        <a href="?key=index.php" class="btn btn-primary">Nurse</a>
+                                        <a href="index.php" class="btn btn-primary">Nurse</a>
                                         <a href="?key=<?= $nira['id_ruangan']?>" class="btn btn-danger">Back</a>
                                         <button type="submit"  class="btn btn-success">Save</button>
                                     </div>
