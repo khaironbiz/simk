@@ -23,7 +23,7 @@ if(isset($_POST['id_perawat'])){
     if($count < 1){
         if(in_array($file_ext, $allowed_ext) === true){
             if($file_size < $file_size_allowed){
-                $lokasi = "../../assets/files/spk/".$spk_file;
+                $lokasi = "../../ppni/assets/files/spk/".$spk_file;
 				$simpan_file    = move_uploaded_file($file_tmp, $lokasi);
                 $input_data     = mysqli_query($host, "INSERT INTO spk_perawat SET 
                                     id_perawat      = '$id_perawat',
