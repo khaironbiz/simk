@@ -156,7 +156,7 @@
                           <td><?= $data['tgl_surat']; ?></td>
                           <td><?= $data['tgl_exp']; ?></td>
                           <td>
-                              <a href="<?= $site_url?>/ppni/assets/files/spk/<?= $data['file']?>" class="btn btn-sm btn-info">View</a>
+                              <a href="https://rspon.net/ppni/assets/files/spk/<?= $data['file']?>" class="btn btn-sm btn-info">View</a>
                               <a href="<?= $site_url."/spk/edit.php?key=".$data['has']?>" class="btn btn-sm btn-success">Edit</a>
 
                           </td>
